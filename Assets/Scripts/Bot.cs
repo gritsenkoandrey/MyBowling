@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.DoTween;
+using UnityEngine;
 
 
 namespace Assets.Scripts
@@ -9,6 +10,12 @@ namespace Assets.Scripts
         [SerializeField] private GameObject _botCollisionParticle;
         [Range(0.0f, 5.0f), SerializeField] private float _destroyBotByTime = 0.0f;
         private Ball _ball;
+        private DoTweenCameraShake _shake;
+
+        private void Start()
+        {
+            _shake = FindObjectOfType<DoTweenCameraShake>();
+        }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -19,6 +26,10 @@ namespace Assets.Scripts
                 // todo destroy particle
                 Instantiate(_destroyBotParticle, gameObject.transform.position, Quaternion.identity);
                 Instantiate(_botCollisionParticle, gameObject.transform.position, Quaternion.identity);
+                if (_shake != null)
+                {
+                    _shake.CreateShake();
+                }
                 Invoke(nameof(DestroyBot), _destroyBotByTime);
             }
         }

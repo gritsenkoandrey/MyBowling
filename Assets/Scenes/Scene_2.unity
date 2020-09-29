@@ -1534,7 +1534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c755754f04950c544b950919944961bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetPos: {x: 0, y: -1.5, z: 0}
+  _targetPos: {x: 0, y: -1.45, z: 0}
   _targetPath: []
   _doTweenType: 3
   _ease: 1
