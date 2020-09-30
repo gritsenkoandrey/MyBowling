@@ -752,7 +752,8 @@ MonoBehaviour:
   _particleCollision: {fileID: 124372, guid: 90a43a772bac81c438aee0ac5d45892a, type: 3}
   _ease: 1
   _targetColor: {r: 0.1282053, g: 1, b: 0, a: 0.39215687}
-  _targetPos: {x: -5, y: -1.5, z: 0}
+  _targetPos: {x: -5, y: -2, z: 0}
+  _destroyBallType: 1
   _colorChangeDuration: 2
   _moveDuration: 2
 --- !u!1001 &530204835
@@ -2061,7 +2062,8 @@ MonoBehaviour:
   _particleCollision: {fileID: 124372, guid: 90a43a772bac81c438aee0ac5d45892a, type: 3}
   _ease: 1
   _targetColor: {r: 0.12941177, g: 1, b: 0, a: 0.39215687}
-  _targetPos: {x: 5, y: -1.5, z: 0}
+  _targetPos: {x: 5, y: -2, z: 0}
+  _destroyBallType: 1
   _colorChangeDuration: 2
   _moveDuration: 2
 --- !u!4 &1795499370 stripped
