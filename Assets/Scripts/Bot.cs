@@ -31,8 +31,8 @@ namespace Assets.Scripts
 
                 if (_shake != null)
                     _shake.CreateShake();
-                //if (_text != null)
-                //    _text.ApplyDamage(gameObject.transform.position, 1.0f);
+                if (_text != null)
+                    _text.ApplyDamage(gameObject.transform.position, 1.0f);
 
                 Invoke(nameof(DestroyBot), _destroyBotByTime);
             }

@@ -374,6 +374,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 142857712}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &365800263 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 366682399728985937, guid: ef39a5f7519f0ad4db98ac2c278cc6db,
+    type: 3}
+  m_PrefabInstance: {fileID: 63856899}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &462086363
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,7 +437,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 0.25}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &462086367
 MeshRenderer:
@@ -491,6 +497,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302526951057335469, guid: 4eb2e7dcc57ac0c469498c2073cb59b7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302526951057335470, guid: 4eb2e7dcc57ac0c469498c2073cb59b7,
+        type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302526951057335470, guid: 4eb2e7dcc57ac0c469498c2073cb59b7,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302526951057335470, guid: 4eb2e7dcc57ac0c469498c2073cb59b7,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302526951057335470, guid: 4eb2e7dcc57ac0c469498c2073cb59b7,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302526951057335470, guid: 4eb2e7dcc57ac0c469498c2073cb59b7,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4302526951263238918, guid: 4eb2e7dcc57ac0c469498c2073cb59b7,
         type: 3}
@@ -602,6 +638,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4302526951263238938, guid: 4eb2e7dcc57ac0c469498c2073cb59b7,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 365800263}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4eb2e7dcc57ac0c469498c2073cb59b7, type: 3}
 --- !u!4 &547089615 stripped
@@ -967,7 +1008,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 0.25}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1300726386
 MeshRenderer:
@@ -1434,7 +1475,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.25, y: 1, z: 0.5}
+  m_Size: {x: 1, y: 1, z: 0.5}
   m_Center: {x: 0, y: 0, z: -0.5}
 --- !u!23 &2021019207
 MeshRenderer:
@@ -1606,7 +1647,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.25, y: 1, z: 0.5}
+  m_Size: {x: 1, y: 1, z: 0.5}
   m_Center: {x: 0, y: 0, z: -0.5}
 --- !u!114 &1583654061376380805
 MonoBehaviour:

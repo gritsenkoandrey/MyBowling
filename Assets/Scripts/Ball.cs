@@ -16,13 +16,14 @@ public sealed class Ball : MonoBehaviour
     private Vector3 _speed;
     private Vector3 _startPos;
     private bool _isActive;
+    private readonly float _force = 100.0f;
 
     private void Start()
     {
         _mainCamera = FindObjectOfType<Camera>();
         _ballTrajectory = FindObjectOfType<UiShowBallTrajectory>();
         _ball = GetComponent<Rigidbody>();
-        _speed = new Vector3(0, 0, 60.0f);
+        _speed = new Vector3(0.0f, 0.0f, _force);
         _ball.useGravity = false;
         _isActive = false;
         _startPos = transform.position;
@@ -34,7 +35,7 @@ public sealed class Ball : MonoBehaviour
 
         if (_isActive == false)
         {
-            Debug.DrawLine(_startPos, _ray.origin, Color.blue);
+            Debug.DrawLine(_startPos, _ray.origin, Color.red);
             _ballTrajectory.SliderDisplay(true);
         }
 
@@ -48,7 +49,8 @@ public sealed class Ball : MonoBehaviour
             if (_isActive == false)
             {
                 _ball.useGravity = true;
-                _ball.AddForce(Quaternion.LookRotation(_ray.direction) * _speed, ForceMode.VelocityChange);
+                _ball.AddForce(Quaternion.LookRotation(_ray.direction) * _speed,
+                    ForceMode.Impulse);
                 _isActive = true;
                 _ballTrajectory.SliderDisplay(false);
                 _ballTrajectory.SliderValueReset();

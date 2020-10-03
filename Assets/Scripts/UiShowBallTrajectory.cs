@@ -10,7 +10,7 @@ namespace Assets.Scripts
         [SerializeField] private Slider _slider;
         private Vector3 _dir;
         private float _angle;
-        private readonly float _maxValue = 20.0f;
+        private readonly float _maxValue = 30.0f;
         private readonly float _minValue = 1.0f;
         private float _currentValue;
 
