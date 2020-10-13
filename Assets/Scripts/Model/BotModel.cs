@@ -21,18 +21,20 @@ public sealed class BotModel : MonoBehaviour
 
         if (_ball)
         {
-            Instantiate(_destroyBotParticle, gameObject.transform.position, Quaternion.identity);
-            Instantiate(_botCollisionParticle, gameObject.transform.position, Quaternion.identity);
-
-            if (_shake != null)
-                _shake.CreateShake();
-
+            DestroyBotParticle();
+            _shake.CreateShake();
             Invoke(nameof(DestroyBot), _destroyBotByTime);
         }
     }
 
-    private void DestroyBot()
+    public void DestroyBot()
     {
         Destroy(this.gameObject);
+    }
+
+    public void DestroyBotParticle()
+    {
+        Instantiate(_destroyBotParticle, gameObject.transform.position, Quaternion.identity);
+        Instantiate(_botCollisionParticle, gameObject.transform.position, Quaternion.identity);
     }
 }

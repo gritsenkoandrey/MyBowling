@@ -37,7 +37,7 @@ public sealed class BuildingActivator : MonoBehaviour
 
             if (_ballDestroy == BallDestroy.Yes)
             {
-                DestroyBall();
+                _ball.DestroyBall();
             }
         }
     }
@@ -63,11 +63,5 @@ public sealed class BuildingActivator : MonoBehaviour
         _target
             .DORotate(_targetPos, _buildingParams.Duration)
             .SetDelay(_buildingParams.Delay);
-    }
-
-    private void DestroyBall()
-    {
-        BallSpawner.IsBallAlive = false;
-        Destroy(_ball.gameObject);
     }
 }

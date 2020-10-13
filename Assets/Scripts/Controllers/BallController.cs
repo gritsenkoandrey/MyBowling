@@ -27,6 +27,7 @@ public sealed class BallController : IExecute, IInitialization
         if (Input.GetMouseButton(_leftButton))
         {
             _ballModel = Object.FindObjectOfType<BallModel>();
+
             _direction = Input.mousePosition - _mainCamera.WorldToScreenPoint(_ballModel.transform.position);
 
             if (BallModel.IsActive == false)

@@ -6,7 +6,6 @@ public sealed class UiShowBallTrajectory : MonoBehaviour
 {
     private readonly float _maxValue = 30.0f;
     private readonly float _minValue = 1.0f;
-    private float _currentValue;
 
     [SerializeField] private Transform _canvas = null;
     [SerializeField] private Slider _slider = null;
@@ -18,11 +17,10 @@ public sealed class UiShowBallTrajectory : MonoBehaviour
         _slider.maxValue = _maxValue;
     }
 
-    public void SliderCalculate(float angle, float directionMagnitude)
+    public void SliderCalculate(float angle, float currentValue)
     {
         _slider.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, angle);
-        _currentValue = directionMagnitude / _maxValue;
-        _slider.value = _currentValue;
+        _slider.value = currentValue / _maxValue;
     }
 
     public void SliderDisplay(bool value)
