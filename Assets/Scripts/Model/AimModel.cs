@@ -20,15 +20,16 @@ public class AimModel : MonoBehaviour
 
     private void DestroyAimParticle()
     {
-        if (_spawnParticle)
-        {
-            Instantiate(_destroyAimParticle, _spawnParticle.transform.position, Quaternion.identity);
-        }
-        else
-        {
-            Instantiate(_destroyAimParticle, gameObject.transform.position, Quaternion.identity);
-        }
+        //if (_spawnParticle)
+        //{
+        //    Instantiate(_destroyAimParticle, _spawnParticle.transform.position, Quaternion.identity);
+        //}
+        //else
+        //{
+        //    Instantiate(_destroyAimParticle, _ball.transform.position, Quaternion.identity);
+        //}
 
+        Instantiate(_destroyAimParticle, _ball.transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }
 }
