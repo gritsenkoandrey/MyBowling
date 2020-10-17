@@ -2,7 +2,7 @@
 using DG.Tweening;
 
 
-public sealed class BuildingTransform : MonoBehaviour
+public sealed class BuildingTransform : BaseModel
 {
     [SerializeField] private Vector3 _to = Vector3.zero;
     [SerializeField] private BuildingParams _buildingParams = null;

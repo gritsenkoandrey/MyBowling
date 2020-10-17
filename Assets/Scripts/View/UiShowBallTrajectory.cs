@@ -6,8 +6,8 @@ public sealed class UiShowBallTrajectory : MonoBehaviour
 {
     private readonly float _maxValue = 30.0f;
     private readonly float _minValue = 1.0f;
+    private float _angle;
 
-    [SerializeField] private Transform _canvas = null;
     [SerializeField] private Slider _slider = null;
 
     private void Start()
@@ -17,18 +17,38 @@ public sealed class UiShowBallTrajectory : MonoBehaviour
         _slider.maxValue = _maxValue;
     }
 
-    public void SliderCalculate(float angle, float currentValue)
+    public void ShowDirectionBall(Vector2 dir)
     {
-        _slider.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, angle);
-        _slider.value = currentValue / _maxValue;
+        if (Ball.IsLaunch == false)
+        {
+            _angle = -Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
+
+            SliderDisplay(true);
+            SliderCalculate(_angle, dir.y);
+        }
     }
 
-    public void SliderDisplay(bool value)
+    public void HideDirectionBall()
+    {
+        if (Ball.IsLaunch == true)
+        {
+            SliderDisplay(false);
+            SliderValueReset();
+        }
+    }
+
+    private void SliderCalculate(float angle, float dir)
+    {
+        _slider.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, angle);
+        _slider.value = dir / _maxValue;
+    }
+
+    private void SliderDisplay(bool value)
     {
         _slider.gameObject.SetActive(value);
     }
 
-    public void SliderValueReset()
+    private void SliderValueReset()
     {
         _slider.value = _minValue;
         _slider.GetComponent<RectTransform>().localRotation = Quaternion.identity;

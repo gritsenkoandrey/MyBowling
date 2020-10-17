@@ -120,10 +120,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5025887544807989203}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d996aea12e2382f4da3c7d5844d4796f, type: 3}
+  m_Script: {fileID: 11500000, guid: 8bb1a7f0b18957145b2c2052760c9d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destroyBallByTime: 3
+  _destroyBallByTime: 2
   _forceBall: 100
-  _destroyBallParticle: {fileID: 124372, guid: 90a43a772bac81c438aee0ac5d45892a, type: 3}
-  _ball: 0
+  _destroyBallParticle: {fileID: 178932, guid: 1bebce4429451b049ba32113fcb856d7, type: 3}

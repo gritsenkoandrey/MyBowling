@@ -2,7 +2,7 @@
 using DG.Tweening;
 
 
-public sealed class BuildingActivator : MonoBehaviour
+public sealed class BuildingActivator : BaseModel
 {
     [SerializeField] private Color _targetColor = Color.white;
     [SerializeField] private Vector3 _targetPos = Vector3.zero;
@@ -10,16 +10,15 @@ public sealed class BuildingActivator : MonoBehaviour
     [SerializeField] private BuildingParams _buildingParams = null;
     [SerializeField] private Transform _target = null;
     [SerializeField] private GameObject _particleCollision = null;
-    private BallModel _ball;
 
     [SerializeField] private BallDestroy _ballDestroy = BallDestroy.No;
     [SerializeField] private BuildingMoveType _buildingMoveType = BuildingMoveType.No;
 
     private void OnTriggerEnter(Collider other)
     {
-        _ball = other.gameObject.GetComponent<BallModel>();
+        ball = other.gameObject.GetComponent<Ball>();
 
-        if (_ball)
+        if (ball)
         {
             ChangeObjectColor();
 
@@ -37,7 +36,7 @@ public sealed class BuildingActivator : MonoBehaviour
 
             if (_ballDestroy == BallDestroy.Yes)
             {
-                _ball.DestroyBall();
+                ball.DestroyBall();
             }
         }
     }

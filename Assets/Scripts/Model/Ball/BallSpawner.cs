@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
 
-public sealed class BallSpawner : MonoBehaviour
+public sealed class BallSpawner : BaseModel
 {
-    [SerializeField] private BallModel _prefabBall = null;
+    [SerializeField] private BallBase _prefabBall = null;
     [SerializeField] private Vector3 _spawnPosition = Vector3.zero;
 
     public static bool IsBallAlive = false;

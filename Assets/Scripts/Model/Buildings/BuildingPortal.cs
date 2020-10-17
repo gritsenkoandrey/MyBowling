@@ -1,20 +1,19 @@
 ﻿using UnityEngine;
 
 
-public sealed class BuildingPortal : MonoBehaviour
+public sealed class BuildingPortal : BaseModel
 {
     [SerializeField] private Transform _exitPortal = null;
     [SerializeField] private GameObject _enterPortalParticle = null;
-    private BallModel _ball;
 
     private void OnTriggerEnter(Collider other)
     {
-        _ball = other.gameObject.GetComponent<BallModel>();
+        ball = other.gameObject.GetComponent<BallBase>();
 
-        if (_ball)
+        if (ball)
         {
             Instantiate(_enterPortalParticle, gameObject.transform.position, Quaternion.identity);
-            _ball.transform.position = _exitPortal.transform.position;
+            ball.transform.position = _exitPortal.transform.position;
         }
     }
 }
