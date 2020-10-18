@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-public sealed class AimParticleCollision : BaseModel
+public sealed class ParticleCollision : BaseModel
 {
     private void OnParticleCollision(GameObject other)
     {

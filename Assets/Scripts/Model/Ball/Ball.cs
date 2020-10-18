@@ -10,10 +10,10 @@ public sealed class Ball : BallBase, ILaunch
         {
             rigidbodyBase.useGravity = true;
             rigidbodyBase.AddForce(Quaternion.LookRotation
-                (new Vector3(direction.x, 0, direction.y)) * _speedBall, ForceMode.VelocityChange);
+                (new Vector3(direction.x, 0, direction.y)) * speedBall, ForceMode.VelocityChange);
             IsLaunch = true;
 
-            _timeRemaining.AddTimeRemaining();
+            timeRemainingDestroyBall.AddTimeRemaining();
         }
     }
 }

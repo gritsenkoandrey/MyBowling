@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-public class BotSpawner : BotBase
+public sealed class BotSpawner : BaseModel
 {
 
 }

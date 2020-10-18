@@ -1,13 +1,31 @@
-﻿using UnityEngine;
+﻿using ExampleTemplate;
+using UnityEngine;
 
 
 public abstract class AimBase : BaseModel
 {
-    [SerializeField] private GameObject _destroyAimParticle = null;
+    [SerializeField] private AimType _aimType = AimType.None;
+
+    private readonly string _destroyTreeParticle = "DestroyObjParticle_2";
+    private readonly string _destroyBoxParticle = "DestroyObjParticle_1";
 
     public void DestroyAimParticle()
     {
-        Instantiate(_destroyAimParticle, ball.transform.position, Quaternion.identity);
-        Destroy(this.gameObject);
+        if (_aimType == AimType.Tree)
+        {
+            prefabTwo = PoolManager.GetObject(_destroyTreeParticle, ball.transform.position, Quaternion.identity);
+        }
+        else if (_aimType == AimType.Box)
+        {
+            prefabTwo = PoolManager.GetObject(_destroyBoxParticle, ball.transform.position, Quaternion.identity);
+        }
+        else
+        {
+            return;
+        }
+
+        timeRemainingReturnToPoolTwo.AddTimeRemaining();
+
+        gameObject.GetComponent<PoolObject>().ReturnToPool();
     }
 }

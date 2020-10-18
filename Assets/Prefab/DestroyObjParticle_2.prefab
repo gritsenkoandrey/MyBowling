@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8239135598046243615}
   - component: {fileID: 586456515841458769}
   - component: {fileID: -8466211145528212594}
+  - component: {fileID: -5340882702541071627}
   m_Layer: 0
   m_Name: DestroyObjParticle_2
   m_TagString: Untagged
@@ -4644,5 +4645,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b82695c852b705a4a97b4b5da5f7480e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-5340882702541071627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2826682933816604992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdf502ac5dfb6341b7fffbee3239c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

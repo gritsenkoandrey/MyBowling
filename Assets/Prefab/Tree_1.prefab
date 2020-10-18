@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2443436391552256764}
   - component: {fileID: 2431790512625152026}
   - component: {fileID: 2431790512625152025}
+  - component: {fileID: -8192592691885056313}
   m_Layer: 0
   m_Name: Tree_1
   m_TagString: Untagged
@@ -106,5 +107,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a29673b7a66cba4db9e141add43aff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destroyAimParticle: {fileID: 2826682933816604992, guid: 6e8cccdc4a2e82a478fa1c5f71793514,
-    type: 3}
+  _aimType: 0
+--- !u!114 &-8192592691885056313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2431790512625152024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdf502ac5dfb6341b7fffbee3239c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

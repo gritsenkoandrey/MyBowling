@@ -1527,6 +1527,63 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 266055855}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &203260773
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 203260774}
+  - component: {fileID: 203260776}
+  - component: {fileID: 203260775}
+  m_Layer: 0
+  m_Name: GameBoundary
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &203260774
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203260773}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 535662881}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &203260775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203260773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce725a27c679bf4ba5fb1e1f7614296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &203260776
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203260773}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 25, y: 20, z: 60}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &206533143
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3522,6 +3579,8 @@ Transform:
   m_Children:
   - {fileID: 1898143849}
   - {fileID: 2095517850}
+  - {fileID: 1703530392}
+  - {fileID: 203260774}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6237,7 +6296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af8782462c56834caef91298de691d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canvas: {fileID: 1000085254}
   _slider: {fileID: 25311021}
 --- !u!1 &1019133570
 GameObject:
@@ -11117,6 +11175,94 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a198dcab261864c4d8a30acde2153771, type: 3}
+--- !u!1 &1703530391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1703530392}
+  - component: {fileID: 1703530393}
+  m_Layer: 0
+  m_Name: PoolSetup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1703530392
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703530391}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 535662881}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1703530393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703530391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5e824c2f92b1224ba6ddbe786371d95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pools:
+  - Name: DestroyObjParticle_1
+    Prefab: {fileID: 9049560465262562898, guid: 8b6decdcd04a3eb40a87278fcc6dfa48,
+      type: 3}
+    Count: 5
+  - Name: BlueRingImpact
+    Prefab: {fileID: 7008479354583080451, guid: 9d779c87ab0e86c4db1ecac2d293297e,
+      type: 3}
+    Count: 5
+  - Name: DestroyBotCopParticle_2
+    Prefab: {fileID: 1690635879334072921, guid: 674f27deda1b0b54ab4da9e1dd04d67a,
+      type: 3}
+    Count: 5
+  - Name: DestroyBotCowboyParticle_3
+    Prefab: {fileID: 4948407702181420242, guid: 841fe2a234d92944fa073fa05c977778,
+      type: 3}
+    Count: 5
+  - Name: Bot_cop
+    Prefab: {fileID: -8867923656580118805, guid: c2975d2b9ac9adf46ae60224ae58a1ac,
+      type: 3}
+    Count: 5
+  - Name: Bot_cowboy
+    Prefab: {fileID: -5476358419797337972, guid: 0e75c5d8d4f32674896b92b534432c95,
+      type: 3}
+    Count: 5
+  - Name: GreenRingImpact
+    Prefab: {fileID: -6463687854465282115, guid: 10cedef836c9a3b46817dce20cc0c4f5,
+      type: 3}
+    Count: 5
+  - Name: ModularRingImpact
+    Prefab: {fileID: 8225513145460356066, guid: 90a43a772bac81c438aee0ac5d45892a,
+      type: 3}
+    Count: 5
+  - Name: DestroyObjParticle_2
+    Prefab: {fileID: -5340882702541071627, guid: 6e8cccdc4a2e82a478fa1c5f71793514,
+      type: 3}
+    Count: 5
+  - Name: Tree_1
+    Prefab: {fileID: -8192592691885056313, guid: a3faa4a5c0a36404ab3ba40d59fadb97,
+      type: 3}
+    Count: 5
+  - Name: Box_1
+    Prefab: {fileID: -522935691483062392, guid: 23c78cb43478aa0448ae85e42652d8d7,
+      type: 3}
+    Count: 5
 --- !u!4 &1707434777 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8162487039879237025, guid: c2975d2b9ac9adf46ae60224ae58a1ac,

@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 5538806868086714785}
   - component: {fileID: 5516289263586533509}
   - component: {fileID: 5516289263586533506}
+  - component: {fileID: -522935691483062392}
   m_Layer: 0
-  m_Name: Prop_1
+  m_Name: Box_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,5 +107,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a29673b7a66cba4db9e141add43aff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destroyAimParticle: {fileID: 2826682933816604992, guid: 8b6decdcd04a3eb40a87278fcc6dfa48,
-    type: 3}
+  _aimType: 1
+--- !u!114 &-522935691483062392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5516289263586533507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdf502ac5dfb6341b7fffbee3239c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
