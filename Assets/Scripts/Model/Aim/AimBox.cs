@@ -1,5 +1,4 @@
-﻿using Scripts;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 public sealed class AimBox : AimBase
@@ -18,7 +17,6 @@ public sealed class AimBox : AimBase
     public override void DestroyAimParticle()
     {
         prefabTwo = PoolManager.GetObject(_destroyBoxParticle, ball.transform.position, Quaternion.identity);
-        timeRemainingReturnToPoolTwo.AddTimeRemaining();
-        gameObject.GetComponent<PoolObject>().ReturnToPool();
+        ReturnToPool();
     }
 }

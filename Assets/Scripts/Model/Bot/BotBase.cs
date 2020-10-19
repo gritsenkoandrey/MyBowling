@@ -5,12 +5,16 @@ using UnityEngine;
 public abstract class BotBase : BaseModel
 {
     [Range(0.0f, 5.0f), SerializeField] private float _destroyBotByTime = 0.0f;
+    protected float hightCorrection = 2.0f;
 
-    protected readonly string _destroyBotParticleCop = "DestroyBotCopParticle_2";
-    protected readonly string _destroyBotParticleCowboy = "DestroyBotCowboyParticle_3";
-    protected readonly string _destroyBotCollisionCop = "BlueRingImpact";
-    protected readonly string _destroyBotCollisionCowboy = "GreenRingImpact";
+    protected readonly string destroyBotParticleGreen = "DestroyBotGreenParticle_1";
+    protected readonly string destroyBotCollisionGreen = "GreenRingImpact";
+    protected readonly string destroyBotParticleCop = "DestroyBotCopParticle_2";
+    protected readonly string destroyBotParticleCowboy = "DestroyBotCowboyParticle_3";
+    protected readonly string destroyBotCollisionCop = "BlueRingImpact";
+    protected readonly string destroyBotCollisionCowboy = "YellowRingImpact";
 
+    //todo сделать два таймера для particle и collision
     protected TimeRemaining timeRemainingDestroyBot;
 
     private CameraShake _cameraShake;
@@ -24,6 +28,13 @@ public abstract class BotBase : BaseModel
 
     public abstract void DestroyBotWithBall();
     public abstract void DestroyBotWithParticle();
+
+    protected void ReturnToPool()
+    {
+        timeRemainingReturnToPoolOne.AddTimeRemaining();
+        timeRemainingReturnToPoolTwo.AddTimeRemaining();
+        timeRemainingDestroyBot.AddTimeRemaining();
+    }
 
     private void DestroyBot()
     {
