@@ -3,7 +3,7 @@ using System.IO;
 using UnityEngine;
 
 
-namespace ExampleTemplate
+namespace Scripts
 {
     public sealed class JsonService : Service
     {

@@ -3581,6 +3581,7 @@ Transform:
   - {fileID: 2095517850}
   - {fileID: 1703530392}
   - {fileID: 203260774}
+  - {fileID: 1247970915}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4739,7 +4740,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &701162440
 Transform:
   m_ObjectHideFlags: 0
@@ -6872,7 +6873,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1111681811
 Transform:
   m_ObjectHideFlags: 0
@@ -8074,6 +8075,55 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1571191535}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1247970914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1247970915}
+  - component: {fileID: 1247970916}
+  m_Layer: 0
+  m_Name: BotSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1247970915
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247970914}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 535662881}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1247970916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247970914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5946c0494afd1024c9a80c3abd8417ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnPositions:
+  - {x: 5, y: 0.5, z: 5}
+  - {x: 10, y: 0.5, z: 10}
+  - {x: 0, y: 0.5, z: 7.5}
+  - {x: 2.5, y: 0.5, z: 12.5}
+  - {x: 7.5, y: 0.5, z: 0}
 --- !u!1001 &1258299810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11263,6 +11313,10 @@ MonoBehaviour:
     Prefab: {fileID: -522935691483062392, guid: 23c78cb43478aa0448ae85e42652d8d7,
       type: 3}
     Count: 5
+  - Name: Ball_2
+    Prefab: {fileID: 7355533303383638446, guid: ab26e0a043a71f746b3575ebc7ce8f30,
+      type: 3}
+    Count: 1
 --- !u!4 &1707434777 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8162487039879237025, guid: c2975d2b9ac9adf46ae60224ae58a1ac,

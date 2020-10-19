@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8162487039879237025}
   - component: {fileID: 8162487039879237027}
-  - component: {fileID: 8162487039879237026}
+  - component: {fileID: -440286855532822767}
   - component: {fileID: 8162487039879237028}
   - component: {fileID: -8867923656580118805}
   m_Layer: 0
@@ -129,7 +129,7 @@ CapsuleCollider:
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 2, z: 0}
---- !u!114 &8162487039879237026
+--- !u!114 &-440286855532822767
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,14 +138,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8162487039879237024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9511534f6287dee4b90d7f0354a7bbb9, type: 3}
+  m_Script: {fileID: 11500000, guid: 5deec8ef2bbf42245b9eeedb6f7108fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _destroyBotByTime: 0
-  _destroyBotParticle: {fileID: 2826682933816604992, guid: 674f27deda1b0b54ab4da9e1dd04d67a,
-    type: 3}
-  _botCollisionParticle: {fileID: 178932, guid: 9d779c87ab0e86c4db1ecac2d293297e,
-    type: 3}
   botType: 0
 --- !u!114 &8162487039879237028
 MonoBehaviour:

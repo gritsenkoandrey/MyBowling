@@ -1,10 +1,10 @@
-﻿using ExampleTemplate;
+﻿using Scripts;
 using UnityEngine;
 
 
-public sealed class Ball : BallBase, ILaunch
+public sealed class Ball : BallBase
 {
-    public void Launch(Vector2 direction)
+    public override void Launch(Vector2 direction)
     {
         if (IsLaunch == false)
         {

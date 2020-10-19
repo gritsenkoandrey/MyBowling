@@ -5,7 +5,7 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 
 
-namespace ExampleTemplate
+namespace Scripts
 {
     [CreateAssetMenu(fileName = "Data", menuName = "Data/Data")]
     public sealed class Data : ScriptableObject

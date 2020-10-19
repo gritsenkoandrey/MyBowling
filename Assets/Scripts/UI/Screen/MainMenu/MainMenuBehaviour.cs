@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 
 
-namespace ExampleTemplate
+namespace Scripts
 {
     public sealed class MainMenuBehaviour : BaseUi
     {

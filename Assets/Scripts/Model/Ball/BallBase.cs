@@ -1,4 +1,4 @@
-﻿using ExampleTemplate;
+﻿using Scripts;
 using UnityEngine;
 
 
@@ -6,11 +6,13 @@ public abstract class BallBase : BaseModel
 {
     [Range(0.0f, 5.0f), SerializeField] private float _destroyBallByTime = 0.0f;
     [Range(0.0f, 200.0f), SerializeField] private float _forceBall = 0.0f;
+
     private readonly string _destroyBallParticle = "ModularRingImpact";
 
     public static bool IsLaunch;
 
     protected Vector3 speedBall;
+
     protected TimeRemaining timeRemainingDestroyBall;
 
     private void Start()
@@ -20,6 +22,8 @@ public abstract class BallBase : BaseModel
         IsLaunch = false;
         timeRemainingDestroyBall = new TimeRemaining(DestroyBall, _destroyBallByTime);
     }
+
+    public abstract void Launch(Vector2 dir);
 
     public void DestroyBall()
     {

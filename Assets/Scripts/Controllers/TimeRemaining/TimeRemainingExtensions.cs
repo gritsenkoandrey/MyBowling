@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 
-namespace ExampleTemplate
+namespace Scripts
 {
     public static partial class TimeRemainingExtensions
     {

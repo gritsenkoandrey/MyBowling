@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-namespace ExampleTemplate
+namespace Scripts
 {
     [Serializable]
     public struct ShakeInfo

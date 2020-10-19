@@ -1,4 +1,4 @@
-﻿using ExampleTemplate;
+﻿using Scripts;
 using UnityEngine;
 
 
@@ -12,6 +12,7 @@ public abstract class BaseModel : MonoBehaviour
 
     protected BotBase bot;
     protected BallBase ball;
+    protected AimBase aim;
 
     protected TimeRemaining timeRemainingReturnToPoolOne;
     protected TimeRemaining timeRemainingReturnToPoolTwo;

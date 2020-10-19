@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ExampleTemplate
+namespace Scripts
 {
     public interface IPartUI
     {

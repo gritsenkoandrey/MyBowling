@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace ExampleTemplate
+namespace Scripts
 {
     public abstract class BaseUi : MonoBehaviour
     {

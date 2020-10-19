@@ -2,7 +2,7 @@
 using System.Text;
 
 
-namespace ExampleTemplate
+namespace Scripts
 {
     public sealed class PrefsService : Service, ISaveData
     {        

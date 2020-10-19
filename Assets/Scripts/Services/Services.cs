@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace ExampleTemplate
+namespace Scripts
 {
     public sealed class Services
     {

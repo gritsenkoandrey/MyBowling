@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace ExampleTemplate
+namespace Scripts
 {
     public sealed class CameraServices : Service
     {

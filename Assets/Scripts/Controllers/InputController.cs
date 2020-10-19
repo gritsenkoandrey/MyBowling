@@ -25,13 +25,20 @@ public sealed class InputController : BaseController, IExecute
                 _ball = Object.FindObjectOfType<BallBase>();
             }
 
-            _direction = Input.mousePosition - mainCamera.WorldToScreenPoint(_ball.transform.position);
-            uiInterface.UiShowBall.ShowDirectionBall(_direction);
+            if (_ball != null)
+            {
+                _direction = Input.mousePosition - mainCamera.WorldToScreenPoint(_ball.transform.position);
+                uiInterface.UiShowBall.ShowDirectionBall(_direction);
+            }
         }
 
         if (Input.GetMouseButtonUp(_leftButton))
         {
-            _ball.GetComponent<Ball>().Launch(_direction);
+            if (_ball != null)
+            {
+                _ball.Launch(_direction);
+            }
+
             uiInterface.UiShowBall.HideDirectionBall();
         }
 

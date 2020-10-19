@@ -2,7 +2,7 @@
 using System.Linq;
 
 
-namespace ExampleTemplate
+namespace Scripts
 {
     public static partial class ListExtensions
     {

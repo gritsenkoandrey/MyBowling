@@ -1,4 +1,4 @@
-﻿namespace ExampleTemplate
+﻿namespace Scripts
 {
     public interface IListenerScreen
     {

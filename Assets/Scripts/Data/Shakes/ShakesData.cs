@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace ExampleTemplate
+namespace Scripts
 {
     [CreateAssetMenu(fileName = "ShakesData", menuName = "Data/Shake/ShakesData")]
     public sealed class ShakesData : ScriptableObject

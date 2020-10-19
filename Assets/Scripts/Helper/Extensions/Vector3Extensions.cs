@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ExampleTemplate
+namespace Scripts
 {
     public static partial class Vector3Extensions
     {
