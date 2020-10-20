@@ -10,7 +10,7 @@ public sealed class AimSpawner : BaseModel
     private readonly string[] _aims = { "Tree_1", "Box_1" };
 
     private bool _isSpawn = false;
-    private float _timeToSpawn = 3.0f;
+    private float _timeToSpawn = 5.0f;
     private int _aimsCount = 0;
 
     private TimeRemaining _timeSpawnAim;
@@ -29,11 +29,16 @@ public sealed class AimSpawner : BaseModel
             _isSpawn = true;
         }
 
+        _timeSpawnAim.AddTimeRemaining();
+    }
+
+    private void SpawnAim()
+    {
         if (_isSpawn == true)
         {
             for (int i = 0; i < _spawnPoints.Length; i++)
             {
-                if(GetRandomResult())
+                if (GetBooleanRandom())
                 {
                     prefabOne = PoolManager.GetObject(_aims[Random.Range(0, _aims.Length)],
                         _spawnPoints[i], Quaternion.identity);
@@ -41,19 +46,12 @@ public sealed class AimSpawner : BaseModel
             }
             _isSpawn = false;
         }
-    }
-
-    private void SpawnAim()
-    {
-        prefabOne = PoolManager.GetObject(_aims[Random.Range(0, _aims.Length)],
-            _spawnPoints[Random.Range(0, _spawnPoints.Length)], Quaternion.identity);
-        _isSpawn = false;
         _timeSpawnAim.RemoveTimeRemaining();
     }
 
-    private bool GetRandomResult()
+    private bool GetBooleanRandom()
     {
-        int rnd = Random.Range(0, 2);
+        int rnd = Random.Range(0, 3);
 
         if (rnd == 0)
         {

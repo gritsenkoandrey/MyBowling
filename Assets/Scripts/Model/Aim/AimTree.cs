@@ -16,7 +16,8 @@ public sealed class AimTree : AimBase
 
     public override void DestroyAimParticle()
     {
-        prefabTwo = PoolManager.GetObject(_destroyTreeParticle, ball.transform.position, Quaternion.identity);
+        particleObj = PoolManager.GetObject(_destroyTreeParticle, ball.transform.position, Quaternion.identity);
+
         ReturnToPool();
     }
 }

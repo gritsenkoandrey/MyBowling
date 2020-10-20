@@ -24,10 +24,10 @@ public sealed class BotGreen : BotBase
     {
         prefabOne = PoolManager.GetObject(destroyBotCollisionGreen,
             new Vector3(gameObject.transform.position.x, 
-            gameObject.transform.position.y + hightCorrection, gameObject.transform.position.z), Quaternion.identity);
+            gameObject.transform.position.y + posYSpawnCorrection, gameObject.transform.position.z), Quaternion.identity);
         prefabTwo = PoolManager.GetObject(destroyBotParticleGreen,
             new Vector3(gameObject.transform.position.x, 
-            gameObject.transform.position.y + hightCorrection, gameObject.transform.position.z), Quaternion.identity);
+            gameObject.transform.position.y + posYSpawnCorrection, gameObject.transform.position.z), Quaternion.identity);
         ReturnToPool();
     }
 }

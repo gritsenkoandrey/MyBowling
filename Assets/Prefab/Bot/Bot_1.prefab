@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d50be4c08605e1a46be1adaec27e473b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destroyBotByTime: 0
+  _returnParticleToPool: 3
 --- !u!114 &7792124822360124836
 MonoBehaviour:
   m_ObjectHideFlags: 0

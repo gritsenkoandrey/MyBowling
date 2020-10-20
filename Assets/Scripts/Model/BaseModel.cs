@@ -15,18 +15,18 @@ public abstract class BaseModel : MonoBehaviour
     protected AimBase aim;
 
     protected TimeRemaining timeRemainingReturnToPoolOne;
-    protected TimeRemaining timeRemainingReturnToPoolTwo;
+    //protected TimeRemaining timeRemainingReturnToPoolTwo;
 
     private readonly float _timeReturnToPoolOne = 3.0f;
-    private readonly float _timeReturnToPoolTwo = 5.0f;
+    //private readonly float _timeReturnToPoolTwo = 5.0f;
 
     protected virtual void Awake()
     {
         rigidbodyBase = GetComponent<Rigidbody>();
-        transformBase = GetComponent<Transform>();
+        //transformBase = GetComponent<Transform>();
 
         timeRemainingReturnToPoolOne = new TimeRemaining(ReturnToPoolOne, _timeReturnToPoolOne);
-        timeRemainingReturnToPoolTwo = new TimeRemaining(ReturnToPoolTwo, _timeReturnToPoolTwo);
+        //timeRemainingReturnToPoolTwo = new TimeRemaining(ReturnToPoolTwo, _timeReturnToPoolTwo);
     }
 
     private void ReturnToPoolOne()
@@ -35,9 +35,9 @@ public abstract class BaseModel : MonoBehaviour
         timeRemainingReturnToPoolOne.RemoveTimeRemaining();
     }
 
-    private void ReturnToPoolTwo()
-    {
-        prefabTwo.GetComponent<PoolObject>().ReturnToPool();
-        timeRemainingReturnToPoolTwo.RemoveTimeRemaining();
-    }
+    //private void ReturnToPoolTwo()
+    //{
+    //    prefabTwo.GetComponent<PoolObject>().ReturnToPool();
+    //    timeRemainingReturnToPoolTwo.RemoveTimeRemaining();
+    //}
 }

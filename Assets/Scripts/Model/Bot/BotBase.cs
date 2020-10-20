@@ -4,8 +4,9 @@ using UnityEngine;
 
 public abstract class BotBase : BaseModel
 {
-    [Range(0.0f, 5.0f), SerializeField] private float _destroyBotByTime = 0.0f;
-    protected float hightCorrection = 2.0f;
+    [Range(0.0f, 5.0f), SerializeField] private float _returnParticleToPool = 0.0f;
+
+    protected float posYSpawnCorrection = 2.0f;
 
     protected readonly string destroyBotParticleGreen = "DestroyBotGreenParticle_1";
     protected readonly string destroyBotCollisionGreen = "GreenRingImpact";
@@ -14,32 +15,49 @@ public abstract class BotBase : BaseModel
     protected readonly string destroyBotCollisionCop = "BlueRingImpact";
     protected readonly string destroyBotCollisionCowboy = "YellowRingImpact";
 
-    //todo сделать два таймера для particle и collision
-    protected TimeRemaining timeRemainingDestroyBot;
+    protected TimeRemaining timeRemainingDestroyParticle;
+    protected TimeRemaining timeRemainingCollision;
+
+    protected GameObject particleObj;
+    protected GameObject collisionObj;
 
     private CameraShake _cameraShake;
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
+
         _cameraShake = FindObjectOfType<CameraShake>();
 
-        timeRemainingDestroyBot = new TimeRemaining(DestroyBot, _destroyBotByTime);
+        timeRemainingDestroyParticle = new TimeRemaining(ReturnToPoolParticle, _returnParticleToPool);
+        timeRemainingCollision = new TimeRemaining(ReturnToPoolCollision, _returnParticleToPool);
     }
 
-    public abstract void DestroyBotWithBall();
-    public abstract void DestroyBotWithParticle();
+    private void ReturnToPoolParticle()
+    {
+        particleObj.GetComponent<PoolObject>().ReturnToPool();
+        timeRemainingDestroyParticle.RemoveTimeRemaining();
+    }
+
+    private void ReturnToPoolCollision()
+    {
+        collisionObj.GetComponent<PoolObject>().ReturnToPool();
+        timeRemainingCollision.RemoveTimeRemaining();
+    }
 
     protected void ReturnToPool()
     {
-        timeRemainingReturnToPoolOne.AddTimeRemaining();
-        timeRemainingReturnToPoolTwo.AddTimeRemaining();
-        timeRemainingDestroyBot.AddTimeRemaining();
+        timeRemainingDestroyParticle.AddTimeRemaining();
+        timeRemainingCollision.AddTimeRemaining();
+        DestroyBot();
     }
 
     private void DestroyBot()
     {
         _cameraShake.CreateShake();
         gameObject.GetComponent<PoolObject>().ReturnToPool();
-        timeRemainingDestroyBot.RemoveTimeRemaining();
     }
+
+    public abstract void DestroyBotWithBall();
+    public abstract void DestroyBotWithParticle();
 }
