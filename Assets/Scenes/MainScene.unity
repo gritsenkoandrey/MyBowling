@@ -13271,7 +13271,7 @@ PrefabInstance:
     - target: {fileID: 2237074446655490955, guid: 0e75c5d8d4f32674896b92b534432c95,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2237074446655490955, guid: 0e75c5d8d4f32674896b92b534432c95,
         type: 3}
@@ -18054,7 +18054,7 @@ PrefabInstance:
     - target: {fileID: 8162487039879237025, guid: c2975d2b9ac9adf46ae60224ae58a1ac,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8162487039879237025, guid: c2975d2b9ac9adf46ae60224ae58a1ac,
         type: 3}
@@ -18146,6 +18146,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dffe7714cb2f6944d9bf742992f4ae6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionObject: {fileID: 0}
+  particleObject: {fileID: 0}
+  rigidbodyBase: {fileID: 0}
+  transformBase: {fileID: 0}
+  bot: {fileID: 0}
+  ball: {fileID: 0}
+  aim: {fileID: 0}
+  _timeToPool: 5
 --- !u!4 &9198801937604107186
 Transform:
   m_ObjectHideFlags: 0
