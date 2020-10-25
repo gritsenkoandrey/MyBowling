@@ -11,45 +11,33 @@ public sealed class AimSpawner : BaseModel
 
     private bool _isSpawn = false;
     private float _timeToSpawn = 5.0f;
-    private int _aimsCount = 0;
 
     private TimeRemaining _timeSpawnAim;
 
     private void Start()
     {
-        _timeSpawnAim = new TimeRemaining(SpawnAim, _timeToSpawn);
+        _timeSpawnAim = new TimeRemaining(ReadyToSpawnAim, _timeToSpawn);
     }
 
-    private void Update()
-    {
-        _aimsCount = FindObjectsOfType<AimBase>().Length;
-
-        if (_aimsCount == 0)
-        {
-            _isSpawn = true;
-        }
-
-        _timeSpawnAim.AddTimeRemaining();
-    }
-
-    private void SpawnAim()
+    private void ReadyToSpawnAim()
     {
         if (_isSpawn == true)
         {
             for (int i = 0; i < _spawnPoints.Length; i++)
             {
-                if (GetBooleanRandom())
+                if (GetRandom())
                 {
-                    collisionObject = PoolManager.GetObject(_aims[Random.Range(0, _aims.Length)],
+                    var obj = PoolManager.GetObject(_aims[Random.Range(0, _aims.Length)],
                         _spawnPoints[i], Quaternion.identity);
+                    AimManager.AddBotToList(obj.GetComponent<AimBase>());
                 }
             }
             _isSpawn = false;
+            _timeSpawnAim.RemoveTimeRemaining();
         }
-        _timeSpawnAim.RemoveTimeRemaining();
     }
 
-    private bool GetBooleanRandom()
+    private bool GetRandom()
     {
         int rnd = Random.Range(0, 3);
 
@@ -61,5 +49,11 @@ public sealed class AimSpawner : BaseModel
         {
             return false;
         }
+    }
+
+    public void SpawnAim()
+    {
+        _isSpawn = true;
+        _timeSpawnAim.AddTimeRemaining();
     }
 }

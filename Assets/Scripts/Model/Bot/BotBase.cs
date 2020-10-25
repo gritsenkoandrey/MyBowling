@@ -1,4 +1,5 @@
 ﻿using Scripts;
+using System;
 
 
 public abstract class BotBase : BaseModel
@@ -13,6 +14,8 @@ public abstract class BotBase : BaseModel
     protected readonly string destroyBotCollisionCowboy = "YellowRingImpact";
 
     private CameraShake _cameraShake;
+
+    public event Action<BotBase> OnDieChange;
 
     protected override void Awake()
     {
@@ -31,6 +34,7 @@ public abstract class BotBase : BaseModel
     private void DestroyBot()
     {
         _cameraShake.CreateShake();
+        OnDieChange?.Invoke(this);
         gameObject.GetComponent<PoolObject>().ReturnToPool();
     }
 
