@@ -4789,7 +4789,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 1094728470}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &701162441
 MeshCollider:
@@ -5189,10 +5189,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7410427989276821631, guid: a3faa4a5c0a36404ab3ba40d59fadb97,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8470475211478421474, guid: a3faa4a5c0a36404ab3ba40d59fadb97,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8470475211478421474, guid: a3faa4a5c0a36404ab3ba40d59fadb97,
         type: 3}
@@ -6989,10 +6994,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1111681811}
+  - {fileID: 701162440}
   - {fileID: 1607224622}
   - {fileID: 572654004}
   - {fileID: 906153691}
-  - {fileID: 701162440}
   m_Father: {fileID: 1801598953}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8271,6 +8276,7 @@ MonoBehaviour:
   - {x: 7, y: 0.5, z: 10}
   - {x: -7, y: 0.5, z: 10}
   - {x: 5, y: 0.5, z: 0}
+  _timeToSpawn: 5
 --- !u!114 &1247970917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10615,6 +10621,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Box_1
       objectReference: {fileID: 0}
+    - target: {fileID: 558718383640416919, guid: 0a9b23c8309039e44ad6075321c0000f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3322807126477439967, guid: 0a9b23c8309039e44ad6075321c0000f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10653,7 +10664,7 @@ PrefabInstance:
     - target: {fileID: 3322807126477439967, guid: 0a9b23c8309039e44ad6075321c0000f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3322807126477439967, guid: 0a9b23c8309039e44ad6075321c0000f,
         type: 3}
@@ -13392,10 +13403,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_1
       objectReference: {fileID: 0}
+    - target: {fileID: 7410427989276821631, guid: a3faa4a5c0a36404ab3ba40d59fadb97,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8470475211478421474, guid: a3faa4a5c0a36404ab3ba40d59fadb97,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8470475211478421474, guid: a3faa4a5c0a36404ab3ba40d59fadb97,
         type: 3}
