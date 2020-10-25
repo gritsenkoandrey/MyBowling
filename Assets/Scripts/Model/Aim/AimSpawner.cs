@@ -40,7 +40,7 @@ public sealed class AimSpawner : BaseModel
             {
                 if (GetBooleanRandom())
                 {
-                    prefabOne = PoolManager.GetObject(_aims[Random.Range(0, _aims.Length)],
+                    collisionObject = PoolManager.GetObject(_aims[Random.Range(0, _aims.Length)],
                         _spawnPoints[i], Quaternion.identity);
                 }
             }

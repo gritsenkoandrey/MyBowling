@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class BaseModel : MonoBehaviour
 {
-    protected GameObject prefabOne;
-    protected GameObject prefabTwo;
+    protected GameObject collisionObject;
+    protected GameObject particleObject;
 
     protected Rigidbody rigidbodyBase;
     protected Transform transformBase;
@@ -14,30 +14,30 @@ public abstract class BaseModel : MonoBehaviour
     protected BallBase ball;
     protected AimBase aim;
 
-    protected TimeRemaining timeRemainingReturnToPoolOne;
-    //protected TimeRemaining timeRemainingReturnToPoolTwo;
+    protected TimeRemaining timeRemainingReturnToPoolCollision;
+    protected TimeRemaining timeRemainingReturnToPoolParticle;
 
-    private readonly float _timeReturnToPoolOne = 3.0f;
-    //private readonly float _timeReturnToPoolTwo = 5.0f;
+    private readonly float _timeReturnToPoolCollision = 2.0f;
+    private readonly float _timeReturnToPoolParticle = 3.0f;
 
     protected virtual void Awake()
     {
         rigidbodyBase = GetComponent<Rigidbody>();
-        //transformBase = GetComponent<Transform>();
+        transformBase = GetComponent<Transform>();
 
-        timeRemainingReturnToPoolOne = new TimeRemaining(ReturnToPoolOne, _timeReturnToPoolOne);
-        //timeRemainingReturnToPoolTwo = new TimeRemaining(ReturnToPoolTwo, _timeReturnToPoolTwo);
+        timeRemainingReturnToPoolCollision = new TimeRemaining(ReturnToPoolCollision, _timeReturnToPoolCollision);
+        timeRemainingReturnToPoolParticle = new TimeRemaining(ReturnToPoolParticle, _timeReturnToPoolParticle);
     }
 
-    private void ReturnToPoolOne()
+    private void ReturnToPoolCollision()
     {
-        prefabOne.GetComponent<PoolObject>().ReturnToPool();
-        timeRemainingReturnToPoolOne.RemoveTimeRemaining();
+        collisionObject.GetComponent<PoolObject>().ReturnToPool();
+        timeRemainingReturnToPoolCollision.RemoveTimeRemaining();
     }
 
-    //private void ReturnToPoolTwo()
-    //{
-    //    prefabTwo.GetComponent<PoolObject>().ReturnToPool();
-    //    timeRemainingReturnToPoolTwo.RemoveTimeRemaining();
-    //}
+    private void ReturnToPoolParticle()
+    {
+        particleObject.GetComponent<PoolObject>().ReturnToPool();
+        timeRemainingReturnToPoolParticle.RemoveTimeRemaining();
+    }
 }

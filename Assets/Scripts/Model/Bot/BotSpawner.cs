@@ -40,7 +40,7 @@ public sealed class BotSpawner : BaseModel
             {
                 if (GetBooleanRandom())
                 {
-                    prefabOne = PoolManager.GetObject(_bots[Random.Range(0, _bots.Length)],
+                    collisionObject = PoolManager.GetObject(_bots[Random.Range(0, _bots.Length)],
                         _spawnPoints[i], Quaternion.identity);
                 }
             }

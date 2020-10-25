@@ -7,7 +7,7 @@ public abstract class BallBase : BaseModel
     [Range(0.0f, 5.0f), SerializeField] private float _destroyBallByTime = 0.0f;
     [Range(0.0f, 200.0f), SerializeField] private float _forceBall = 0.0f;
 
-    private readonly string _destroyBallParticle = "ModularRingImpact";
+    private readonly string _destroyBallCollision = "ModularRingImpact";
 
     public static bool IsLaunch;
 
@@ -20,6 +20,7 @@ public abstract class BallBase : BaseModel
         speedBall = new Vector3(0.0f, 0.0f, _forceBall);
         rigidbodyBase.useGravity = false;
         IsLaunch = false;
+
         timeRemainingDestroyBall = new TimeRemaining(DestroyBall, _destroyBallByTime);
     }
 
@@ -29,9 +30,8 @@ public abstract class BallBase : BaseModel
     {
         BallSpawner.IsBallAlive = false;
 
-        prefabOne = PoolManager.GetObject(_destroyBallParticle, gameObject.transform.position, Quaternion.identity);
-        timeRemainingReturnToPoolOne.AddTimeRemaining();
-
+        collisionObject = PoolManager.GetObject(_destroyBallCollision, gameObject.transform.position, Quaternion.identity);
+        timeRemainingReturnToPoolCollision.AddTimeRemaining();
         timeRemainingDestroyBall.RemoveTimeRemaining();
         Destroy(this.gameObject);
     }

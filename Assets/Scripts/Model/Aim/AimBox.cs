@@ -16,7 +16,7 @@ public sealed class AimBox : AimBase
 
     public override void DestroyAimParticle()
     {
-        particleObj = PoolManager.GetObject(_destroyBoxParticle, ball.transform.position, Quaternion.identity);
+        particleObject = PoolManager.GetObject(_destroyBoxParticle, ball.transform.position, Quaternion.identity);
 
         ReturnToPool();
     }

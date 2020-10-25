@@ -136,6 +136,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb1a7f0b18957145b2c2052760c9d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destroyBallByTime: 2
+  _destroyBallByTime: 3
   _forceBall: 50
-  _destroyBallParticle: {fileID: 191726, guid: 19774feadf98b8d4c935ea4f29db264a, type: 3}

@@ -15,19 +15,17 @@ public sealed class BotGreen : BotBase
 
     public override void DestroyBotWithBall()
     {
-        prefabOne = PoolManager.GetObject(destroyBotCollisionGreen, ball.transform.position, Quaternion.identity);
-        prefabTwo = PoolManager.GetObject(destroyBotParticleGreen, ball.transform.position, Quaternion.identity);
+        collisionObject = PoolManager.GetObject(destroyBotCollisionGreen, ball.transform.position, Quaternion.identity);
+        particleObject = PoolManager.GetObject(destroyBotParticleGreen, ball.transform.position, Quaternion.identity);
+
         ReturnToPool();
     }
 
     public override void DestroyBotWithParticle()
     {
-        prefabOne = PoolManager.GetObject(destroyBotCollisionGreen,
-            new Vector3(gameObject.transform.position.x, 
-            gameObject.transform.position.y + posYSpawnCorrection, gameObject.transform.position.z), Quaternion.identity);
-        prefabTwo = PoolManager.GetObject(destroyBotParticleGreen,
-            new Vector3(gameObject.transform.position.x, 
-            gameObject.transform.position.y + posYSpawnCorrection, gameObject.transform.position.z), Quaternion.identity);
+        collisionObject = PoolManager.GetObject(destroyBotCollisionGreen, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + spawnCorrection, gameObject.transform.position.z), Quaternion.identity);
+        particleObject = PoolManager.GetObject(destroyBotParticleGreen, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + spawnCorrection, gameObject.transform.position.z), Quaternion.identity);
+
         ReturnToPool();
     }
 }
