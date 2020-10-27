@@ -8295,6 +8295,7 @@ MonoBehaviour:
   - {x: 7, y: 0.6, z: 8}
   - {x: -7, y: 0.6, z: 8}
   - {x: 5, y: 0.6, z: -2}
+  _timeToSpawn: 4
 --- !u!1001 &1258299810
 PrefabInstance:
   m_ObjectHideFlags: 0

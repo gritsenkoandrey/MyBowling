@@ -2,20 +2,19 @@
 using UnityEngine;
 
 
-// TEST
 public sealed class AimSpawner : BaseModel
 {
     [SerializeField] private Vector3[] _spawnPoints = null;
+    [SerializeField] private float _timeToSpawn = 0.0f;
+    private bool _isSpawn = false;
 
     private readonly string[] _aims = { "Tree_1", "Box_1" };
-
-    private bool _isSpawn = false;
-    private float _timeToSpawn = 5.0f;
-
     private TimeRemaining _timeSpawnAim;
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
+
         _timeSpawnAim = new TimeRemaining(ReadyToSpawnAim, _timeToSpawn);
     }
 
@@ -25,29 +24,15 @@ public sealed class AimSpawner : BaseModel
         {
             for (int i = 0; i < _spawnPoints.Length; i++)
             {
-                if (GetRandom())
+                if (Random.Range(0, 2) == 1)
                 {
-                    var obj = PoolManager.GetObject(_aims[Random.Range(0, _aims.Length)],
+                    obj = PoolManager.GetObject(_aims[Random.Range(0, _aims.Length)],
                         _spawnPoints[i], Quaternion.identity);
                     AimManager.AddBotToList(obj.GetComponent<AimBase>());
                 }
             }
             _isSpawn = false;
             _timeSpawnAim.RemoveTimeRemaining();
-        }
-    }
-
-    private bool GetRandom()
-    {
-        int rnd = Random.Range(0, 3);
-
-        if (rnd == 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
         }
     }
 

@@ -6,6 +6,7 @@ public abstract class BaseModel : MonoBehaviour
 {
     protected GameObject collisionObject;
     protected GameObject particleObject;
+    protected GameObject obj;
 
     protected Rigidbody rigidbodyBase;
     protected Transform transformBase;
@@ -17,7 +18,7 @@ public abstract class BaseModel : MonoBehaviour
     protected TimeRemaining timeRemainingReturnToPoolCollision;
     protected TimeRemaining timeRemainingReturnToPoolParticle;
 
-    private readonly float _timeReturnToPoolCollision = 2.0f;
+    private readonly float _timeReturnToPoolCollision = 1.5f;
     private readonly float _timeReturnToPoolParticle = 3.0f;
 
     protected virtual void Awake()
