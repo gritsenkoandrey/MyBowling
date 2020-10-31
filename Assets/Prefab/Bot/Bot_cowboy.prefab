@@ -55,9 +55,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2237074446655490955}
   - component: {fileID: 2237074446655490953}
-  - component: {fileID: 2237074446655490954}
   - component: {fileID: 2237074446655490952}
   - component: {fileID: -5476358419797337972}
+  - component: {fileID: -7828086187301568479}
   m_Layer: 0
   m_Name: Bot_cowboy
   m_TagString: Untagged
@@ -95,19 +95,6 @@ CapsuleCollider:
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 2.5, z: 0}
---- !u!114 &2237074446655490954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2237074446655490956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9511534f6287dee4b90d7f0354a7bbb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _returnParticleToPool: 3
 --- !u!114 &2237074446655490952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +123,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fdf502ac5dfb6341b7fffbee3239c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7828086187301568479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2237074446655490956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 237e3e45e10405147b41e7938d9b5a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2237511696104357048

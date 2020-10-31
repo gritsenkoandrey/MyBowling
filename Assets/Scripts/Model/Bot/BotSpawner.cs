@@ -8,7 +8,7 @@ public sealed class BotSpawner : BaseModel
     [SerializeField] private float _timeToSpawn = 0.0f;
     private bool _isSpawn = false;
 
-    private readonly string[] _bots = { "Bot_cop", "Bot_cowboy" };
+    private readonly string[] _bots = { "Bot_cop", "Bot_cowboy", "Bot_Bean_Female", "Bot_Bean_Town_Female" };
     private TimeRemaining _timeSpawnBot;
 
     protected override void Awake()

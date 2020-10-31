@@ -6,13 +6,6 @@ public abstract class BotBase : BaseModel
 {
     protected float spawnCorrection = 2.0f;
 
-    protected readonly string destroyBotParticleGreen = "DestroyBotGreenParticle_1";
-    protected readonly string destroyBotParticleCop = "DestroyBotCopParticle_2";
-    protected readonly string destroyBotParticleCowboy = "DestroyBotCowboyParticle_3";
-    protected readonly string destroyBotCollisionGreen = "GreenRingImpact";
-    protected readonly string destroyBotCollisionCop = "BlueRingImpact";
-    protected readonly string destroyBotCollisionCowboy = "YellowRingImpact";
-
     private CameraShake _cameraShake;
 
     public event Action<BotBase> OnDieChange;

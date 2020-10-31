@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3331245712987921561}
   - component: {fileID: 8239135598046243615}
   - component: {fileID: 586456515841458769}
-  - component: {fileID: 1690635879334072921}
+  - component: {fileID: 4948407702181420242}
   m_Layer: 0
-  m_Name: DestroyBotCopParticle_2
+  m_Name: DestroyBotDollParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4588,7 +4588,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3812e584e370393498413c3236da49bd, type: 2}
+  - {fileID: 2100000, guid: dd0339d57288f394b89cdd20667b9786, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -4633,7 +4633,7 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &1690635879334072921
+--- !u!114 &4948407702181420242
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

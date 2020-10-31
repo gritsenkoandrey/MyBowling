@@ -7,7 +7,7 @@ public abstract class BallBase : BaseModel
     [Range(0.0f, 5.0f), SerializeField] private float _destroyBallByTime = 0.0f;
     [Range(0.0f, 200.0f), SerializeField] private float _forceBall = 0.0f;
 
-    private readonly string _destroyBallCollision = "ModularRingImpact";
+    private readonly string _destroyBallCollision = "ModularShockwaveImpact";
 
     public static bool IsLaunch;
 

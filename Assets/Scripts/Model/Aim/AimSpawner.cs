@@ -8,7 +8,7 @@ public sealed class AimSpawner : BaseModel
     [SerializeField] private float _timeToSpawn = 0.0f;
     private bool _isSpawn = false;
 
-    private readonly string[] _aims = { "Tree_1", "Box_1" };
+    private readonly string[] _aims = { "Tree_1", "Tree_2", "Tree_3", "Tree_4", "Box_1" };
     private TimeRemaining _timeSpawnAim;
 
     protected override void Awake()
