@@ -4,7 +4,7 @@
 [AddComponentMenu("Pool/PoolSetup")]
 public sealed class PoolSetup : MonoBehaviour
 {
-    [SerializeField] private PoolManager.PoolPart[] _pools;
+    [SerializeField] private PoolManager.PoolPart[] _pools = null;
 
     private void OnValidate()
     {
