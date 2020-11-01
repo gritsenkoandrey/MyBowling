@@ -3,6 +3,8 @@
 
 public sealed class AimBox : AimBase
 {
+    private readonly string _destroyBoxParticle = "DestroyObjParticle_1";
+
     private void OnTriggerEnter(Collider other)
     {
         ball = other.gameObject.GetComponent<BallBase>();
