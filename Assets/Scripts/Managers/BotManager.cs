@@ -29,11 +29,23 @@ public static class BotManager
         _botsList.Remove(bot);
     }
 
-    public static void BotSpawner(BotSpawner botSpawner)
+    //public static void BotSpawner(BotSpawner botSpawner)
+    //{
+    //    if (_botsList.Count == 0)
+    //    {
+    //        botSpawner.SpawnBot();
+    //    }
+    //}
+
+    public static bool BotDestroyed()
     {
         if (_botsList.Count == 0)
         {
-            botSpawner.SpawnBot();
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

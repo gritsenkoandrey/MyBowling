@@ -10,30 +10,40 @@ public static class AimManager
         _aimList = new List<AimBase>();
     }
 
-    public static void AddBotToList(AimBase aim)
+    public static void AddAimToList(AimBase aim)
     {
         if (!_aimList.Contains(aim))
         {
             _aimList.Add(aim);
-            aim.OnDieChange += RemoveBotToList;
+            aim.OnDieChange += RemoveAimToList;
         }
     }
 
-    public static void RemoveBotToList(AimBase aim)
+    public static void RemoveAimToList(AimBase aim)
     {
         if (!_aimList.Contains(aim))
         {
             return;
         }
-        aim.OnDieChange -= RemoveBotToList;
+        aim.OnDieChange -= RemoveAimToList;
         _aimList.Remove(aim);
     }
 
-    public static void AimSpawner(AimSpawner aimSpawner)
+    //public static void AimSpawner(AimSpawner aimSpawner)
+    //{
+    //    if (_aimList.Count == 0)
+    //    {
+    //        //aimSpawner.SpawnAim();
+    //    }
+    //}
+
+    public static bool AimDestroyed()
     {
         if (_aimList.Count == 0)
         {
-            aimSpawner.SpawnAim();
+            return true;
         }
+        else
+            return false;
     }
 }

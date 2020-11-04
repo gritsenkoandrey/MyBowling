@@ -28,7 +28,7 @@ public sealed class AimSpawner : BaseModel
                 {
                     obj = PoolManager.GetObject(_aims[Random.Range(0, _aims.Length)],
                         _spawnPoints[i], Quaternion.identity);
-                    AimManager.AddBotToList(obj.GetComponent<AimBase>());
+                    AimManager.AddAimToList(obj.GetComponent<AimBase>());
                 }
             }
             _isSpawn = false;
