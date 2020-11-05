@@ -4,7 +4,8 @@
 public sealed class BotDoll : BotBase
 {
     private readonly string _destroyBotCollision = "ModularRingImpact";
-    private readonly string _destroyBotDollParticle = "DestroyBotDollParticle";
+    //private readonly string _destroyBotDollParticle = "DestroyBotDollParticle";
+    private readonly string _destroyBotDollParticle = "BloodSplat";
 
     private void OnTriggerEnter(Collider other)
     {

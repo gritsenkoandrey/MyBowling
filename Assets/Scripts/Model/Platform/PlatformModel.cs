@@ -69,13 +69,24 @@ public sealed class PlatformModel : MonoBehaviour
 
     private void ReadyToSpawn()
     {
-        if (_currentPlatformCount == _maxPlatformCount && AimManager.AimDestroyed() && BotManager.BotDestroyed())
+        if (_currentPlatformCount == _maxPlatformCount /*&& AimManager.AimDestroyed()*/ && BotManager.BotDestroyed())
         {
             var platform = FindObjectsOfType<Platform>();
-
             for (int i = 0; i < platform.Length; i++)
             {
                 Destroy(platform[i].gameObject);
+            }
+
+            var aim = FindObjectsOfType<AimBase>();
+            for (int i = 0; i < aim.Length; i++)
+            {
+                aim[i].GetComponent<PoolObject>().ReturnToPool();
+            }
+
+            var building = FindObjectsOfType<BuildingBase>();
+            for (int i = 0; i < building.Length; i++)
+            {
+                building[i].GetComponent<PoolObject>().ReturnToPool();
             }
 
             _currentPlatformCount = _minPlatformCount;
