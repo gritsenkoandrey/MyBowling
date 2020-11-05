@@ -14,6 +14,7 @@ public abstract class BaseModel : MonoBehaviour
     protected BotBase bot;
     protected BallBase ball;
     protected AimBase aim;
+    protected BuildingBase building;
 
     protected TimeRemaining timeRemainingReturnToPoolCollision;
     protected TimeRemaining timeRemainingReturnToPoolParticle;

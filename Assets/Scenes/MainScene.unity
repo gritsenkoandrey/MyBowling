@@ -1810,7 +1810,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 535662881}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &203260775
 MonoBehaviour:
@@ -4388,8 +4388,8 @@ Transform:
   - {fileID: 1898143849}
   - {fileID: 2095517850}
   - {fileID: 1703530392}
-  - {fileID: 203260774}
   - {fileID: 1415412548}
+  - {fileID: 203260774}
   - {fileID: 1247970915}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -12046,12 +12046,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a606626a68af3034dae5dd2b9b075829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bigPlatform: {fileID: 820196171369645783, guid: 6abe53c549e94984ab7df15e5849ba4a,
-    type: 3}
-  _mediumPlatform: {fileID: 1796465349939042758, guid: 91a2243b301d0894f8d5af3531210ed6,
-    type: 3}
-  _smallPlatform: {fileID: 3180598654181531613, guid: 0768f0a19e264f9429d40ca8dd7f5db5,
-    type: 3}
 --- !u!4 &1415412548
 Transform:
   m_ObjectHideFlags: 0
@@ -12060,11 +12054,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415412546}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.43532562, y: 5.8164062, z: -0.52734375}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 535662881}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1425211128
 GameObject:
@@ -14294,6 +14288,18 @@ MonoBehaviour:
     Prefab: {fileID: 8515466876858837540, guid: c81679a2a1b22414eb9f9774431b2222,
       type: 3}
     Count: 10
+  - Name: Big_Platform
+    Prefab: {fileID: 7254835767952749698, guid: 6abe53c549e94984ab7df15e5849ba4a,
+      type: 3}
+    Count: 3
+  - Name: Medium_Platform
+    Prefab: {fileID: -3057845002579533321, guid: 91a2243b301d0894f8d5af3531210ed6,
+      type: 3}
+    Count: 3
+  - Name: Small_Platform
+    Prefab: {fileID: 1972806334306216783, guid: 0768f0a19e264f9429d40ca8dd7f5db5,
+      type: 3}
+    Count: 3
 --- !u!1 &1728406275
 GameObject:
   m_ObjectHideFlags: 0

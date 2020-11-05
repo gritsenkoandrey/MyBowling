@@ -16,7 +16,7 @@ public sealed class UiShowText : MonoBehaviour
 
     public void ApplyDamage(Vector3 position, int point)
     {
-        var pos = new Vector3(position.x + Random.Range(-1.0f, 1.0f), position.y + Random.Range(0, 1.5f));
+        var pos = new Vector3(position.x + Random.Range(-1.0f, 1.0f), position.y + Random.Range(1, 2.5f), position.z);
 
         var text = Instantiate(_text, pos, Quaternion.identity, _canvas);
 
