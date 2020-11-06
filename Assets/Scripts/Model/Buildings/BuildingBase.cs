@@ -8,6 +8,7 @@ public sealed class BuildingBase : BaseModel
 
     private readonly string _buildingDestroyParticle = "DestroyObjParticle_3";
     private readonly string _buildingCollision = "Impact_Wood_01";
+    private readonly string _buildingParticleDestroyWhenLevelClean = "FX_Explosion_01";
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -29,5 +30,14 @@ public sealed class BuildingBase : BaseModel
                 timeRemainingReturnToPoolParticle.AddTimeRemaining();
             }
         }
+    }
+
+    public void DestroyBuildingWhenLevelClean()
+    {
+        this.gameObject.GetComponent<PoolObject>().ReturnToPool();
+        particleObject = PoolManager.
+            GetObject(_buildingParticleDestroyWhenLevelClean, gameObject.transform.position, Quaternion.identity);
+
+        timeRemainingReturnToPoolParticle.AddTimeRemaining();
     }
 }
