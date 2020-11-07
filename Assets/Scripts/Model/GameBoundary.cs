@@ -3,7 +3,7 @@
 
 public sealed class GameBoundary : BaseModel
 {
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         ball = other.GetComponent<BallBase>();
 

@@ -31,7 +31,7 @@ public abstract class AimBase : BaseModel
 
     public abstract void DestroyAimParticle();
 
-    public void DestroyAimWhenLevelClean()
+    public void DestroyAimWhenPlatformaDestroyed()
     {
         OnDieChange?.Invoke(this);
 

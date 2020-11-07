@@ -4,93 +4,98 @@ using UnityEngine;
 
 public sealed class PlatformSpawner : BaseModel
 {
-    private readonly string[] _platforms = { "Big_Platform", "Medium_Platform", "Small_Platform"};
-    private readonly float[] _spawnPlatformPositionZ = { 0.0f, 10.0f, 20.0f };
+    // Реализация уничтожения всех платформ при убийстве всех ботов.
+    //данный класс не используется
 
-    private readonly byte _maxPlatformCount = 3;
-    private readonly byte _minPlatformCount = 0;
-    private byte _currentPlatformCount;
+    //private readonly string[] _platforms = { "Big_Platform", "Medium_Platform", "Small_Platform"};
+    //private readonly float[] _spawnPlatformPositionZ = { 20.0f, 30.0f, 40.0f, 50.0f, 60.0f, 70.0f };
 
-    private bool _isReadySpawn = false;
+    //private readonly byte _maxPlatformCount = 6;
+    //private readonly byte _minPlatformCount = 0;
+    //public static  byte CurrentPlatformCount;
 
-    private TimeRemaining _timeRemainingReturnToPoolPlatform;
-    private TimeRemaining _timeRemainingReturnToPollTarget;
+    //public static bool IsReadySpawn = false;
 
-    private readonly float _timeToReturnTopoolPlatform = 3.0f;
-    private readonly float _timeToReturnToPoolTarget = 0.75f;
+    //private TimeRemaining _timeRemainingReturnToPoolPlatform;
+    //private TimeRemaining _timeRemainingReturnToPollTarget;
 
-    protected override void Awake()
-    {
-        base.Awake();
+    //private readonly float _timeToReturnTopoolPlatform = 3.0f;
+    //private readonly float _timeToReturnToPoolTarget = 0.75f;
 
-        _currentPlatformCount = _minPlatformCount;
-        _isReadySpawn = true;
+    //protected override void Awake()
+    //{
+    //    base.Awake();
 
-        _timeRemainingReturnToPoolPlatform = new TimeRemaining(ReturnToPoolPlatform, _timeToReturnTopoolPlatform);
-        _timeRemainingReturnToPollTarget = new TimeRemaining(ReturnToPoolTarget, _timeToReturnToPoolTarget);
-    }
+    //    CurrentPlatformCount = _minPlatformCount;
+    //    IsReadySpawn = true;
 
-    public void Spawn()
-    {
-        GeneratePlatform();
-        PreparingForRespawn();
-    }
+    //    _timeRemainingReturnToPoolPlatform = new TimeRemaining(ReturnToPoolPlatform, _timeToReturnTopoolPlatform);
+    //    _timeRemainingReturnToPollTarget = new TimeRemaining(ReturnToPoolTarget, _timeToReturnToPoolTarget);
+    //}
 
-    private void GeneratePlatform()
-    {
-        if (_currentPlatformCount == 0 && _isReadySpawn == true)
-        {
-            for (int i = 0; i < _maxPlatformCount; i++)
-            {
-                obj = PoolManager.GetObject(_platforms[Random.Range(0, _platforms.Length)],
-                    new Vector3(0.0f, 0.0f, _spawnPlatformPositionZ[i]), Quaternion.identity);
-                obj.GetComponent<Platform>().SpawnTargetOnPlatform();
-                _currentPlatformCount++;
-            }
+    //public void Spawn()
+    //{
+    //    GeneratePlatform();
+    //    PreparingForRespawn();
+    //}
 
-            _isReadySpawn = false;
-        }
-    }
+    //private void GeneratePlatform()
+    //{
+    //    if (CurrentPlatformCount < _maxPlatformCount && IsReadySpawn == true)
+    //    {
+    //        for (int i = CurrentPlatformCount; i < _maxPlatformCount; i++)
+    //        {
+    //            obj = PoolManager.GetObject(_platforms[Random.Range(0, _platforms.Length)],
+    //                new Vector3(0.0f, 0.0f, _spawnPlatformPositionZ[i]), Quaternion.identity);
+    //            obj.GetComponent<Platform>().SpawnTargetOnPlatform();
+    //            obj.GetComponent<Platform>().MoveAddTimer();
+    //            CurrentPlatformCount++;
+    //        }
 
-    private void PreparingForRespawn()
-    {
-        if (_currentPlatformCount == _maxPlatformCount && BotManager.BotDestroyed() && _isReadySpawn == false)
-        {
-            _timeRemainingReturnToPollTarget.AddTimeRemaining();
-            _timeRemainingReturnToPoolPlatform.AddTimeRemaining();
-        }
-    }
+    //        IsReadySpawn = false;
+    //    }
+    //}
 
-    private void ReturnToPoolPlatform()
-    {
-        var platform = FindObjectsOfType<Platform>();
-        for (int i = 0; i < platform.Length; i++)
-        {
-            platform[i].GetComponent<PoolObject>().ReturnToPool();
-            _currentPlatformCount--;
-        }
+    //private void PreparingForRespawn()
+    //{
+    //    if (CurrentPlatformCount == _maxPlatformCount && BotManager.BotDestroyed() && IsReadySpawn == false)
+    //    {
+    //        _timeRemainingReturnToPollTarget.AddTimeRemaining();
+    //        _timeRemainingReturnToPoolPlatform.AddTimeRemaining();
+    //    }
+    //}
 
-        _timeRemainingReturnToPoolPlatform.RemoveTimeRemaining();
-    }
+    //private void ReturnToPoolPlatform()
+    //{
+    //    var platform = FindObjectsOfType<Platform>();
+    //    for (int i = 0; i < platform.Length; i++)
+    //    {
+    //        platform[i].RemoveTimer();
+    //        platform[i].GetComponent<PoolObject>().ReturnToPool();
+    //        CurrentPlatformCount--;
+    //    }
 
-    private void ReturnToPoolTarget()
-    {
-        if (!_isReadySpawn)
-        {
-            var aim = FindObjectsOfType<AimBase>();
-            for (int i = 0; i < aim.Length; i++)
-            {
-                aim[i].DestroyAimWhenLevelClean();
-            }
+    //    _timeRemainingReturnToPoolPlatform.RemoveTimeRemaining();
+    //}
 
-            var building = FindObjectsOfType<BuildingBase>();
-            for (int i = 0; i < building.Length; i++)
-            {
-                building[i].DestroyBuildingWhenLevelClean();
-            }
+    //private void ReturnToPoolTarget()
+    //{
+    //    if (!IsReadySpawn)
+    //    {
+    //        var aim = FindObjectsOfType<AimBase>();
+    //        for (int i = 0; i < aim.Length; i++)
+    //        {
+    //            aim[i].DestroyAimWhenLevelClean();
+    //        }
 
-            _isReadySpawn = true;
-            _timeRemainingReturnToPollTarget.RemoveTimeRemaining();
-        }
-    }
+    //        var building = FindObjectsOfType<BuildingBase>();
+    //        for (int i = 0; i < building.Length; i++)
+    //        {
+    //            building[i].DestroyBuildingWhenLevelClean();
+    //        }
+
+    //        IsReadySpawn = true;
+    //        _timeRemainingReturnToPollTarget.RemoveTimeRemaining();
+    //    }
+    //}
 }

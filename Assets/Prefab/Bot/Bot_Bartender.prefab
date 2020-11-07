@@ -6273,6 +6273,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1693861139322799810}
+  - component: {fileID: 7745694937012643933}
   m_Layer: 0
   m_Name: Bot_Bartender
   m_TagString: Untagged
@@ -6315,8 +6316,27 @@ Transform:
   - {fileID: 1701954764935937598}
   - {fileID: 1693811831485785512}
   m_Father: {fileID: 7868180201750307840}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!95 &7745694937012643933
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696182104050025934}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 9d545e43681431348908eab98e78aa45, type: 3}
+  m_Controller: {fileID: 9100000, guid: 35ba139cdbea71b4ab68f53b1be138a1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1696194688252173188
 GameObject:
   m_ObjectHideFlags: 0
@@ -9394,7 +9414,7 @@ Transform:
   m_Children:
   - {fileID: 8107920162289604268}
   m_Father: {fileID: 7868180201750307840}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &4655528064757065142
 ParticleSystem:
@@ -14186,7 +14206,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7868180201750307840}
   - component: {fileID: 3426251717687152956}
-  - component: {fileID: 6459941110325697446}
   - component: {fileID: 7082351933879203211}
   - component: {fileID: 3672522193450675305}
   m_Layer: 0
@@ -14207,8 +14226,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7356578742918683778}
   - {fileID: 1693861139322799810}
+  - {fileID: 7356578742918683778}
   - {fileID: 6831149839144499037}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -14227,25 +14246,6 @@ CapsuleCollider:
   m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 2.5, z: 0}
---- !u!95 &6459941110325697446
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8881897518504424880}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 9d545e43681431348908eab98e78aa45, type: 3}
-  m_Controller: {fileID: 9100000, guid: 35ba139cdbea71b4ab68f53b1be138a1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &7082351933879203211
 MonoBehaviour:
   m_ObjectHideFlags: 0

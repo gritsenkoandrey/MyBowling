@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6910088620437407109}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &2913410960399107985
 CapsuleCollider:
@@ -76,7 +76,7 @@ Transform:
   m_Children:
   - {fileID: 1638136871038818351}
   m_Father: {fileID: 6910088620437407109}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &393218363626736972
 ParticleSystem:
@@ -5914,6 +5914,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5725116552413351642}
+  - component: {fileID: 527346746419982811}
   m_Layer: 0
   m_Name: Bot_Soldier
   m_TagString: Untagged
@@ -5956,8 +5957,27 @@ Transform:
   - {fileID: 5723449117737243748}
   - {fileID: 5723242003484636016}
   m_Father: {fileID: 6910088620437407109}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!95 &527346746419982811
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5720882329813797042}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 9d545e43681431348908eab98e78aa45, type: 3}
+  m_Controller: {fileID: 9100000, guid: 0503af094a3a62543ae41951d793c5bb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5720935582649050746
 GameObject:
   m_ObjectHideFlags: 0
@@ -9454,7 +9474,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6910088620437407109}
   - component: {fileID: 8869079766209504797}
-  - component: {fileID: 7355695580197095234}
   - component: {fileID: 2604006099005646359}
   - component: {fileID: 6883802972274333680}
   m_Layer: 0
@@ -9475,9 +9494,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 5725116552413351642}
   - {fileID: 5382511003670651390}
   - {fileID: 3408502036788688975}
-  - {fileID: 5725116552413351642}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9495,25 +9514,6 @@ CapsuleCollider:
   m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 2.5, z: 0}
---- !u!95 &7355695580197095234
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6288141396040336107}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 9d545e43681431348908eab98e78aa45, type: 3}
-  m_Controller: {fileID: 9100000, guid: 0503af094a3a62543ae41951d793c5bb, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &2604006099005646359
 MonoBehaviour:
   m_ObjectHideFlags: 0

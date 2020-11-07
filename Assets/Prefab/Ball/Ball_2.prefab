@@ -137,8 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb1a7f0b18957145b2c2052760c9d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destroyBallByTime: 1.5
-  _forceBall: 60
+  _destroyBallByTime: 1.75
+  _forceBall: 70
 --- !u!1 &5606195939468142346
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,8 @@
 
 public static class AimManager
 {
+    //данный класс не используется
+
     private static List<AimBase> _aimList;
 
     static AimManager()

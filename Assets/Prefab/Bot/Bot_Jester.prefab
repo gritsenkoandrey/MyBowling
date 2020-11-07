@@ -31,7 +31,7 @@ Transform:
   m_Children:
   - {fileID: 2152579754788114610}
   m_Father: {fileID: 3513724012172440512}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &3807574058327596910
 ParticleSystem:
@@ -11131,6 +11131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6298350160735267670}
+  - component: {fileID: 2982496240654386794}
   m_Layer: 0
   m_Name: Bot_Jester
   m_TagString: Untagged
@@ -11173,8 +11174,27 @@ Transform:
   - {fileID: 6302732101640734308}
   - {fileID: 6298463688070085512}
   m_Father: {fileID: 3513724012172440512}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!95 &2982496240654386794
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6296509027585298320}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 9d545e43681431348908eab98e78aa45, type: 3}
+  m_Controller: {fileID: 9100000, guid: d7ea5119bc59ae44e9fda46166ee3f9b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6296509587934473748
 GameObject:
   m_ObjectHideFlags: 0
@@ -14141,7 +14161,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3513724012172440512}
   - component: {fileID: 7212539518478293858}
-  - component: {fileID: 6719059962727718779}
   - component: {fileID: 8854122062847749039}
   - component: {fileID: 5459136127823918566}
   m_Layer: 0
@@ -14162,9 +14181,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 6298350160735267670}
   - {fileID: 8175891372280299302}
   - {fileID: 9159536922829296516}
-  - {fileID: 6298350160735267670}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14182,25 +14201,6 @@ CapsuleCollider:
   m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 2.5, z: 0}
---- !u!95 &6719059962727718779
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7429929528676104012}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 9d545e43681431348908eab98e78aa45, type: 3}
-  m_Controller: {fileID: 9100000, guid: d7ea5119bc59ae44e9fda46166ee3f9b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &8854122062847749039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14255,7 +14255,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3513724012172440512}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &3920256827567210638
 CapsuleCollider:

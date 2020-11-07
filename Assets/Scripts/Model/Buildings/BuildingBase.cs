@@ -32,7 +32,7 @@ public sealed class BuildingBase : BaseModel
         }
     }
 
-    public void DestroyBuildingWhenLevelClean()
+    public void DestroyBuildingWhenPlatformaDestroyed()
     {
         this.gameObject.GetComponent<PoolObject>().ReturnToPool();
         particleObject = PoolManager.

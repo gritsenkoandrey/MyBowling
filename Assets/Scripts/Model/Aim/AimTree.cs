@@ -11,7 +11,7 @@ public sealed class AimTree : AimBase
 
         if (ball)
         {
-            ball.DestroyBall();
+            //ball.DestroyBall();
             DestroyAimParticle();
         }
     }

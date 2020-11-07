@@ -3,6 +3,8 @@
 
 public static class BotManager
 {
+    //данный класс не используется
+
     private static List<BotBase> _botsList;
 
     static BotManager()

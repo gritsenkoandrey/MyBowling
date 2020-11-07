@@ -5,6 +5,8 @@ using UnityEngine;
 
 public abstract class BotBase : BaseModel
 {
+    private readonly string _aimParticleDestroyWhenLevelClean = "FX_Explosion_01";
+
     protected float spawnCorrection = 2.0f;
     [SerializeField] private int _points = 0;
 
@@ -39,4 +41,15 @@ public abstract class BotBase : BaseModel
 
     public abstract void DestroyBotWithBall();
     public abstract void DestroyBotWithParticle();
+
+    public void DestroyBotWhenPlatformaDestroyed()
+    {
+        OnDieChange?.Invoke(this);
+
+        this.gameObject.GetComponent<PoolObject>().ReturnToPool();
+        particleObject = PoolManager.
+            GetObject(_aimParticleDestroyWhenLevelClean, gameObject.transform.position, Quaternion.identity);
+
+        timeRemainingReturnToPoolParticle.AddTimeRemaining();
+    }
 }

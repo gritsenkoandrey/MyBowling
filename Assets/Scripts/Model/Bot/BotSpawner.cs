@@ -4,6 +4,7 @@ using UnityEngine;
 
 public sealed class BotSpawner : BaseModel
 {
+    //данный класс не используется
     [SerializeField] private Vector3[] _spawnPoints = null;
     [SerializeField] private float _timeToSpawn = 0.0f;
     private bool _isSpawn = false;

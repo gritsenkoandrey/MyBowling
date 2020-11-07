@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 7146709525569645195}
   - component: {fileID: 820196171369645783}
   - component: {fileID: 7254835767952749698}
+  - component: {fileID: -3965981019685793181}
   m_Layer: 0
   m_Name: Big_Platform
   m_TagString: Untagged
@@ -194,6 +195,10 @@ MonoBehaviour:
   - {fileID: 8872317153118426941}
   - {fileID: 7146709525354142764}
   - {fileID: 7146709526156460478}
+  _buildingParams:
+    Duration: 0.5
+    Delay: 0
+    Ease: 8
   _platformType: 2
 --- !u!114 &7254835767952749698
 MonoBehaviour:
@@ -207,6 +212,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fdf502ac5dfb6341b7fffbee3239c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &-3965981019685793181
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7146709525569645194}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7146709525733090413
 GameObject:
   m_ObjectHideFlags: 0

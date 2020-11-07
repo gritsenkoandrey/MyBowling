@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7583423687413303810}
   - component: {fileID: 2029550975603229747}
-  - component: {fileID: 9080611714189793382}
   - component: {fileID: 6963489702928079238}
   - component: {fileID: 4955066917231727693}
   m_Layer: 0
@@ -31,8 +30,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3180894881365815172}
   - {fileID: 7355076339991660367}
+  - {fileID: 3180894881365815172}
   - {fileID: 2165791249048718320}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -51,25 +50,6 @@ CapsuleCollider:
   m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 2.5, z: 0}
---- !u!95 &9080611714189793382
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1159168973120436847}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 9d545e43681431348908eab98e78aa45, type: 3}
-  m_Controller: {fileID: 9100000, guid: c1c642bb7dd2a10468cbd43b1090a325, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &6963489702928079238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4314,6 +4294,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7355076339991660367}
+  - component: {fileID: 7421092548552483912}
   m_Layer: 0
   m_Name: Bot_Rider
   m_TagString: Untagged
@@ -4356,8 +4337,27 @@ Transform:
   - {fileID: 7353626756548266295}
   - {fileID: 7355424036114933593}
   m_Father: {fileID: 7583423687413303810}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!95 &7421092548552483912
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7358368706323652153}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 9d545e43681431348908eab98e78aa45, type: 3}
+  m_Controller: {fileID: 9100000, guid: c1c642bb7dd2a10468cbd43b1090a325, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7358374202940557383
 GameObject:
   m_ObjectHideFlags: 0
@@ -9489,7 +9489,7 @@ Transform:
   m_Children:
   - {fileID: 5087429891721459448}
   m_Father: {fileID: 7583423687413303810}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &4830052993129221842
 ParticleSystem:
