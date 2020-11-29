@@ -12,10 +12,16 @@ namespace Scripts
     {
         #region Fields
         
-        [SerializeField] private string _shakeDataPath;
-        [SerializeField] private string _characterDataPath;
+        [SerializeField] private string _shakeDataPath = null;
+        [SerializeField] private string _characterDataPath = null;
+        [SerializeField] private string _gameLevelDataPath = null;
+        [SerializeField] private string _ballDataPath = null;
+
         private static ShakesData _shake;
         private static CharacterData _characterData;
+        private static GameLevelData _gameLevelData;
+        private static BallData _ballData;
+
         private static readonly Lazy<Data> _instance = new Lazy<Data>(() => Load<Data>("Data/" + typeof(Data).Name));
         
         #endregion
@@ -48,6 +54,30 @@ namespace Scripts
                 }
 
                 return _characterData;
+            }
+        }
+
+        public GameLevelData GameLevelData
+        {
+            get
+            {
+                if (_gameLevelData == null)
+                {
+                    _gameLevelData = Load<GameLevelData>("Data/" + Instance._gameLevelDataPath);
+                }
+                return _gameLevelData;
+            }
+        }
+
+        public BallData Ball
+        {
+            get
+            {
+                if (_ballData == null)
+                {
+                    _ballData = Load<BallData>("Data/" + Instance._ballDataPath);
+                }
+                return _ballData;
             }
         }
 

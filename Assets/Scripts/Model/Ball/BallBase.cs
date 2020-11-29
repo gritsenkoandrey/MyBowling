@@ -7,6 +7,8 @@ public abstract class BallBase : BaseModel
     [Range(0.0f, 5.0f), SerializeField] private float _destroyBallByTime = 0.0f;
     [Range(0.0f, 2000.0f), SerializeField] private float _forceBall = 0.0f;
 
+    private readonly byte _minHitCounter = 1;
+
     private readonly string _destroyBallCollision = "ModularShockwaveImpact";
 
     public static bool IsLaunch;
@@ -18,9 +20,12 @@ public abstract class BallBase : BaseModel
     private void Start()
     {
         speedBall = new Vector3(0.0f, 0.0f, _forceBall);
-
         rigidbodyBase.useGravity = false;
         IsLaunch = false;
+
+        //множитель очков, при разрушении шара множитель сбрасывается.
+        //нужно переделать!!!
+        BallController.CurrentHitCounter = _minHitCounter;
 
         timeRemainingDestroyBall = new TimeRemaining(DestroyBall, _destroyBallByTime);
     }
@@ -29,8 +34,7 @@ public abstract class BallBase : BaseModel
 
     public void DestroyBall()
     {
-        BallSpawner.IsBallAlive = false;
-
+        BallController.IsBallAlive = false;
         collisionObject = PoolManager.GetObject(_destroyBallCollision, gameObject.transform.position, Quaternion.identity);
         timeRemainingReturnToPoolCollision.AddTimeRemaining();
 

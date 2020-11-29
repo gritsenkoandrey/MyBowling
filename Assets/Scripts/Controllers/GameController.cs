@@ -18,6 +18,7 @@ namespace Scripts
         {
             _controllers = new Controllers();
             Initialization();
+            Cleaner();
             //ScreenInterface.GetInstance().Execute(ScreenType.MainMenu);
         }
 

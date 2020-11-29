@@ -6,6 +6,7 @@ using UnityEngine;
 public sealed class ObjectPooling
 {
     private List<PoolObject> _objects;
+
     private Transform _objectsParent;
 
     private void Addobject(PoolObject sample, Transform objectsParent)
@@ -42,6 +43,7 @@ public sealed class ObjectPooling
                 return _objects[i];
             }
         }
+
         Addobject(_objects[0], _objectsParent);
         return _objects[_objects.Count - 1];
     }

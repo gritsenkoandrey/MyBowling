@@ -8,7 +8,7 @@ public sealed class UiShowBallTrajectory : MonoBehaviour
     private readonly float _minValue = 1.0f;
     private float _angle;
 
-    [SerializeField] private Slider _slider = null;
+    [SerializeField] private Slider _slider;
 
     private void Start()
     {

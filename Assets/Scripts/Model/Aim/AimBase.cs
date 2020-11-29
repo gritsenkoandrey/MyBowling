@@ -1,29 +1,31 @@
 ﻿using Scripts;
-using System;
+//using System;
 using UnityEngine;
 
 
+[RequireComponent(typeof(PoolObject), (typeof(BoxCollider)))]
 public abstract class AimBase : BaseModel
 {
     private readonly string _aimParticleDestroyWhenLevelClean = "FX_Explosion_01";
 
-    public event Action<AimBase> OnDieChange;
+    //public event Action<AimBase> OnDieChange;
 
     [SerializeField] private int _points = 0;
+    [SerializeField] protected int health = 0;
 
-    private UiShowText _uiShowText;
+    private UiShowApplyDamage _uiShowText;
 
     protected override void Awake()
     {
         base.Awake();
-        _uiShowText = FindObjectOfType<UiShowText>();
+        _uiShowText = FindObjectOfType<UiShowApplyDamage>();
     }
 
     protected void ReturnToPool()
     {
-        OnDieChange?.Invoke(this);
+        //OnDieChange?.Invoke(this);
 
-        _uiShowText.ApplyDamage(gameObject.transform.position, _points);
+        _uiShowText.ApplyDamage(gameObject.transform.position, _points * BallController.CurrentHitCounter++);
 
         this.gameObject.GetComponent<PoolObject>().ReturnToPool();
         timeRemainingReturnToPoolParticle.AddTimeRemaining();
@@ -31,9 +33,9 @@ public abstract class AimBase : BaseModel
 
     public abstract void DestroyAimParticle();
 
-    public void DestroyAimWhenPlatformaDestroyed()
+    public void DestroyAimWhenPlatformDestroyed()
     {
-        OnDieChange?.Invoke(this);
+        //OnDieChange?.Invoke(this);
 
         this.gameObject.GetComponent<PoolObject>().ReturnToPool();
         particleObject = PoolManager.

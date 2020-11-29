@@ -1,51 +1,48 @@
 ﻿using Scripts;
-using System;
+//using System;
 using UnityEngine;
 
 
+[RequireComponent(typeof(PoolObject))]
 public abstract class BotBase : BaseModel
 {
     private readonly string _aimParticleDestroyWhenLevelClean = "FX_Explosion_01";
 
-    protected float spawnCorrection = 2.0f;
     [SerializeField] private int _points = 0;
 
     private CameraShake _cameraShake;
-    private UiShowText _uiShowText;
+    private UiShowApplyDamage _uiShowText;
 
-    public event Action<BotBase> OnDieChange;
+    //public event Action<BotBase> OnDieChange;
 
     protected override void Awake()
     {
         base.Awake();
 
         _cameraShake = FindObjectOfType<CameraShake>();
-        _uiShowText = FindObjectOfType<UiShowText>();
+        _uiShowText = FindObjectOfType<UiShowApplyDamage>();
     }
 
     protected void ReturnToPool()
     {
+        DestroyBot();
         timeRemainingReturnToPoolParticle.AddTimeRemaining();
         timeRemainingReturnToPoolCollision.AddTimeRemaining();
-        DestroyBot();
     }
 
     private void DestroyBot()
     {
+        //OnDieChange?.Invoke(this);
         _cameraShake.CreateShake();
-        _uiShowText.ApplyDamage(gameObject.transform.position, _points);
-
-        OnDieChange?.Invoke(this);
+        _uiShowText.ApplyDamage(gameObject.transform.position, _points * BallController.CurrentHitCounter++);
         gameObject.GetComponent<PoolObject>().ReturnToPool();
     }
 
     public abstract void DestroyBotWithBall();
-    public abstract void DestroyBotWithParticle();
 
-    public void DestroyBotWhenPlatformaDestroyed()
+    public void DestroyBotWhenPlatformDestroyed()
     {
-        OnDieChange?.Invoke(this);
-
+        //OnDieChange?.Invoke(this);
         this.gameObject.GetComponent<PoolObject>().ReturnToPool();
         particleObject = PoolManager.
             GetObject(_aimParticleDestroyWhenLevelClean, gameObject.transform.position, Quaternion.identity);

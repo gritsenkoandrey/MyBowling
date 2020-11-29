@@ -41,6 +41,11 @@ namespace Scripts
             _timeRemainings.Remove(value);
         }
         
+        public static void ClearTimeRemaining(this ICleanUp value)
+        {
+            value.Cleaner();
+        }
+
         #endregion
     }
 }
