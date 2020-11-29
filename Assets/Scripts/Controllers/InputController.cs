@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
 
 
 public sealed class InputController : BaseController, IExecute
@@ -19,7 +18,8 @@ public sealed class InputController : BaseController, IExecute
 
     public void Execute()
     {
-    #if UNITY_STANDALONE_WIN
+#if UNITY_STANDALONE || UNITY_WEBGL || UNITY_EDITOR || UNITY_WSA
+
         if (Input.GetMouseButton(_leftButton))
         {
             if (_ball == null)
@@ -50,7 +50,8 @@ public sealed class InputController : BaseController, IExecute
         }
 #endif
 
-#if UNITY_ANDROID
+#if UNITY_IOS || UNITY_ANDROID
+
         if (Input.touchCount > 0)
         {
             // Debug.Log(Input.touchCount); - количество прикосновений
