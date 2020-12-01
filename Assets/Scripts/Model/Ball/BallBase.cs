@@ -9,8 +9,6 @@ public abstract class BallBase : BaseModel
 
     private readonly byte _minHitCounter = 1;
 
-    private readonly string _destroyBallCollision = "ModularShockwaveImpact";
-
     public static bool IsLaunch;
 
     protected Vector3 speedBall;
@@ -35,11 +33,11 @@ public abstract class BallBase : BaseModel
     public void DestroyBall()
     {
         BallController.IsBallAlive = false;
-        collisionObject = PoolManager.GetObject(_destroyBallCollision, gameObject.transform.position, Quaternion.identity);
+        collisionObject = PoolManager.GetObject(Data.Instance.PrefabsData.destroyBallCollision, gameObject.transform.position, Quaternion.identity);
         timeRemainingReturnToPoolCollision.AddTimeRemaining();
 
         timeRemainingDestroyBall.RemoveTimeRemaining();
-
+        gun.FireOff();
         Destroy(this.gameObject);
     }
 }

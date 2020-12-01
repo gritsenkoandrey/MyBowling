@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: GameLevelData
   m_EditorClassIdentifier: 
   levelOneScore: 0
-  leveTwoScore: 5000
-  leveThreeScore: 12000
+  leveTwoScore: 4000
+  leveThreeScore: 9000
   levelFourScore: 15000
-  levelFiveScore: 20000
+  levelFiveScore: 21000
+  levelSixScore: 50000

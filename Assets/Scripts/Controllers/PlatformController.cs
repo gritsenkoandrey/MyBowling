@@ -4,12 +4,6 @@ using UnityEngine;
 
 public sealed class PlatformController : BaseController, IExecute, IInitialization
 {
-    private readonly string[] _platformsLevelOne = { "Platform_01", "Platform_02", "Platform_03", "Platform_04", "Platform_05" };
-    private readonly string[] _platformsLevelTwo = { "Platform_01", "Platform_02", "Platform_03", "Platform_04", "Platform_05", "Platform_lvl2_01", "Platform_lvl2_02", "Platform_lvl2_03" };
-    private readonly string[] _platformsLevelThree = { "Platform_03", "Platform_05", "Platform_lvl2_01", "Platform_lvl2_02", "Platform_lvl2_03", "Platform_lvl3_01", "Platform_lvl3_02", "Platform_lvl3_03" };
-    private readonly string[] _platformsLevelFour = { "Platform_lvl2_01", "Platform_lvl2_03", "Platform_lvl3_01", "Platform_lvl3_02", "Platform_lvl3_03", "Platform_lvl4_01", "Platform_lvl4_02", "Platform_lvl4_03" };
-    private readonly string[] _platformLevelFive = { "Platform_lvl3_01", "Platform_lvl3_02", "Platform_lvl3_03", "Platform_lvl4_01", "Platform_lvl4_02", "Platform_lvl4_03", "Platform_lvl5_01", "Platform_lvl5_02" };
-
     private readonly float[] _startSpawnPlatformsPos = { 20.0f, 30.0f, 40.0f, 50.0f, 60.0f, 70.0f};
     private readonly float _spawnPlatformPos = 40.0f;
 
@@ -46,7 +40,7 @@ public sealed class PlatformController : BaseController, IExecute, IInitializati
         {
             for (int i = _currentPlatformCount; i < _maxPlatformCount; i++)
             {
-                var obj = PoolManager.GetObject(_platformsLevelOne[Random.Range(0, _platformsLevelOne.Length)], new Vector3(0.0f, 0.0f, _startSpawnPlatformsPos[i]), Quaternion.identity);
+                var obj = PoolManager.GetObject(Data.Instance.PrefabsData.platformsLevelOne[Random.Range(0, Data.Instance.PrefabsData.platformsLevelOne.Length)], new Vector3(0.0f, 0.0f, _startSpawnPlatformsPos[i]), Quaternion.identity);
                 obj.GetComponent<Platform>().SpawnObjectOnPlatform();
                 obj.GetComponent<Platform>().MovePlatform();
                 _currentPlatformCount++;
@@ -63,23 +57,23 @@ public sealed class PlatformController : BaseController, IExecute, IInitializati
         {
             if (ScoreController.CountScore < Data.Instance.GameLevelData.leveTwoScore)
             {
-                GeneratePlatform(_platformsLevelOne);
+                GeneratePlatform(Data.Instance.PrefabsData.platformsLevelOne);
             }
             if (ScoreController.CountScore >= Data.Instance.GameLevelData.leveTwoScore)
             {
-                GeneratePlatform(_platformsLevelTwo);
+                GeneratePlatform(Data.Instance.PrefabsData.platformsLevelTwo);
             }
             if (ScoreController.CountScore >= Data.Instance.GameLevelData.leveThreeScore)
             {
-                GeneratePlatform(_platformsLevelThree);
+                GeneratePlatform(Data.Instance.PrefabsData.platformsLevelThree);
             }
             if (ScoreController.CountScore >= Data.Instance.GameLevelData.levelFourScore)
             {
-                GeneratePlatform(_platformsLevelFour);
+                GeneratePlatform(Data.Instance.PrefabsData.platformsLevelFour);
             }
             if (ScoreController.CountScore >= Data.Instance.GameLevelData.levelFiveScore)
             {
-                GeneratePlatform(_platformLevelFive);
+                GeneratePlatform(Data.Instance.PrefabsData.platformsLevelFive);
             }
         }
     }
@@ -115,7 +109,7 @@ public sealed class PlatformController : BaseController, IExecute, IInitializati
                         uiInterface.UiGameScreen.GameOver();
                     }
 
-                    platforms[i].DestroyPlatform();
+                    platforms[i].ReturnToPoolPlatform();
                     _currentPlatformCount--;
                     _timeRemainingReadySpawn.AddTimeRemaining();
                 }

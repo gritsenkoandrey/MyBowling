@@ -1,15 +1,10 @@
 ﻿using Scripts;
 
 
-public sealed class BallController : BaseController, IExecute, IInitialization
+public sealed class BallController : BaseController, IExecute
 {
     public static int CurrentHitCounter;
     public static bool IsBallAlive = false;
-
-    public void Initialization()
-    {
-        //todo
-    }
 
     public void Execute()
     {

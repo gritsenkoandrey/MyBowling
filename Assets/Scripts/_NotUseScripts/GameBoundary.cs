@@ -10,7 +10,7 @@ public sealed class GameBoundary : BaseModel
         _platform = other.GetComponent<Platform>();
         if (_platform)
         {
-            _platform.DestroyPlatform();
+            _platform.ReturnToPoolPlatform();
         }
     }
 }

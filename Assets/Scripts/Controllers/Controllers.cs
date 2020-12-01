@@ -24,10 +24,8 @@
         
         public Controllers()
         {
-            _initializations = new IInitialization[3];
-            _initializations[0] = new BallController();
-            _initializations[1] = new PlatformController();
-            _initializations[2] = new ScoreController();
+            _initializations = new IInitialization[1];
+            _initializations[0] = new PlatformController();
 
             _executeControllers = new IExecute[5];
             _executeControllers[0] = new TimeRemainingController();

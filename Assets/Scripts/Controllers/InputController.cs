@@ -61,12 +61,6 @@ public sealed class InputController : BaseController, IExecute
                 {
                     _ball = Object.FindObjectOfType<BallBase>();
                 }
-
-                if (_ball != null)
-                {
-                    _direction = Input.mousePosition - mainCamera.WorldToScreenPoint(_ball.transform.position);
-                    uiInterface.UiShowBall.ShowDirectionBall(_direction);
-                }
             }
 
             if (Input.touches[0].phase == TouchPhase.Ended) // Палец был снят с экрана
@@ -89,7 +83,11 @@ public sealed class InputController : BaseController, IExecute
 
             if (Input.touches[0].phase == TouchPhase.Stationary) // Палец прикоснулся к экрану, но не сдвинулся
             {
-                Debug.Log("Stationary");
+                if (_ball != null)
+                {
+                    _direction = Input.mousePosition - mainCamera.WorldToScreenPoint(_ball.transform.position);
+                    uiInterface.UiShowBall.ShowDirectionBall(_direction);
+                }
             }
         }
 #endif

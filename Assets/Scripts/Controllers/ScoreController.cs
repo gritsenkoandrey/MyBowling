@@ -1,7 +1,7 @@
 ﻿using Scripts;
 
 
-public sealed class ScoreController : BaseController, IInitialization, IExecute
+public sealed class ScoreController : BaseController, IExecute
 {
     public static int CountScore = 0;
 
@@ -11,38 +11,54 @@ public sealed class ScoreController : BaseController, IInitialization, IExecute
     private byte _levelFour = 4;
     private byte _levelFive = 5;
 
-    public void Initialization()
-    {
-        uiInterface.UiShowLevel.Text = _levelOne;
-    }
-
     public void Execute()
     {
         uiInterface.UiShowScore.Text = CountScore;
 
-        ShowLevel();
+        ShowScore();
     }
 
-    private void ShowLevel()
+    private void ShowScore()
     {
+        if (CountScore < Data.Instance.GameLevelData.leveTwoScore)
+        {
+            ShowLevel(_levelOne);
+            CalculateSlider(Data.Instance.GameLevelData.levelOneScore, Data.Instance.GameLevelData.leveTwoScore);
+        }
+
         if (CountScore >= Data.Instance.GameLevelData.leveTwoScore)
         {
-            uiInterface.UiShowLevel.Text = _leveTwo;
+            ShowLevel(_leveTwo);
+            CalculateSlider(Data.Instance.GameLevelData.leveTwoScore, Data.Instance.GameLevelData.leveThreeScore);
         }
 
         if (CountScore >= Data.Instance.GameLevelData.leveThreeScore)
         {
-            uiInterface.UiShowLevel.Text = _levelThree;
+            ShowLevel(_levelThree);
+            CalculateSlider(Data.Instance.GameLevelData.leveThreeScore, Data.Instance.GameLevelData.levelFourScore);
         }
 
         if (CountScore >= Data.Instance.GameLevelData.levelFourScore)
         {
-            uiInterface.UiShowLevel.Text = _levelFour;
+            ShowLevel(_levelFour);
+            CalculateSlider(Data.Instance.GameLevelData.levelFourScore, Data.Instance.GameLevelData.levelFiveScore);
         }
 
         if (CountScore >= Data.Instance.GameLevelData.levelFiveScore)
         {
-            uiInterface.UiShowLevel.Text = _levelFive;
+            ShowLevel(_levelFive);
+            CalculateSlider(Data.Instance.GameLevelData.levelFiveScore, Data.Instance.GameLevelData.levelSixScore);
         }
+    }
+
+    private void CalculateSlider(float currentLevel, float nextLevel)
+    {
+        uiInterface.UiSlider.GetSlider.value = (CountScore - currentLevel) / (nextLevel - currentLevel);
+    }
+
+    private void ShowLevel(byte level)
+    {
+        uiInterface.UiShowLevel.Text = level;
+        uiInterface.UiShowNextLevel.Text = level + 1;
     }
 }

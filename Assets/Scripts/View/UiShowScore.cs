@@ -10,7 +10,7 @@ public sealed class UiShowScore : MonoBehaviour
     {
         set
         {
-            _textScore.text = $"Score: {value}";
+            _textScore.text = $"{value}";
         }
     }
 

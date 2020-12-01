@@ -8,6 +8,8 @@ public sealed class UiInterface
     private UiShowApplyDamage _uiShowApplyDamage;
     private UiShowLevel _uiShowLevel;
     private UiGameScreen _uiGameScreen;
+    private UiSlider _uiSlider;
+    private UiShowNextLevel _uiShowNextLevel;
 
     public UiShowBallTrajectory UiShowBall
     {
@@ -66,6 +68,30 @@ public sealed class UiInterface
                 _uiGameScreen = Object.FindObjectOfType<UiGameScreen>();
             }
             return _uiGameScreen;
+        }
+    }
+
+    public UiSlider UiSlider
+    {
+        get
+        {
+            if (!_uiSlider)
+            {
+                _uiSlider = Object.FindObjectOfType<UiSlider>();
+            }
+            return _uiSlider;
+        }
+    }
+
+    public UiShowNextLevel UiShowNextLevel
+    {
+        get
+        {
+            if (!_uiShowNextLevel)
+            {
+                _uiShowNextLevel = Object.FindObjectOfType<UiShowNextLevel>();
+            }
+            return _uiShowNextLevel;
         }
     }
 }

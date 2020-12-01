@@ -16,3 +16,4 @@ MonoBehaviour:
   _characterDataPath: 
   _gameLevelDataPath: GameLevelData
   _ballDataPath: BallData
+  _prefabsDataPath: PrefabData

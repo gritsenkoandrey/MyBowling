@@ -15,6 +15,7 @@ public abstract class BaseModel : MonoBehaviour
     protected BallBase ball;
     protected AimBase aim;
     protected BuildingBase building;
+    protected Gun gun;
 
     protected TimeRemaining timeRemainingReturnToPoolCollision;
     protected TimeRemaining timeRemainingReturnToPoolParticle;
@@ -29,6 +30,8 @@ public abstract class BaseModel : MonoBehaviour
 
         timeRemainingReturnToPoolCollision = new TimeRemaining(ReturnToPoolCollision, _timeReturnToPoolCollision);
         timeRemainingReturnToPoolParticle = new TimeRemaining(ReturnToPoolParticle, _timeReturnToPoolParticle);
+
+        gun = Object.FindObjectOfType<Gun>();
     }
 
     private void ReturnToPoolCollision()

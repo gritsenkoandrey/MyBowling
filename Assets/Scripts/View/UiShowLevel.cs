@@ -10,7 +10,7 @@ public class UiShowLevel : MonoBehaviour
     {
         set
         {
-            _textLevel.text = $"Level: {value}";
+            _textLevel.text = $"{value}";
         }
     }
 
@@ -23,5 +23,4 @@ public class UiShowLevel : MonoBehaviour
     {
         _textLevel.gameObject.SetActive(value);
     }
-
 }

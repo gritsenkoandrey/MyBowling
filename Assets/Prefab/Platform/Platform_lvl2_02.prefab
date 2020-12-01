@@ -205,10 +205,10 @@ MonoBehaviour:
   - {fileID: 579951625251736849}
   - {fileID: 6789612734901625118}
   _buildingParams:
-    Duration: 1.2
+    Duration: 1.3
     Delay: 0
     Ease: 1
-  _timeToMovePlatform: 1.2
+  _timeToMovePlatform: 1.3
 --- !u!114 &1972806334306216783
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,18 +1,14 @@
 ﻿using Scripts;
-//using System;
 using UnityEngine;
 
 
 [RequireComponent(typeof(PoolObject))]
 public abstract class BotBase : BaseModel
 {
-    private readonly string _aimParticleDestroyWhenLevelClean = "FX_Explosion_01";
-
     [SerializeField] private int _points = 0;
 
     private CameraShake _cameraShake;
     private UiShowApplyDamage _uiShowText;
-
     //public event Action<BotBase> OnDieChange;
 
     protected override void Awake()
@@ -26,7 +22,6 @@ public abstract class BotBase : BaseModel
     protected void ReturnToPool()
     {
         DestroyBot();
-        timeRemainingReturnToPoolParticle.AddTimeRemaining();
         timeRemainingReturnToPoolCollision.AddTimeRemaining();
     }
 
@@ -44,9 +39,8 @@ public abstract class BotBase : BaseModel
     {
         //OnDieChange?.Invoke(this);
         this.gameObject.GetComponent<PoolObject>().ReturnToPool();
-        particleObject = PoolManager.
-            GetObject(_aimParticleDestroyWhenLevelClean, gameObject.transform.position, Quaternion.identity);
-
+        particleObject = PoolManager.GetObject(Data.Instance.PrefabsData.destroyObjParticle,
+            gameObject.transform.position, Quaternion.identity);
         timeRemainingReturnToPoolParticle.AddTimeRemaining();
     }
 }

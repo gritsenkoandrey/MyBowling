@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 using TMPro;
-using UnityEngine.UI;
+
 
 public sealed class UiShowApplyDamage : MonoBehaviour
 {

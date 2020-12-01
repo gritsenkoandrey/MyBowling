@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public sealed class UiShowBallTrajectory : MonoBehaviour
 {
-    private readonly float _maxValue = 30.0f;
-    private readonly float _minValue = 1.0f;
+    //private readonly float _maxValue = 30.0f;
+    //private readonly float _minValue = 1.0f;
     private float _angle;
 
     [SerializeField] private Slider _slider;
@@ -13,8 +13,8 @@ public sealed class UiShowBallTrajectory : MonoBehaviour
     private void Start()
     {
         _slider.gameObject.SetActive(false);
-        _slider.minValue = _minValue;
-        _slider.maxValue = _maxValue;
+        //_slider.minValue = _minValue;
+        //_slider.maxValue = _maxValue;
     }
 
     public void ShowDirectionBall(Vector2 dir)
@@ -40,7 +40,7 @@ public sealed class UiShowBallTrajectory : MonoBehaviour
     private void SliderCalculate(float angle, float dir)
     {
         _slider.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, angle);
-        _slider.value = dir / _maxValue;
+        //_slider.value = dir / _maxValue;
     }
 
     private void SliderDisplay(bool value)
@@ -50,7 +50,7 @@ public sealed class UiShowBallTrajectory : MonoBehaviour
 
     private void SliderValueReset()
     {
-        _slider.value = _minValue;
+        //_slider.value = _minValue;
         _slider.GetComponent<RectTransform>().localRotation = Quaternion.identity;
     }
 }
