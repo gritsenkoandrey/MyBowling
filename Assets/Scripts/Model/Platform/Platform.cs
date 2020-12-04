@@ -11,32 +11,6 @@ public sealed class Platform : BaseModel
     [SerializeField] private Transform[] _longSpawnPoint = null;
     [SerializeField] private Transform[] _botSpawnPoint = null;
 
-    [SerializeField] private BuildingParams _buildingParams = null;
-
-    private TimeRemaining _timeRemainingMovePlatform;
-    [SerializeField] private float _timeToMovePlatform = 0.0f;
-    private readonly float _speedPlatform = 5.0f;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        _timeRemainingMovePlatform = new TimeRemaining(Move, _timeToMovePlatform, true);
-    }
-
-    private void Move()
-    {
-        transform
-            .DOMove(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y,
-            gameObject.transform.position.z - _speedPlatform), _buildingParams.Duration)
-            .SetEase(_buildingParams.Ease)
-            .SetDelay(_buildingParams.Delay);
-    }
-
-    public void MovePlatform()
-    {
-        _timeRemainingMovePlatform.AddTimeRemaining();
-    }
-
     public void ReturnToPoolPlatform()
     {
         var aim = GetComponentsInChildren<AimBase>();
@@ -57,7 +31,7 @@ public sealed class Platform : BaseModel
             bot[i].DestroyBotWhenPlatformDestroyed();
         }
 
-        _timeRemainingMovePlatform.RemoveTimeRemaining();
+        gameObject.transform.DOKill();
         gameObject.GetComponent<PoolObject>().ReturnToPool();
     }
 

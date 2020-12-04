@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-[RequireComponent(typeof(PoolObject))]
+[RequireComponent(typeof(PoolObject), (typeof(CapsuleCollider)))]
 public abstract class BotBase : BaseModel
 {
     [SerializeField] private int _points = 0;

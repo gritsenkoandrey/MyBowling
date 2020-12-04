@@ -9,7 +9,7 @@ public class PrefabsData : ScriptableObject
     public readonly string[] midlePrefab = { "Midle_01", "Midle_02", "Midle_03", "Midle_04", "Midle_05", "Midle_06", "Midle_07", "Midle_08", "Midle_09", "Midle_10" };
     public readonly string[] longPrefab = { "Long_01", "Long_02", "Long_03", "Long_04", "Long_05" };
     public readonly string[] bigPrefab = { "Big_01", "Big_02", "Big_03", "Big_04", "Big_05", "Big_06" };
-    public readonly string[] botPrefab = { "Bot_Bartender", "Bot_Jester", "Bot_King", "Bot_Rider", "Bot_Soldier", "Bot_Mage" };
+    public readonly string[] botPrefab = { "Bot_01", "Bot_02", "Bot_03", "Bot_04", "Bot_05", "Bot_06", "Bot_07" };
 
     //platform controller
     public readonly string[] platformsLevelOne = { "Platform_01", "Platform_02", "Platform_03", "Platform_04", "Platform_05" };

@@ -1,4 +1,5 @@
-﻿using Scripts;
+﻿using DG.Tweening;
+using Scripts;
 using UnityEngine;
 
 
@@ -11,90 +12,127 @@ public sealed class PlatformController : BaseController, IExecute, IInitializati
     private readonly byte _minPlatformCount = 0;
     private byte _currentPlatformCount;
 
+    private readonly float _speedPlatform = 5.0f;
+    private readonly float _delay = 2.0f;
+    private float _duration = 1.5f;
+
     private readonly float _destroyPlatformPositionZ = -10.0f;
 
-    private bool _isReadySpawn = false;
-    private bool _isStartSpawn = false;
+    private bool _isReadySpawn;
+    private bool _isStartSpawn;
 
-    private TimeRemaining _timeRemainingReadySpawn;
-    private readonly float _timeReadySpawn = 2.0f;
+    private bool _isLevelPassedOne;
+    private bool _isLevelPassedTwo;
+    private bool _isLevelPassedThree;
+    private bool _isLevelPassedFour;
 
     public void Initialization()
     {
         _currentPlatformCount = _minPlatformCount;
-        _isReadySpawn = true;
 
-        _timeRemainingReadySpawn = new TimeRemaining(ReadyToSpawn, _timeReadySpawn);
+        _isReadySpawn = false;
+        _isStartSpawn = false;
+
+        _isLevelPassedOne = false;
+        _isLevelPassedTwo = false;
+        _isLevelPassedThree = false;
+        _isLevelPassedFour = false;
     }
 
     public void Execute()
     {
-        StartSpawnPlatforms();
-        NextSpawnPlatforms();
-        DestroyPlatform();
+        SpawnPlatform();
+        DestroyCurrentPlatform();
     }
 
-    private void StartSpawnPlatforms()
+    private void SpawnPlatform()
+    {
+        if (ScoreController.CountScore < Data.Instance.GameLevelData.leveTwoScore)
+        {
+            GeneratePlatform(Data.Instance.PrefabsData.platformsLevelOne, _duration);
+        }
+
+        if (ScoreController.CountScore >= Data.Instance.GameLevelData.leveTwoScore)
+        {
+            if (_isLevelPassedOne == false)
+            {
+                _isLevelPassedOne = true;
+                DestroyAllPlatform();
+            }
+            GeneratePlatform(Data.Instance.PrefabsData.platformsLevelTwo, _duration);
+        }
+
+        if (ScoreController.CountScore >= Data.Instance.GameLevelData.leveThreeScore)
+        {
+            if (_isLevelPassedTwo == false)
+            {
+                _isLevelPassedTwo = true;
+                DestroyAllPlatform();
+            }
+            GeneratePlatform(Data.Instance.PrefabsData.platformsLevelThree, _duration);
+        }
+
+        if (ScoreController.CountScore >= Data.Instance.GameLevelData.levelFourScore)
+        {
+            if (_isLevelPassedThree == false)
+            {
+                _isLevelPassedThree = true;
+                DestroyAllPlatform();
+            }
+            GeneratePlatform(Data.Instance.PrefabsData.platformsLevelFour, _duration);
+        }
+
+        if (ScoreController.CountScore >= Data.Instance.GameLevelData.levelFiveScore)
+        {
+            if (_isLevelPassedFour == false)
+            {
+                _isLevelPassedFour = true;
+                DestroyAllPlatform();
+            }
+            GeneratePlatform(Data.Instance.PrefabsData.platformsLevelFive, _duration);
+        }
+    }
+
+    private void GeneratePlatform(string[] platforms, float duration)
     {
         if (_isStartSpawn == false)
         {
             for (int i = _currentPlatformCount; i < _maxPlatformCount; i++)
             {
-                var obj = PoolManager.GetObject(Data.Instance.PrefabsData.platformsLevelOne[Random.Range(0, Data.Instance.PrefabsData.platformsLevelOne.Length)], new Vector3(0.0f, 0.0f, _startSpawnPlatformsPos[i]), Quaternion.identity);
+                var obj = PoolManager.GetObject(Data.Instance.PrefabsData
+                    .platformsLevelOne[Random.Range(0, Data.Instance.PrefabsData
+                    .platformsLevelOne.Length)], new Vector3(0.0f, 0.0f, _startSpawnPlatformsPos[i]), Quaternion.identity);
                 obj.GetComponent<Platform>().SpawnObjectOnPlatform();
-                obj.GetComponent<Platform>().MovePlatform();
+                MovePlatform(obj, duration);
                 _currentPlatformCount++;
             }
-
-            _isReadySpawn = false;
             _isStartSpawn = true;
         }
-    }
 
-    private void NextSpawnPlatforms()
-    {
-        if (_currentPlatformCount < _maxPlatformCount && _isReadySpawn == true)
-        {
-            if (ScoreController.CountScore < Data.Instance.GameLevelData.leveTwoScore)
-            {
-                GeneratePlatform(Data.Instance.PrefabsData.platformsLevelOne);
-            }
-            if (ScoreController.CountScore >= Data.Instance.GameLevelData.leveTwoScore)
-            {
-                GeneratePlatform(Data.Instance.PrefabsData.platformsLevelTwo);
-            }
-            if (ScoreController.CountScore >= Data.Instance.GameLevelData.leveThreeScore)
-            {
-                GeneratePlatform(Data.Instance.PrefabsData.platformsLevelThree);
-            }
-            if (ScoreController.CountScore >= Data.Instance.GameLevelData.levelFourScore)
-            {
-                GeneratePlatform(Data.Instance.PrefabsData.platformsLevelFour);
-            }
-            if (ScoreController.CountScore >= Data.Instance.GameLevelData.levelFiveScore)
-            {
-                GeneratePlatform(Data.Instance.PrefabsData.platformsLevelFive);
-            }
-        }
-    }
-
-    private void GeneratePlatform(string[] platforms)
-    {
-        if (_isStartSpawn == true)
+        if (_isReadySpawn == true)
         {
             for (int i = _currentPlatformCount; i < _maxPlatformCount; i++)
             {
                 var obj = PoolManager.GetObject(platforms[Random.Range(0, platforms.Length)],
                     new Vector3(0.0f, 0.0f, _spawnPlatformPos), Quaternion.identity);
                 obj.GetComponent<Platform>().SpawnObjectOnPlatform();
-                obj.GetComponent<Platform>().MovePlatform();
+                MovePlatform(obj, duration);
                 _currentPlatformCount++;
             }
             _isReadySpawn = false;
         }
     }
 
-    private void DestroyPlatform()
+    private void MovePlatform(GameObject obj, float duration)
+    {
+        obj.transform
+            .DOMove(new Vector3(obj.transform.position.x, obj.transform.position.y, obj.transform.position.z - _speedPlatform), duration)
+            .SetEase(Ease.Linear)
+            .SetDelay(_delay)
+            .SetLoops(-1, LoopType.Incremental);
+    }
+
+    private void DestroyCurrentPlatform()
     {
         if (_currentPlatformCount == _maxPlatformCount)
         {
@@ -108,18 +146,23 @@ public sealed class PlatformController : BaseController, IExecute, IInitializati
                     {
                         uiInterface.UiGameScreen.GameOver();
                     }
-
                     platforms[i].ReturnToPoolPlatform();
                     _currentPlatformCount--;
-                    _timeRemainingReadySpawn.AddTimeRemaining();
+                    _isReadySpawn = true;
                 }
             }
         }
     }
 
-    private void ReadyToSpawn()
+    private void DestroyAllPlatform()
     {
-        _isReadySpawn = true;
-        _timeRemainingReadySpawn.RemoveTimeRemaining();
+        var platforms = Object.FindObjectsOfType<Platform>();
+
+        for (int i = 0; i < platforms.Length; i++)
+        {
+            platforms[i].ReturnToPoolPlatform();
+            _currentPlatformCount--;
+        }
+        _isStartSpawn = false;
     }
 }
