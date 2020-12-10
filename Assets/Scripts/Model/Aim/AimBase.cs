@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(PoolObject), (typeof(BoxCollider)))]
 public abstract class AimBase : BaseModel
 {
-    //public event Action<AimBase> OnDieChange;
     [SerializeField] private int _points = 0;
 
     private UiShowApplyDamage _uiShowText;
@@ -19,9 +18,9 @@ public abstract class AimBase : BaseModel
 
     protected void ReturnToPool()
     {
-        //OnDieChange?.Invoke(this);
         _uiShowText.ApplyDamage(gameObject.transform.position, _points * BallController.CurrentHitCounter++);
-        this.gameObject.GetComponent<PoolObject>().ReturnToPool();
+        gameObject.GetComponent<PoolObject>().ReturnToPool();
+
         timeRemainingReturnToPoolParticle.AddTimeRemaining();
     }
 
@@ -29,10 +28,10 @@ public abstract class AimBase : BaseModel
 
     public void DestroyAimWhenPlatformDestroyed()
     {
-        //OnDieChange?.Invoke(this);
-        this.gameObject.GetComponent<PoolObject>().ReturnToPool();
-        particleObject = PoolManager.
-            GetObject(Data.Instance.PrefabsData.destroyObjParticle, gameObject.transform.position, Quaternion.identity);
+        gameObject.GetComponent<PoolObject>().ReturnToPool();
+        particleObject = PoolManager.GetObject(Data.Instance.PrefabsData.destroyObjParticle,
+            gameObject.transform.position, Quaternion.identity);
+
         timeRemainingReturnToPoolParticle.AddTimeRemaining();
     }
 }

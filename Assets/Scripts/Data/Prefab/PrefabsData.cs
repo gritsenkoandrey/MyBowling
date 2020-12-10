@@ -10,6 +10,8 @@ public class PrefabsData : ScriptableObject
     public readonly string[] longPrefab = { "Long_01", "Long_02", "Long_03", "Long_04", "Long_05" };
     public readonly string[] bigPrefab = { "Big_01", "Big_02", "Big_03", "Big_04", "Big_05", "Big_06" };
     public readonly string[] botPrefab = { "Bot_01", "Bot_02", "Bot_03", "Bot_04", "Bot_05", "Bot_06", "Bot_07" };
+    public readonly string[] botBigPrefab = { "Bot_Big_08", "Bot_Big_09" };
+    public readonly string[] magicPrefab = { "MagicBarrier" };
 
     //platform controller
     public readonly string[] platformsLevelOne = { "Platform_01", "Platform_02", "Platform_03", "Platform_04", "Platform_05" };
@@ -39,4 +41,7 @@ public class PrefabsData : ScriptableObject
 
     //aim stone
     public readonly string destroyStoneParticle = "DestroyObjParticle_1";
+
+    //ball controller
+    public readonly string ballPrefab = "Ball_2";
 }

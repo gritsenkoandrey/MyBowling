@@ -11,7 +11,6 @@ public sealed class InputController : BaseController, IExecute
 
     //public InputController()
     //{
-    //    Cursor.visible = false;
     //}
 
     #region IExecute

@@ -1,26 +1,38 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 using UnityEngine.UI;
 
 
 public sealed class UiShowScore : MonoBehaviour
 {
-    private Text _textScore = null;
+    [SerializeField] private float _duration = 0.0f;
+
+    private RectTransform _rectTransform;
+    private Text _text;
+    private Sequence _sequence;
 
     public int Text
     {
         set
         {
-            _textScore.text = $"{value}";
+            _text.text = $"{value}";
         }
     }
 
     private void Awake()
     {
-        _textScore = GetComponent<Text>();
+        _text = GetComponent<Text>();
+        _rectTransform = _text.GetComponent<RectTransform>();
     }
 
     public void SetActive(bool value)
     {
-        _textScore.gameObject.SetActive(value);
+        _text.gameObject.SetActive(value);
+    }
+
+    public void EnlargeTextScore()
+    {
+        _sequence.Insert(0.0f, _rectTransform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 0.0f));
+        _sequence.Append(_rectTransform.DOScale(Vector3.one, _duration));
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-// using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -13,16 +12,16 @@ namespace Scripts
         #region Fields
         
         [SerializeField] private string _shakeDataPath = null;
-        [SerializeField] private string _characterDataPath = null;
         [SerializeField] private string _gameLevelDataPath = null;
         [SerializeField] private string _ballDataPath = null;
         [SerializeField] private string _prefabsDataPath = null;
+        [SerializeField] private string _platformDataPath = null;
 
         private static ShakesData _shake;
-        private static CharacterData _characterData;
         private static GameLevelData _gameLevelData;
         private static BallData _ballData;
         private static PrefabsData _prefabsData;
+        private static PlatformData _platformData;
 
         private static readonly Lazy<Data> _instance = new Lazy<Data>(() => Load<Data>("Data/" + typeof(Data).Name));
         
@@ -43,19 +42,6 @@ namespace Scripts
                 }
 
                 return _shake;
-            }
-        }
-
-        public CharacterData Character
-        {
-            get
-            {
-                if (_characterData == null)
-                {
-                    _characterData = Load<CharacterData>("Data/" + Instance._characterDataPath);
-                }
-
-                return _characterData;
             }
         }
 
@@ -92,6 +78,18 @@ namespace Scripts
                     _prefabsData = Load<PrefabsData>("Data/" + Instance._prefabsDataPath);
                 }
                 return _prefabsData;
+            }
+        }
+
+        public PlatformData PlatformData
+        {
+            get
+            {
+                if (_platformData == null)
+                {
+                    _platformData = Load<PlatformData>("Data/" + Instance._platformDataPath);
+                }
+                return _platformData;
             }
         }
 

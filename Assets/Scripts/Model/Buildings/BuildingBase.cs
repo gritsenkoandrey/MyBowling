@@ -3,61 +3,49 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(PoolObject), (typeof(BoxCollider)))]
-public sealed class BuildingBase : BaseModel
+public abstract class BuildingBase : BaseModel
 {
-    [SerializeField] private int _health = 0;
     [SerializeField] private int _points = 0;
+    [SerializeField] private int _maxHealth = 0;
+    protected readonly int minHealth = 0;
+    private int _currentHealth;
 
     private UiShowApplyDamage _uiShowText;
+
+    public int Health
+    {
+        get { return _currentHealth; }
+        protected set { _currentHealth = value; }
+    }
 
     protected override void Awake()
     {
         base.Awake();
-
         _uiShowText = FindObjectOfType<UiShowApplyDamage>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnEnable()
     {
-        ball = collision.gameObject.GetComponent<BallBase>();
-
-        if (ball)
-        {
-            _health--;
-            BuildingCollision();
-
-            if (_health <= 0)
-            {
-                BuildingDestroy();
-            }
-        }
+        _currentHealth = _maxHealth;
     }
 
-    private void BuildingCollision()
-    {
-        collisionObject = PoolManager.GetObject(Data.Instance.PrefabsData.impactCollision, 
-            ball.transform.position, Quaternion.identity);
-        timeRemainingReturnToPoolCollision.AddTimeRemaining();
-    }
+    public abstract void BuildingDestroyParticle();
 
-    private void BuildingDestroy()
+    protected void ReturnToPool()
     {
         _uiShowText.ApplyDamage(gameObject.transform.position, _points * BallController.CurrentHitCounter++);
 
         gameObject.GetComponent<PoolObject>().ReturnToPool();
 
-        particleObject = PoolManager.GetObject(Data.Instance.PrefabsData.destroyBuildingParticle,
-            ball.transform.position, Quaternion.identity);
         timeRemainingReturnToPoolParticle.AddTimeRemaining();
     }
 
     public void DestroyBuildingWhenPlatformDestroyed()
     {
         gameObject.GetComponent<PoolObject>().ReturnToPool();
-        particleObject = PoolManager.
-            GetObject(Data.Instance.PrefabsData.destroyObjParticle,
-            gameObject.transform.position, Quaternion.identity);
 
+        particleObject = PoolManager.GetObject(Data.Instance.PrefabsData.destroyObjParticle,
+            gameObject.transform.position, Quaternion.identity);
         timeRemainingReturnToPoolParticle.AddTimeRemaining();
     }
 }

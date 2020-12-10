@@ -135,10 +135,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7824476065020508850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85a6368c24cc90e409fa148838c7cac9, type: 3}
+  m_Script: {fileID: 11500000, guid: 0aa153c043e8f8f4785a1480e74687de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 1
+  _maxHealth: 1
   _points: 50
 --- !u!65 &8106946934263599879
 BoxCollider:

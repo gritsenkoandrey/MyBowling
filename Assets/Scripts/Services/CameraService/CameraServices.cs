@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
 
 namespace Scripts
 {
     public sealed class CameraServices : Service
     {
+        private Sequence _sequence;
+        private ShakeInfo _shakeInfo;
+
         #region ClassLifeCycles
 
         public CameraServices()
@@ -20,19 +24,18 @@ namespace Scripts
         public Camera CameraMain { get; private set; }
 
         #endregion
-        
-        
+
+
         #region Methods
 
 
-        // public void CreateShake(ShakeType shakeType)
-        // {
-        //     var shakeInfo = Data.Instance.Shakes.GetShakeInfo(shakeType);
-        //
-        //     Tweener tweener = DOTween.Shake(() => CameraMain.transform.position, pos => CameraMain.transform.position = pos,
-        //         shakeInfo.Duration, shakeInfo.Strength, shakeInfo.Vibrato, shakeInfo.Randomness);
-        // }
+        public void CreateShake(ShakeType shakeType)
+        {
+            _shakeInfo = Data.Instance.Shakes.GetShakeInfo(shakeType);
 
+            _sequence.Insert(0.0f, CameraMain.transform.DOMove(_shakeInfo.StartCameraTransform, 0.0f));
+            _sequence.Append(CameraMain.DOShakePosition(_shakeInfo.Duration, _shakeInfo.Strength, _shakeInfo.Vibrato, _shakeInfo.Randomness));
+        }
 
         // public void MoveToPosition(Vector3 position, float moveDuration,
         //     Ease ease = Ease.OutSine)
@@ -46,7 +49,7 @@ namespace Scripts
         //     Tweener tweener = DOTween.To(() => CameraMain.transform.position, CameraMain.transform.position,
         //         position, moveDuration).SetEase(ease).OnComplete(CameraMain.transform.RemoveTweener);
         // }
-        
+
 
         public void SetCamera(Camera camera)
         {

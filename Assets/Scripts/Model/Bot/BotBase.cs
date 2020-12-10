@@ -6,16 +6,11 @@ using UnityEngine;
 public abstract class BotBase : BaseModel
 {
     [SerializeField] private int _points = 0;
-
-    private CameraShake _cameraShake;
     private UiShowApplyDamage _uiShowText;
-    //public event Action<BotBase> OnDieChange;
 
     protected override void Awake()
     {
         base.Awake();
-
-        _cameraShake = FindObjectOfType<CameraShake>();
         _uiShowText = FindObjectOfType<UiShowApplyDamage>();
     }
 
@@ -27,8 +22,7 @@ public abstract class BotBase : BaseModel
 
     private void DestroyBot()
     {
-        //OnDieChange?.Invoke(this);
-        _cameraShake.CreateShake();
+        Services.Instance.CameraServices.CreateShake(ShakeType.Standart);
         _uiShowText.ApplyDamage(gameObject.transform.position, _points * BallController.CurrentHitCounter++);
         gameObject.GetComponent<PoolObject>().ReturnToPool();
     }
@@ -37,7 +31,6 @@ public abstract class BotBase : BaseModel
 
     public void DestroyBotWhenPlatformDestroyed()
     {
-        //OnDieChange?.Invoke(this);
         this.gameObject.GetComponent<PoolObject>().ReturnToPool();
         particleObject = PoolManager.GetObject(Data.Instance.PrefabsData.destroyObjParticle,
             gameObject.transform.position, Quaternion.identity);

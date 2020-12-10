@@ -70,11 +70,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 155961710744198070}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85a6368c24cc90e409fa148838c7cac9, type: 3}
+  m_Script: {fileID: 11500000, guid: 0aa153c043e8f8f4785a1480e74687de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 0
-  _points: 10
+  _maxHealth: 1
+  _points: 20
 --- !u!1 &3332560023311573845
 GameObject:
   m_ObjectHideFlags: 0

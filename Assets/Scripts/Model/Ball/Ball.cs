@@ -9,9 +9,9 @@ public sealed class Ball : BallBase
         if (IsLaunch == false)
         {
             gun.FireOn();
-            gun.FireParticle();
-            rigidbodyBase.useGravity = true;
-            rigidbodyBase.AddForce(Quaternion.LookRotation
+            gun.FireParticleON();
+            myBody.useGravity = true;
+            myBody.AddForce(Quaternion.LookRotation
                 (new Vector3(direction.x, 0, direction.y)) * speedBall, ForceMode.VelocityChange);
             IsLaunch = true;
 

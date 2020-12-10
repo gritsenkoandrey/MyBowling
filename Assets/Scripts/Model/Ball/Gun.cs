@@ -4,11 +4,10 @@ using UnityEngine;
 
 public sealed class Gun : BaseModel
 {
-    private Animator _animator;
-    private Vector3 _particlePos = new Vector3(0.0f, 2.5f, -19.0f);
-
     private static readonly int _fireOn = Animator.StringToHash("FireOn");
     private static readonly int _fireOff = Animator.StringToHash("FireOff");
+
+    private Animator _animator;
 
     protected override void Awake()
     {
@@ -27,10 +26,14 @@ public sealed class Gun : BaseModel
         _animator.SetTrigger(_fireOff);
     }
 
-    public void FireParticle()
+    public void FireParticleON()
     {
-        particleObject = PoolManager.GetObject(Data.Instance.PrefabsData.canonShotParticle,
-            _particlePos, Quaternion.identity);
-        timeRemainingReturnToPoolParticle.AddTimeRemaining();
+        obj = PoolManager.GetObject(Data.Instance.PrefabsData.canonShotParticle,
+            Data.Instance.Ball.spawnBallPosition, Quaternion.identity);
+    }
+
+    public void FireParticleOff()
+    {
+        obj.GetComponent<PoolObject>().ReturnToPool();
     }
 }

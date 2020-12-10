@@ -1,14 +1,14 @@
-﻿using UnityEngine;
+﻿using Scripts;
+using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "BallData", menuName = "Data/Ball/BallData")]
 public sealed class BallData : ScriptableObject
 {
-    [SerializeField] private Vector3 _spawnPosition;
-    [SerializeField] private BallBase _ball = null;
+    public Vector3 spawnBallPosition;
 
     public void SpawnBall()
     {
-        Instantiate(_ball, _spawnPosition, Quaternion.identity);
+        PoolManager.GetObject(Data.Instance.PrefabsData.ballPrefab, spawnBallPosition, Quaternion.identity);
     }
 }

@@ -12,9 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fe6a746bced41409376e332051ef8f, type: 3}
   m_Name: GameLevelData
   m_EditorClassIdentifier: 
-  levelOneScore: 0
-  leveTwoScore: 4000
-  leveThreeScore: 9000
-  levelFourScore: 15000
-  levelFiveScore: 21000
-  levelSixScore: 50000
+  _gameLevel:
+  - GameLevelType: 1
+    GameLevelInfo:
+      levelOneScore: 0
+      levelTwoScore: 2000
+      levelThreeScore: 4000
+      levelFourScore: 6000
+      levelFiveScore: 8000
+      levelSixScore: 10000
+      levelSevenScore: 12000
+      levelEightScore: 14000
+      levelNineScore: 16000
+      levelTenScore: 18000
+  - GameLevelType: 2
+    GameLevelInfo:
+      levelOneScore: 0
+      levelTwoScore: 5000
+      levelThreeScore: 10000
+      levelFourScore: 15000
+      levelFiveScore: 20000
+      levelSixScore: 30000
+      levelSevenScore: 40000
+      levelEightScore: 50000
+      levelNineScore: 60000
+      levelTenScore: 70000

@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9502ddf1c6f3248bc2b3c7be5c4797, type: 3}
   m_Name: BallData
   m_EditorClassIdentifier: 
-  _spawnPosition: {x: 0, y: 0.5, z: -18}
-  _ball: {fileID: 3784831964371553521, guid: ab26e0a043a71f746b3575ebc7ce8f30, type: 3}
+  spawnBallPosition: {x: 0, y: 2, z: -19}

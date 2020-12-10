@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db064c17f6ef0a44ab88b91c74da293, type: 3}
+  m_Name: PlatformData
+  m_EditorClassIdentifier: 
+  _platform:
+  - PlatformType: 1
+    PlatformInfo:
+      startPositionPlatforms:
+      - 20
+      - 30
+      - 40
+      - 50
+      - 60
+      - 70
+      currentPositionPlatform: 40
+      destroyPositionPlatform: -10
+      maxPlatformCount: 6
+      minPlatformCount: 0
+      currentPlatformCount: 0
+      delay: 2
+      duration: 1.5
+      speedPlatform: 5
+      gameOver: 0
+      nextLevel: 0

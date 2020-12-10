@@ -2,6 +2,7 @@
 using UnityEngine;
 
 
+[RequireComponent(typeof(Rigidbody))]
 public abstract class BallBase : BaseModel
 {
     [Range(0.0f, 5.0f), SerializeField] private float _destroyBallByTime = 0.0f;
@@ -12,20 +13,30 @@ public abstract class BallBase : BaseModel
     public static bool IsLaunch;
 
     protected Vector3 speedBall;
-
+    protected Rigidbody myBody;
     protected TimeRemaining timeRemainingDestroyBall;
 
-    private void Start()
+    protected override void Awake()
     {
-        speedBall = new Vector3(0.0f, 0.0f, _forceBall);
-        rigidbodyBase.useGravity = false;
-        IsLaunch = false;
+        base.Awake();
 
-        //множитель очков, при разрушении шара множитель сбрасывается.
-        //нужно переделать!!!
+        myBody = GetComponent<Rigidbody>();
+        speedBall = new Vector3(0.0f, 0.0f, _forceBall);
+    }
+
+    private void OnEnable()
+    {
+        myBody.useGravity = false;
+        IsLaunch = false;
         BallController.CurrentHitCounter = _minHitCounter;
 
         timeRemainingDestroyBall = new TimeRemaining(DestroyBall, _destroyBallByTime);
+    }
+
+    private void OnDisable()
+    {
+        myBody.velocity = Vector3.zero;
+        myBody.angularVelocity = Vector3.zero;
     }
 
     public abstract void Launch(Vector2 dir);
@@ -33,11 +44,14 @@ public abstract class BallBase : BaseModel
     public void DestroyBall()
     {
         BallController.IsBallAlive = false;
-        collisionObject = PoolManager.GetObject(Data.Instance.PrefabsData.destroyBallCollision, gameObject.transform.position, Quaternion.identity);
+
+        collisionObject = PoolManager.GetObject(Data.Instance.PrefabsData.destroyBallCollision,
+            gameObject.transform.position, Quaternion.identity);
         timeRemainingReturnToPoolCollision.AddTimeRemaining();
 
         timeRemainingDestroyBall.RemoveTimeRemaining();
         gun.FireOff();
-        Destroy(this.gameObject);
+        gun.FireParticleOff();
+        gameObject.GetComponent<PoolObject>().ReturnToPool();
     }
 }

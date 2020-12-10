@@ -11,6 +11,15 @@ public sealed class Platform : BaseModel
     [SerializeField] private Transform[] _longSpawnPoint = null;
     [SerializeField] private Transform[] _botSpawnPoint = null;
 
+    private GameLevelInfo _score;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        _score = Data.Instance.GameLevelData.GetGameLevelInfo(GameLevelType.Test);
+    }
+
     public void ReturnToPoolPlatform()
     {
         var aim = GetComponentsInChildren<AimBase>();
@@ -37,11 +46,34 @@ public sealed class Platform : BaseModel
 
     public void SpawnObjectOnPlatform()
     {
-        CreatePrefabOnSpawnPoint(_botSpawnPoint, Data.Instance.PrefabsData.botPrefab);
-        CreatePrefabOnSpawnPoint(_smallSpawnPoint, Data.Instance.PrefabsData.smallPrefab);
-        CreatePrefabOnSpawnPoint(_midleSpawnPoint, Data.Instance.PrefabsData.midlePrefab);
-        CreatePrefabOnSpawnPoint(_longSpawnPoint, Data.Instance.PrefabsData.longPrefab);
-        CreatePrefabOnSpawnPoint(_bigSpawnPoint, Data.Instance.PrefabsData.bigPrefab);
+        if (ScoreController.CountScore < _score.levelFiveScore)
+        {
+            CreatePrefabOnSpawnPoint(_botSpawnPoint, Data.Instance.PrefabsData.botPrefab);
+            CreatePrefabOnSpawnPoint(_smallSpawnPoint, Data.Instance.PrefabsData.smallPrefab);
+            CreatePrefabOnSpawnPoint(_midleSpawnPoint, Data.Instance.PrefabsData.midlePrefab);
+            CreatePrefabOnSpawnPoint(_longSpawnPoint, Data.Instance.PrefabsData.longPrefab);
+            CreatePrefabOnSpawnPoint(_bigSpawnPoint, Data.Instance.PrefabsData.bigPrefab);
+        }
+
+        if (ScoreController.CountScore >= _score.levelFiveScore && ScoreController.CountScore < _score.levelSevenScore)
+        {
+            CreatePrefabOnSpawnPoint(_smallSpawnPoint, Data.Instance.PrefabsData.smallPrefab);
+            CreatePrefabOnSpawnPoint(_midleSpawnPoint, Data.Instance.PrefabsData.midlePrefab);
+            CreatePrefabOnSpawnPoint(_longSpawnPoint, Data.Instance.PrefabsData.longPrefab);
+            CreatePrefabOnSpawnPoint(_bigSpawnPoint, Data.Instance.PrefabsData.bigPrefab);
+            CreateRandomPrefabsOnSpawnPoint(_botSpawnPoint, Data.Instance.PrefabsData.botPrefab, Data.Instance.PrefabsData.botBigPrefab, 8);
+            CreateRandomPrefabOnSpawnPoint(_botSpawnPoint, Data.Instance.PrefabsData.magicPrefab, 10);
+        }
+
+        if (ScoreController.CountScore >= _score.levelSevenScore)
+        {
+            CreatePrefabOnSpawnPoint(_smallSpawnPoint, Data.Instance.PrefabsData.smallPrefab);
+            CreatePrefabOnSpawnPoint(_midleSpawnPoint, Data.Instance.PrefabsData.midlePrefab);
+            CreatePrefabOnSpawnPoint(_longSpawnPoint, Data.Instance.PrefabsData.longPrefab);
+            CreatePrefabOnSpawnPoint(_bigSpawnPoint, Data.Instance.PrefabsData.bigPrefab);
+            CreateRandomPrefabsOnSpawnPoint(_botSpawnPoint, Data.Instance.PrefabsData.botPrefab, Data.Instance.PrefabsData.botBigPrefab, 5);
+            CreateRandomPrefabOnSpawnPoint(_botSpawnPoint, Data.Instance.PrefabsData.magicPrefab, 5);
+        }
     }
 
     private void CreatePrefabOnSpawnPoint(Transform[] spawnPoint, string[] prefabs)
@@ -55,5 +87,39 @@ public sealed class Platform : BaseModel
                 obj.transform.SetParent(gameObject.transform);
             }
         }
+    }
+
+    private void CreateRandomPrefabOnSpawnPoint(Transform[] spawnPoint, string[] prefabs, int rnd)
+    {
+        if (spawnPoint.Length > 0)
+        {
+            for (int i = 0; i < spawnPoint.Length; i++)
+            {
+                if (Random.Range(0, rnd) == 1)
+                {
+                    obj = PoolManager.GetObject(prefabs[Random.Range(0, prefabs.Length)],
+                        spawnPoint[i].transform.position, Quaternion.identity);
+                    obj.transform.SetParent(gameObject.transform);
+                }
+            }
+        }
+    }
+
+    private void CreateRandomPrefabsOnSpawnPoint(Transform[] spawnPoint, string[] prefabsOne, string[] prefabsTwo, int rnd)
+    {
+        if (spawnPoint.Length > 0)
+        {
+            for (int i = 0; i < spawnPoint.Length; i++)
+            {
+                obj = PoolManager.GetObject(ReturnRandomPrefabs(prefabsOne, prefabsTwo, rnd),
+                    spawnPoint[i].transform.position, Quaternion.identity);
+                obj.transform.SetParent(gameObject.transform);
+            }
+        }
+    }
+
+    private string ReturnRandomPrefabs(string[] prefabsOne, string[] prefabsTwo, int rnd)
+    {
+        return Random.Range(0, rnd) == 1 ? prefabsTwo[Random.Range(0, prefabsTwo.Length)] : prefabsOne[Random.Range(0, prefabsOne.Length)];
     }
 }

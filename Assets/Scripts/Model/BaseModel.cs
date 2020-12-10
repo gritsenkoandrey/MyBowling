@@ -8,9 +8,6 @@ public abstract class BaseModel : MonoBehaviour
     protected GameObject particleObject;
     protected GameObject obj;
 
-    protected Rigidbody rigidbodyBase;
-    protected Transform transformBase;
-
     protected BotBase bot;
     protected BallBase ball;
     protected AimBase aim;
@@ -25,13 +22,10 @@ public abstract class BaseModel : MonoBehaviour
 
     protected virtual void Awake()
     {
-        rigidbodyBase = GetComponent<Rigidbody>();
-        transformBase = GetComponent<Transform>();
-
         timeRemainingReturnToPoolCollision = new TimeRemaining(ReturnToPoolCollision, _timeReturnToPoolCollision);
         timeRemainingReturnToPoolParticle = new TimeRemaining(ReturnToPoolParticle, _timeReturnToPoolParticle);
 
-        gun = Object.FindObjectOfType<Gun>();
+        gun = FindObjectOfType<Gun>();
     }
 
     private void ReturnToPoolCollision()
