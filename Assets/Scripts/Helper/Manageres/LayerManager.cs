@@ -14,6 +14,7 @@ namespace Scripts
         private const string NON_COLLIDABLE = "Non-Collidable";
         private const string GROUND = "Ground";
         private const string UI = "UI";
+        private const string TARGET = "Target";
 
         public const int DEFAULT_LAYER = 0;
 
@@ -29,6 +30,7 @@ namespace Scripts
         public static int GroundLayer { get; }
         public static int UiLayer { get; }
         public static int NonCollidableLayer { get; }
+        public static int TargetLayer { get; }
 
         #endregion
 
@@ -44,7 +46,8 @@ namespace Scripts
             GroundLayer = LayerMask.GetMask(GROUND);
             UiLayer = LayerMask.GetMask(UI);
             NonCollidableLayer = LayerMask.NameToLayer(NON_COLLIDABLE);
-            
+            TargetLayer = LayerMask.GetMask(TARGET);
+
             IgnoreLayerCollision();
         }
 

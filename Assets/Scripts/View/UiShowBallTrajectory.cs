@@ -19,7 +19,7 @@ public sealed class UiShowBallTrajectory : MonoBehaviour
 
     public void ShowDirectionBall(Vector2 dir)
     {
-        if (Ball.IsLaunch == false)
+        if (BallBase.Instance.isLaunch == false)
         {
             _angle = -Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
 
@@ -30,7 +30,7 @@ public sealed class UiShowBallTrajectory : MonoBehaviour
 
     public void HideDirectionBall()
     {
-        if (Ball.IsLaunch == true)
+        if (BallBase.Instance.isLaunch == true)
         {
             SliderDisplay(false);
             SliderValueReset();

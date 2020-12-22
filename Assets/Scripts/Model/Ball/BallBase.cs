@@ -2,24 +2,32 @@
 using UnityEngine;
 
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody), typeof(SphereCollider), typeof(PoolObject))]
 public abstract class BallBase : BaseModel
 {
+    public static BallBase Instance;
+
     [Range(0.0f, 5.0f), SerializeField] private float _destroyBallByTime = 0.0f;
     [Range(0.0f, 2000.0f), SerializeField] private float _forceBall = 0.0f;
 
+    [HideInInspector] public int currentHitCounter;
     private readonly byte _minHitCounter = 1;
 
-    public static bool IsLaunch;
+    [HideInInspector] public bool isLaunch;
+    [HideInInspector] public bool isBallAlive;
 
     protected Vector3 speedBall;
     protected Rigidbody myBody;
     protected TimeRemaining timeRemainingDestroyBall;
 
+    public BallBase()
+    {
+        Instance = this;
+    }
+
     protected override void Awake()
     {
         base.Awake();
-
         myBody = GetComponent<Rigidbody>();
         speedBall = new Vector3(0.0f, 0.0f, _forceBall);
     }
@@ -27,9 +35,7 @@ public abstract class BallBase : BaseModel
     private void OnEnable()
     {
         myBody.useGravity = false;
-        IsLaunch = false;
-        BallController.CurrentHitCounter = _minHitCounter;
-
+        currentHitCounter = _minHitCounter;
         timeRemainingDestroyBall = new TimeRemaining(DestroyBall, _destroyBallByTime);
     }
 
@@ -43,7 +49,8 @@ public abstract class BallBase : BaseModel
 
     public void DestroyBall()
     {
-        BallController.IsBallAlive = false;
+        isBallAlive = false;
+        isLaunch = false;
 
         collisionObject = PoolManager.GetObject(Data.Instance.PrefabsData.destroyBallCollision,
             gameObject.transform.position, Quaternion.identity);

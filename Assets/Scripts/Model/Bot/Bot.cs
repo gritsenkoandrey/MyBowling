@@ -18,6 +18,13 @@ public sealed class Bot : BotBase
     {
         collisionObject = PoolManager.GetObject(Data.Instance.PrefabsData.destroyBotCollision,
             ball.transform.position, Quaternion.identity);
-        ReturnToPool();
+        DestroyBot();
+    }
+
+    public override void DestroyBotWithBomb()
+    {
+        collisionObject = PoolManager.GetObject(Data.Instance.PrefabsData.destroyBotCollision, 
+            gameObject.transform.position, Quaternion.identity);
+        DestroyBot();
     }
 }

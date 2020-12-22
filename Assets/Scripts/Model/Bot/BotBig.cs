@@ -17,6 +17,7 @@ public sealed class BotBig : BotBase
     private void OnEnable()
     {
         _currentHealth = _maxHealth;
+        gameObject.transform.localScale = Vector3.one;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -26,6 +27,7 @@ public sealed class BotBig : BotBase
         if (ball)
         {
             Health--;
+            gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             if (Health <= _minHealth)
             {
                 DestroyBotWithBall();
@@ -38,6 +40,13 @@ public sealed class BotBig : BotBase
         collisionObject = PoolManager.GetObject(Data.Instance.PrefabsData.destroyBotCollision,
             ball.transform.position, Quaternion.identity);
 
-        ReturnToPool();
+        DestroyBot();
+    }
+
+    public override void DestroyBotWithBomb()
+    {
+        collisionObject = PoolManager.GetObject(Data.Instance.PrefabsData.destroyBotCollision, 
+            gameObject.transform.position, Quaternion.identity);
+        DestroyBot();
     }
 }

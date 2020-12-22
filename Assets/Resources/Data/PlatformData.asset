@@ -30,5 +30,5 @@ MonoBehaviour:
       delay: 2
       duration: 1.5
       speedPlatform: 5
-      gameOver: 0
-      nextLevel: 0
+      gameOver: 1
+      nextLevel: 1

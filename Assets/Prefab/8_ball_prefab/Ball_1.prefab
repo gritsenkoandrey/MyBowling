@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 819841481496874800}
   - component: {fileID: 6232209944349974976}
   - component: {fileID: 3784831964371553521}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Ball_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5025887544807989203}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5025887544807989203}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300002, guid: 5f603b8c73c81724b9bdc1c65764eb4c, type: 3}
 --- !u!23 &297470602887008299
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -52,7 +52,7 @@ MeshRenderer:
   m_GameObject: {fileID: 5025887544807989203}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ff5ec1e2152f1e4ba73bb37b3d73276, type: 2}
+  - {fileID: 2100000, guid: 574a32f1fd43e0e498988286b3eeb64b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93,7 +93,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6232209944349974976
 Rigidbody:
@@ -123,6 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb1a7f0b18957145b2c2052760c9d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destroyBallByTime: 2
-  _forceBall: 100
-  _destroyBallParticle: {fileID: 178932, guid: 1bebce4429451b049ba32113fcb856d7, type: 3}
+  _destroyBallByTime: 0.7
+  _forceBall: 90
+  currentHitCounter: 0
+  isLaunch: 0
+  isBallAlive: 0

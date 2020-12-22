@@ -30,13 +30,12 @@ public abstract class BuildingBase : BaseModel
     }
 
     public abstract void BuildingDestroyParticle();
+    public abstract void BuildingDestroyWithBomb();
 
-    protected void ReturnToPool()
+    protected void DestroyBuilding()
     {
-        _uiShowText.ApplyDamage(gameObject.transform.position, _points * BallController.CurrentHitCounter++);
-
+        _uiShowText.ApplyDamage(gameObject.transform.position, _points * BallBase.Instance.currentHitCounter++);
         gameObject.GetComponent<PoolObject>().ReturnToPool();
-
         timeRemainingReturnToPoolParticle.AddTimeRemaining();
     }
 

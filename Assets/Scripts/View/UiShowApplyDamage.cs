@@ -15,7 +15,7 @@ public sealed class UiShowApplyDamage : MonoBehaviour
 
     public void ApplyDamage(Vector3 position, int point)
     {
-        ScoreController.CountScore += point;
+        LevelController.CountScore += point;
         _uiShowScore.EnlargeTextScore();
 
         var pos = new Vector3(position.x + Random.Range(-2.0f, 2.0f), position.y + Random.Range(1, 5.0f), position.z);

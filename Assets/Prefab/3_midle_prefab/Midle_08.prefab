@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 6132624762952499844}
   - component: {fileID: 4907514851024390196}
   - component: {fileID: 1151596606883733530}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Midle_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}

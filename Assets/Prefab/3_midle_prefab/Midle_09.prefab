@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 706417814692294616}
   - component: {fileID: 3687516766315487420}
   - component: {fileID: 5457185913910866988}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Midle_09
   m_TagString: Untagged
   m_Icon: {fileID: 0}

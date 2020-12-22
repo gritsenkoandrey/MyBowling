@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 4294399491149746744}
   - component: {fileID: 7285406127974670877}
   - component: {fileID: 8334960221051432694}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Long_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,5 +151,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa153c043e8f8f4785a1480e74687de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 1
   _points: 20
+  _maxHealth: 1

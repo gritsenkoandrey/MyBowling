@@ -40,13 +40,40 @@ public sealed class Platform : BaseModel
             bot[i].DestroyBotWhenPlatformDestroyed();
         }
 
+        var bomb = GetComponentsInChildren<BombBase>();
+        for (int i = 0; i < bomb.Length; i++)
+        {
+            bomb[i].DestroyBombWhenPlatformDestroyed();
+        }
+
         gameObject.transform.DOKill();
         gameObject.GetComponent<PoolObject>().ReturnToPool();
     }
 
+    public void DestroyObjectOnPlatform()
+    {
+        var aim = GetComponentsInChildren<AimBase>();
+        for (int i = 0; i < aim.Length; i++)
+        {
+            aim[i].DestroyAimWhenPlatformDestroyed();
+        }
+
+        var building = GetComponentsInChildren<BuildingBase>();
+        for (int i = 0; i < building.Length; i++)
+        {
+            building[i].DestroyBuildingWhenPlatformDestroyed();
+        }
+
+        var bomb = GetComponentsInChildren<BombBase>();
+        for (int i = 0; i < bomb.Length; i++)
+        {
+            bomb[i].DestroyBombWhenPlatformDestroyed();
+        }
+    }
+
     public void SpawnObjectOnPlatform()
     {
-        if (ScoreController.CountScore < _score.levelFiveScore)
+        if (LevelController.CountScore < _score.levelFiveScore)
         {
             CreatePrefabOnSpawnPoint(_botSpawnPoint, Data.Instance.PrefabsData.botPrefab);
             CreatePrefabOnSpawnPoint(_smallSpawnPoint, Data.Instance.PrefabsData.smallPrefab);
@@ -55,7 +82,7 @@ public sealed class Platform : BaseModel
             CreatePrefabOnSpawnPoint(_bigSpawnPoint, Data.Instance.PrefabsData.bigPrefab);
         }
 
-        if (ScoreController.CountScore >= _score.levelFiveScore && ScoreController.CountScore < _score.levelSevenScore)
+        if (LevelController.CountScore >= _score.levelFiveScore && LevelController.CountScore < _score.levelSevenScore)
         {
             CreatePrefabOnSpawnPoint(_smallSpawnPoint, Data.Instance.PrefabsData.smallPrefab);
             CreatePrefabOnSpawnPoint(_midleSpawnPoint, Data.Instance.PrefabsData.midlePrefab);
@@ -65,7 +92,7 @@ public sealed class Platform : BaseModel
             CreateRandomPrefabOnSpawnPoint(_botSpawnPoint, Data.Instance.PrefabsData.magicPrefab, 10);
         }
 
-        if (ScoreController.CountScore >= _score.levelSevenScore)
+        if (LevelController.CountScore >= _score.levelSevenScore)
         {
             CreatePrefabOnSpawnPoint(_smallSpawnPoint, Data.Instance.PrefabsData.smallPrefab);
             CreatePrefabOnSpawnPoint(_midleSpawnPoint, Data.Instance.PrefabsData.midlePrefab);

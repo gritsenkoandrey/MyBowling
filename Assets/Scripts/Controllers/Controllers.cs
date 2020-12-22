@@ -24,16 +24,14 @@
         
         public Controllers()
         {
-            _initializations = new IInitialization[2];
-            _initializations[0] = new PlatformController();
-            _initializations[1] = new ScoreController();
+            _initializations = new IInitialization[0];
 
             _executeControllers = new IExecute[5];
             _executeControllers[0] = new TimeRemainingController();
             _executeControllers[1] = new InputController();
             _executeControllers[2] = new BallController();
             _executeControllers[3] = new PlatformController();
-            _executeControllers[4] = new ScoreController();
+            _executeControllers[4] = new LevelController();
 
             _cleanUps = new ICleanUp[1];
             _cleanUps[0] = new TimeRemainingCleanUp();

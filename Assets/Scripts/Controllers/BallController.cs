@@ -3,15 +3,14 @@
 
 public sealed class BallController : BaseController, IExecute
 {
-    public static int CurrentHitCounter;
-    public static bool IsBallAlive = false;
-
     public void Execute()
     {
-        if (IsBallAlive == false)
+        if (BallBase.Instance.isBallAlive == false && 
+            BallBase.Instance.isLaunch == false && 
+            uiInterface.UiGameScreen.isShowUI == false)
         {
             Data.Instance.Ball.SpawnBall();
-            IsBallAlive = true;
+            BallBase.Instance.isBallAlive = true;
         }
     }
 }

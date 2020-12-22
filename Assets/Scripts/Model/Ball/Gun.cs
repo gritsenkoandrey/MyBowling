@@ -4,6 +4,8 @@ using UnityEngine;
 
 public sealed class Gun : BaseModel
 {
+    private bool _isGunAlive;
+
     private static readonly int _fireOn = Animator.StringToHash("FireOn");
     private static readonly int _fireOff = Animator.StringToHash("FireOff");
 
@@ -13,6 +15,7 @@ public sealed class Gun : BaseModel
     {
         base.Awake();
 
+        _isGunAlive = true;
         _animator = GetComponent<Animator>();
     }
 
@@ -35,5 +38,17 @@ public sealed class Gun : BaseModel
     public void FireParticleOff()
     {
         obj.GetComponent<PoolObject>().ReturnToPool();
+    }
+
+    public void DestroyGun()
+    {
+        if (_isGunAlive)
+        {
+            gameObject.GetComponent<PoolObject>().ReturnToPool();
+            obj = PoolManager.GetObject(Data.Instance.PrefabsData.bombExplosion,
+                Data.Instance.Ball.spawnBallPosition, Quaternion.identity);
+
+            _isGunAlive = false;
+        }
     }
 }

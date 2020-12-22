@@ -16,15 +16,15 @@ MonoBehaviour:
   - GameLevelType: 1
     GameLevelInfo:
       levelOneScore: 0
-      levelTwoScore: 2000
-      levelThreeScore: 4000
-      levelFourScore: 6000
-      levelFiveScore: 8000
-      levelSixScore: 10000
-      levelSevenScore: 12000
-      levelEightScore: 14000
-      levelNineScore: 16000
-      levelTenScore: 18000
+      levelTwoScore: 4000
+      levelThreeScore: 9000
+      levelFourScore: 15000
+      levelFiveScore: 21000
+      levelSixScore: 30000
+      levelSevenScore: 40000
+      levelEightScore: 50000
+      levelNineScore: 60000
+      levelTenScore: 70000
   - GameLevelType: 2
     GameLevelInfo:
       levelOneScore: 0

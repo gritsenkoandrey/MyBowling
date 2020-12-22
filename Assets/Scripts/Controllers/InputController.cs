@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Scripts;
+using UnityEngine;
 
 
 public sealed class InputController : BaseController, IExecute
@@ -19,7 +20,7 @@ public sealed class InputController : BaseController, IExecute
     {
 #if UNITY_STANDALONE || UNITY_WEBGL || UNITY_EDITOR || UNITY_WSA
 
-        if (Input.GetMouseButton(_leftButton))
+        if (Input.GetMouseButton(_leftButton) && uiInterface.UiGameScreen.isShowUI == false)
         {
             if (_ball == null)
             {
@@ -28,12 +29,12 @@ public sealed class InputController : BaseController, IExecute
 
             if (_ball != null)
             {
-                _direction = Input.mousePosition - mainCamera.WorldToScreenPoint(_ball.transform.position);
+                _direction = Input.mousePosition - Services.Instance.CameraServices.CameraMain.WorldToScreenPoint(_ball.transform.position);
                 uiInterface.UiShowBall.ShowDirectionBall(_direction);
             }
         }
 
-        if (Input.GetMouseButtonUp(_leftButton))
+        if (Input.GetMouseButtonUp(_leftButton) && uiInterface.UiGameScreen.isShowUI == false)
         {
             if (_ball != null)
             {
@@ -51,7 +52,7 @@ public sealed class InputController : BaseController, IExecute
 
 #if UNITY_IOS || UNITY_ANDROID
 
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && uiInterface.UiGameScreen.isShowUI == false)
         {
             // Debug.Log(Input.touchCount); - количество прикосновений
             if (Input.touches[0].phase == TouchPhase.Began) // Палец коснулся экрана
@@ -75,7 +76,7 @@ public sealed class InputController : BaseController, IExecute
             {
                 if (_ball != null)
                 {
-                    _direction = Input.mousePosition - mainCamera.WorldToScreenPoint(_ball.transform.position);
+                    _direction = Input.mousePosition - Services.Instance.CameraServices.CameraMain.WorldToScreenPoint(_ball.transform.position);
                     uiInterface.UiShowBall.ShowDirectionBall(_direction);
                 }
             }
@@ -84,7 +85,7 @@ public sealed class InputController : BaseController, IExecute
             {
                 if (_ball != null)
                 {
-                    _direction = Input.mousePosition - mainCamera.WorldToScreenPoint(_ball.transform.position);
+                    _direction = Input.mousePosition - Services.Instance.CameraServices.CameraMain.WorldToScreenPoint(_ball.transform.position);
                     uiInterface.UiShowBall.ShowDirectionBall(_direction);
                 }
             }

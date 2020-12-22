@@ -12,6 +12,7 @@ public abstract class BaseModel : MonoBehaviour
     protected BallBase ball;
     protected AimBase aim;
     protected BuildingBase building;
+    protected BombBase bomb;
     protected Gun gun;
 
     protected TimeRemaining timeRemainingReturnToPoolCollision;

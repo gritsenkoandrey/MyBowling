@@ -14,11 +14,12 @@ namespace Scripts
 
         #region UnityMethods
         
-        private void Start()
+        private void Awake()
         {
             _controllers = new Controllers();
             Initialization();
             Cleaner();
+            Services.Instance.CameraServices.SetCamera(Camera.main);
             //ScreenInterface.GetInstance().Execute(ScreenType.MainMenu);
         }
 

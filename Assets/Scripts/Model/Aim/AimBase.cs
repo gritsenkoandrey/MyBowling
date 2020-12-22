@@ -16,15 +16,17 @@ public abstract class AimBase : BaseModel
         _uiShowText = FindObjectOfType<UiShowApplyDamage>();
     }
 
-    protected void ReturnToPool()
+    protected void DestroyAim()
     {
-        _uiShowText.ApplyDamage(gameObject.transform.position, _points * BallController.CurrentHitCounter++);
+        _uiShowText.ApplyDamage(gameObject.transform.position, _points * BallBase.Instance.currentHitCounter++);
         gameObject.GetComponent<PoolObject>().ReturnToPool();
 
         timeRemainingReturnToPoolParticle.AddTimeRemaining();
     }
 
     public abstract void DestroyAimParticle();
+
+    public abstract void DestroyAimWithBomb();
 
     public void DestroyAimWhenPlatformDestroyed()
     {

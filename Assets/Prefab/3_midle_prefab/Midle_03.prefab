@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 7730020564749390800}
   - component: {fileID: 3643526983935610750}
   - component: {fileID: 609114412974621721}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Midle_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}

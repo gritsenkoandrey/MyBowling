@@ -17,6 +17,12 @@ public sealed class AimWood : AimBase
     public override void DestroyAimParticle()
     {
         particleObject = PoolManager.GetObject(Data.Instance.PrefabsData.destroyWoodParticle, ball.transform.position, Quaternion.identity);
-        ReturnToPool();
+        DestroyAim();
+    }
+
+    public override void DestroyAimWithBomb()
+    {
+        particleObject = PoolManager.GetObject(Data.Instance.PrefabsData.destroyWoodParticle, gameObject.transform.position, Quaternion.identity);
+        DestroyAim();
     }
 }

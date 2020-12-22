@@ -1,7 +1,7 @@
 ﻿public enum LevelGame
 {
     levelOne     = 1,
-    leveTwo      = 2,
+    levelTwo     = 2,
     levelThree   = 3,
     levelFour    = 4,
     levelFive    = 5,

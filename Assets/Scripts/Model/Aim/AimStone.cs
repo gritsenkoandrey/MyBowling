@@ -18,6 +18,12 @@ public sealed class AimStone : AimBase
     {
         particleObject = PoolManager.GetObject(Data.Instance.PrefabsData.destroyStoneParticle, ball.transform.position, Quaternion.identity);
 
-        ReturnToPool();
+        DestroyAim();
+    }
+
+    public override void DestroyAimWithBomb()
+    {
+        particleObject = PoolManager.GetObject(Data.Instance.PrefabsData.destroyStoneParticle, gameObject.transform.position, Quaternion.identity);
+        DestroyAim();
     }
 }
