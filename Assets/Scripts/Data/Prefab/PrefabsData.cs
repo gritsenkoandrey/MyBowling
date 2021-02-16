@@ -47,4 +47,7 @@ public class PrefabsData : ScriptableObject
 
     //bomb, gun
     public readonly string bombExplosion = "FX_Explosion_Large_Dark_01";
+
+    //barrier
+    public readonly string barrierDestroy = "BlueRingImpact";
 }

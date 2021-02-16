@@ -34,9 +34,10 @@ public abstract class BuildingBase : BaseModel
 
     protected void DestroyBuilding()
     {
-        _uiShowText.ApplyDamage(gameObject.transform.position, _points * BallBase.Instance.currentHitCounter++);
+        _uiShowText.ApplyDamage(gameObject.transform.position, _points * BallBase.Instance.HitCounter++);
         gameObject.GetComponent<PoolObject>().ReturnToPool();
         timeRemainingReturnToPoolParticle.AddTimeRemaining();
+        ResetTransformObject();
     }
 
     public void DestroyBuildingWhenPlatformDestroyed()
@@ -46,5 +47,6 @@ public abstract class BuildingBase : BaseModel
         particleObject = PoolManager.GetObject(Data.Instance.PrefabsData.destroyObjParticle,
             gameObject.transform.position, Quaternion.identity);
         timeRemainingReturnToPoolParticle.AddTimeRemaining();
+        ResetTransformObject();
     }
 }

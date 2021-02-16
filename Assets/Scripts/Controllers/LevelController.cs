@@ -3,12 +3,13 @@
 
 public sealed class LevelController : BaseController, IExecute
 {
-    public static int CountScore = 0;
+    public static int CountScore;
     private GameLevelInfo _score;
 
     public LevelController()
     {
         _score = Data.Instance.GameLevelData.GetGameLevelInfo(GameLevelType.Test);
+        CountScore = 0;
     }
 
     public void Execute()
@@ -35,7 +36,7 @@ public sealed class LevelController : BaseController, IExecute
         ShowCurrentLevel(LevelGame.levelTen, _score.levelTenScore, _score.levelTenScore * 2);
     }
 
-    private void ShowCurrentLevel(LevelGame levelGame, float currentLevelScore, float nextLevelScore)
+    private void ShowCurrentLevel(LevelGame levelGame, int currentLevelScore, int nextLevelScore)
     {
         if (CountScore >= currentLevelScore && CountScore < nextLevelScore)
         {
@@ -63,6 +64,11 @@ public sealed class LevelController : BaseController, IExecute
         if (uiInterface.UiShowNextLevel)
         {
             uiInterface.UiShowNextLevel.Text = level + 1;
+        }
+
+        if (uiInterface.UiShowPassedLevel)
+        {
+            uiInterface.UiShowPassedLevel.Text = level;
         }
     }
 

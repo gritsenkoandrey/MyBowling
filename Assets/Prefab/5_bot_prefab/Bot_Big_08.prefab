@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8923061979349104315}
   - component: {fileID: 8923061979349104314}
   - component: {fileID: 8923061979349104313}
+  - component: {fileID: 4576998338884488970}
   m_Layer: 9
   m_Name: Bot_Big_08
   m_TagString: Untagged
@@ -75,6 +76,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _points: 200
   _maxHealth: 2
+--- !u!95 &4576998338884488970
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8923061979349104312}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 34d530461bec694428ff689cbae8692d, type: 3}
+  m_Controller: {fileID: 9100000, guid: 8821f99501b14744786e7aa7815886be, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8923061979825895824
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,7 +676,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8923061979826204406}
-  - component: {fileID: 8923061979833336732}
   m_Layer: 0
   m_Name: SF_Character_Human_Knight_Heavy_01
   m_TagString: Untagged
@@ -679,25 +698,6 @@ Transform:
   m_Father: {fileID: 8923061979349104260}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &8923061979833336732
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8923061979825951208}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 34d530461bec694428ff689cbae8692d, type: 3}
-  m_Controller: {fileID: 9100000, guid: 8821f99501b14744786e7aa7815886be, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8923061979825978804
 GameObject:
   m_ObjectHideFlags: 0

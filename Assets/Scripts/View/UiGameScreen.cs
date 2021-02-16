@@ -21,13 +21,16 @@ public sealed class UiGameScreen : MonoBehaviour
     [SerializeField] private UiButton _resumeGameButton = null;
 
     [SerializeField] private Text _finalScore = null;
+    [SerializeField] private Text _maxScore = null;
 
-    [HideInInspector] public bool isShowUI;
+    private bool _isShowUI;
+
+    public bool IsShowUI { get { return _isShowUI; } set { _isShowUI = value; } }
 
     private void Awake()
     {
-        isShowUI = true;
-
+        IsShowUI = true;
+        //SaveData.CleanData();
         Services.Instance.TimeService.SetTimeScale(0.0f);
         Cursor.visible = true;
 
@@ -35,17 +38,29 @@ public sealed class UiGameScreen : MonoBehaviour
         _gamePanel.SetActive(false);
         _gameOverPanel.SetActive(false);
         _resumeGamePanel.SetActive(false);
+    }
 
-        //todo RemoveListener in OnDisable
+    private void OnEnable()
+    {
+        _maxScore.text = $"Maximum Score: {SaveData.LoadMaximumScore()}";
+
         _startButton.GetButton.onClick.AddListener(delegate { StartGame(); });
         _exitButton.GetButton.onClick.AddListener(delegate { ExitGame(); });
         _restartButton.GetButton.onClick.AddListener(delegate { RestartGame(); });
         _resumeGameButton.GetButton.onClick.AddListener(delegate { ResumeGame(); });
     }
 
+    private void OnDisable()
+    {
+        _startButton.GetButton.onClick.RemoveListener(delegate { StartGame(); });
+        _exitButton.GetButton.onClick.RemoveListener(delegate { ExitGame(); });
+        _restartButton.GetButton.onClick.RemoveListener(delegate { RestartGame(); });
+        _resumeGameButton.GetButton.onClick.RemoveListener(delegate { ResumeGame(); });
+    }
+
     private void StartGame()
     {
-        isShowUI = false;
+        IsShowUI = false;
 
         Services.Instance.TimeService.SetTimeScale(1.0f);
         Cursor.visible = false;
@@ -71,7 +86,7 @@ public sealed class UiGameScreen : MonoBehaviour
 
     private void ResumeGame()
     {
-        isShowUI = false;
+        IsShowUI = false;
 
         Services.Instance.TimeService.SetTimeScale(1.0f);
         Cursor.visible = false;
@@ -97,7 +112,7 @@ public sealed class UiGameScreen : MonoBehaviour
         _gamePanel.SetActive(false);
         _gameOverPanel.SetActive(true);
 
-        _finalScore.text = $"Points: {LevelController.CountScore}";
+        _finalScore.text = $"Points: {SaveData.LoadCurrentScore()}";
     }
 
     public void ChangeGround(VisualLevelGame level)

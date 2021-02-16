@@ -641,7 +641,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1645006832085702518}
-  - component: {fileID: 1645006832078143802}
   m_Layer: 0
   m_Name: SF_Character_Human_Gladiator_Open
   m_TagString: Untagged
@@ -664,25 +663,6 @@ Transform:
   m_Father: {fileID: 3000355756526782887}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!95 &1645006832078143802
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645006832085455790}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 34d530461bec694428ff689cbae8692d, type: 3}
-  m_Controller: {fileID: 9100000, guid: 35ba139cdbea71b4ab68f53b1be138a1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1645006832085456046
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,6 +829,7 @@ GameObject:
   - component: {fileID: 3000355756526782884}
   - component: {fileID: 3000355756526782885}
   - component: {fileID: 3000355756526782886}
+  - component: {fileID: 4226875812894093649}
   m_Layer: 9
   m_Name: Bot_03
   m_TagString: Untagged
@@ -911,6 +892,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _points: 100
+--- !u!95 &4226875812894093649
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3000355756526782880}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 34d530461bec694428ff689cbae8692d, type: 3}
+  m_Controller: {fileID: 9100000, guid: 35ba139cdbea71b4ab68f53b1be138a1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &8064456888798595621
 PrefabInstance:
   m_ObjectHideFlags: 0

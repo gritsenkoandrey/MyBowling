@@ -16,14 +16,12 @@ public abstract class BotBase : BaseModel
     private readonly float _timeToThrowStone = 1.5f;
 
     private Animator _animator;
-    private static readonly int _attackOn = Animator.StringToHash("AttackOn");
-    private static readonly int _attackOff = Animator.StringToHash("AttackOff");
 
     protected override void Awake()
     {
         base.Awake();
         _uiShowText = FindObjectOfType<UiShowApplyDamage>();
-        _animator = GetComponentInChildren<Animator>();
+        _animator = GetComponent<Animator>();
 
         _timeRemainingDestroyGun = new TimeRemaining(DestroyGun, _timeToDestroyGun);
         _timeRemainingThrowStone = new TimeRemaining(ThrowStone, _timeToThrowStone);
@@ -32,26 +30,31 @@ public abstract class BotBase : BaseModel
     public abstract void DestroyBotWithBall();
     public abstract void DestroyBotWithBomb();
 
+    //for debug
     public void DestroyBotWhenPlatformDestroyed()
     {
-        this.gameObject.GetComponent<PoolObject>().ReturnToPool();
+        gameObject.GetComponent<PoolObject>().ReturnToPool();
         particleObject = PoolManager.GetObject(Data.Instance.PrefabsData.destroyObjParticle,
             gameObject.transform.position, Quaternion.identity);
         timeRemainingReturnToPoolParticle.AddTimeRemaining();
+
+        ResetTransformObject();
     }
 
     protected void DestroyBot()
     {
         Services.Instance.CameraServices.CreateShake(ShakeType.Standart);
-        _uiShowText.ApplyDamage(gameObject.transform.position, _points * BallBase.Instance.currentHitCounter++);
+        _uiShowText.ApplyDamage(gameObject.transform.position, _points * BallBase.Instance.HitCounter++);
 
         gameObject.GetComponent<PoolObject>().ReturnToPool();
         timeRemainingReturnToPoolCollision.AddTimeRemaining();
+
+        ResetTransformObject();
     }
 
     public void AttackGun()
     {
-        _animator.SetTrigger(_attackOn);
+        _animator.SetTrigger(NameManager.ATTACK_ON_BOT_ANIMATION);
         _timeRemainingThrowStone.AddTimeRemaining();
         _timeRemainingDestroyGun.AddTimeRemaining();
     }
@@ -63,18 +66,18 @@ public abstract class BotBase : BaseModel
         DestroyStone();
     }
 
-    private void ThrowStone()
-    {
-        _animator.SetTrigger(_attackOff);
-        obj = PoolManager.GetObject(Data.Instance.PrefabsData.stone,
-            gameObject.transform.position, Quaternion.identity);
-        obj.transform.DOMove(Data.Instance.Ball.spawnBallPosition, _timeToThrowStone);
-        _timeRemainingThrowStone.RemoveTimeRemaining();
-    }
-
     private void DestroyStone()
     {
-        obj.transform.DOKill();
-        obj.GetComponent<PoolObject>().ReturnToPool();
+        prefab.transform.DOKill();
+        prefab.GetComponent<PoolObject>().ReturnToPool();
+    }
+
+    private void ThrowStone()
+    {
+        _animator.SetTrigger(NameManager.ATTACK_OFF_BOT_ANIMATION);
+        prefab = PoolManager.GetObject(Data.Instance.PrefabsData.stone,
+            gameObject.transform.position, Quaternion.identity);
+        prefab.transform.DOMove(Data.Instance.Ball.spawnBallPosition, _timeToThrowStone);
+        _timeRemainingThrowStone.RemoveTimeRemaining();
     }
 }

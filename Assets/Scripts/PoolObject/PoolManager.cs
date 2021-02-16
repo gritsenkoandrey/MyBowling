@@ -5,7 +5,7 @@ using UnityEngine;
 public static class PoolManager
 {
     private static PoolPart[] _pools;
-    private static GameObject _objectsParent;
+    public static GameObject objectsParent;
 
     [Serializable]
     public struct PoolPart
@@ -19,15 +19,15 @@ public static class PoolManager
     public static void Initialize(PoolPart[] newPool)
     {
         _pools = newPool;
-        _objectsParent = new GameObject();
-        _objectsParent.name = "Pool";
+        objectsParent = new GameObject();
+        objectsParent.name = "Pool";
 
         for (int i = 0; i < _pools.Length; i++)
         {
             if (_pools[i].Prefab != null)
             {
                 _pools[i].Pool = new ObjectPooling();
-                _pools[i].Pool.Initialize(_pools[i].Count, _pools[i].Prefab, _objectsParent.transform);
+                _pools[i].Pool.Initialize(_pools[i].Count, _pools[i].Prefab, objectsParent.transform);
             }
         }
     }

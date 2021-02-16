@@ -10,15 +10,18 @@ public abstract class BallBase : BaseModel
     [Range(0.0f, 5.0f), SerializeField] private float _destroyBallByTime = 0.0f;
     [Range(0.0f, 2000.0f), SerializeField] private float _forceBall = 0.0f;
 
-    [HideInInspector] public int currentHitCounter;
     private readonly byte _minHitCounter = 1;
-
-    [HideInInspector] public bool isLaunch;
-    [HideInInspector] public bool isBallAlive;
+    private int _hitCounter;
+    private bool _isLaunch;
+    private bool _isBallAlive;
 
     protected Vector3 speedBall;
     protected Rigidbody myBody;
     protected TimeRemaining timeRemainingDestroyBall;
+
+    public bool IsLaunch { get { return _isLaunch; } set { _isLaunch = value; } }
+    public bool IsBallAlive { get { return _isBallAlive; } set { _isBallAlive = value; } }
+    public int HitCounter { get { return _hitCounter; } set { _hitCounter = value; } }
 
     public BallBase()
     {
@@ -35,7 +38,7 @@ public abstract class BallBase : BaseModel
     private void OnEnable()
     {
         myBody.useGravity = false;
-        currentHitCounter = _minHitCounter;
+        HitCounter = _minHitCounter;
         timeRemainingDestroyBall = new TimeRemaining(DestroyBall, _destroyBallByTime);
     }
 
@@ -49,8 +52,8 @@ public abstract class BallBase : BaseModel
 
     public void DestroyBall()
     {
-        isBallAlive = false;
-        isLaunch = false;
+        IsBallAlive = false;
+        IsLaunch = false;
 
         collisionObject = PoolManager.GetObject(Data.Instance.PrefabsData.destroyBallCollision,
             gameObject.transform.position, Quaternion.identity);

@@ -10,18 +10,15 @@ public sealed class InputController : BaseController, IExecute
     private BallBase _ball;
     private Vector2 _direction;
 
-    //public InputController()
-    //{
-    //}
-
     #region IExecute
 
     public void Execute()
     {
 #if UNITY_STANDALONE || UNITY_WEBGL || UNITY_EDITOR || UNITY_WSA
 
-        if (Input.GetMouseButton(_leftButton) && uiInterface.UiGameScreen.isShowUI == false)
+        if (Input.GetMouseButton(_leftButton) && uiInterface.UiGameScreen.IsShowUI == false)
         {
+            // вызывается один раз
             if (_ball == null)
             {
                 _ball = Object.FindObjectOfType<BallBase>();
@@ -34,7 +31,7 @@ public sealed class InputController : BaseController, IExecute
             }
         }
 
-        if (Input.GetMouseButtonUp(_leftButton) && uiInterface.UiGameScreen.isShowUI == false)
+        if (Input.GetMouseButtonUp(_leftButton) && uiInterface.UiGameScreen.IsShowUI == false)
         {
             if (_ball != null)
             {
@@ -52,7 +49,7 @@ public sealed class InputController : BaseController, IExecute
 
 #if UNITY_IOS || UNITY_ANDROID
 
-        if (Input.touchCount > 0 && uiInterface.UiGameScreen.isShowUI == false)
+        if (Input.touchCount > 0 && uiInterface.UiGameScreen.IsShowUI == false)
         {
             // Debug.Log(Input.touchCount); - количество прикосновений
             if (Input.touches[0].phase == TouchPhase.Began) // Палец коснулся экрана

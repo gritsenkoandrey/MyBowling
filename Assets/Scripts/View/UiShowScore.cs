@@ -9,7 +9,7 @@ public sealed class UiShowScore : MonoBehaviour
 
     private RectTransform _rectTransform;
     private Text _text;
-    private Sequence _sequence;
+    private readonly Sequence _sequence = null;
 
     public int Text
     {

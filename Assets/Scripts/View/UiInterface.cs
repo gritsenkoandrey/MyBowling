@@ -10,6 +10,7 @@ public sealed class UiInterface
     private UiGameScreen _uiGameScreen;
     private UiSlider _uiSlider;
     private UiShowNextLevel _uiShowNextLevel;
+    private UiShowPassedLevel _uiShowPassedLevel;
 
     public UiShowBallTrajectory UiShowBall
     {
@@ -92,6 +93,18 @@ public sealed class UiInterface
                 _uiShowNextLevel = Object.FindObjectOfType<UiShowNextLevel>();
             }
             return _uiShowNextLevel;
+        }
+    }
+
+    public UiShowPassedLevel UiShowPassedLevel
+    {
+        get
+        {
+            if (!_uiShowPassedLevel)
+            {
+                _uiShowPassedLevel = Object.FindObjectOfType<UiShowPassedLevel>();
+            }
+            return _uiShowPassedLevel;
         }
     }
 }

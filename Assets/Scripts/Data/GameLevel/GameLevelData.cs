@@ -4,7 +4,7 @@
 [CreateAssetMenu(fileName = "GameLevelData", menuName = "Data/GameLevel/GameLevelData")]
 public class GameLevelData : ScriptableObject
 {
-    [SerializeField] private SerializeGameLevelData[] _gameLevel;
+    [SerializeField] private SerializeGameLevelData[] _gameLevel = null;
 
     public GameLevelInfo GetGameLevelInfo(GameLevelType type)
     {

@@ -5,11 +5,11 @@ using TMPro;
 
 public sealed class UiShowApplyDamage : MonoBehaviour
 {
-    [SerializeField] private UiShowScore _uiShowScore;
+    [SerializeField] private UiShowScore _uiShowScore = null;
 
     [SerializeField] private TextMeshProUGUI _text = null;
     [SerializeField] private Transform _canvas = null;
-    private Sequence _sequence;
+    private Sequence _sequence = null;
 
     [SerializeField] private float _duaration = 0.0f;
 

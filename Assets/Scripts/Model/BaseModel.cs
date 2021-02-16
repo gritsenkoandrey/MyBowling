@@ -6,7 +6,7 @@ public abstract class BaseModel : MonoBehaviour
 {
     protected GameObject collisionObject;
     protected GameObject particleObject;
-    protected GameObject obj;
+    protected GameObject prefab;
 
     protected BotBase bot;
     protected BallBase ball;
@@ -27,6 +27,13 @@ public abstract class BaseModel : MonoBehaviour
         timeRemainingReturnToPoolParticle = new TimeRemaining(ReturnToPoolParticle, _timeReturnToPoolParticle);
 
         gun = FindObjectOfType<Gun>();
+    }
+
+    protected void ResetTransformObject()
+    {
+        gameObject.transform.SetParent(PoolManager.objectsParent.transform);
+        gameObject.transform.position = Vector3.zero;
+        gameObject.transform.rotation = Quaternion.identity;
     }
 
     private void ReturnToPoolCollision()

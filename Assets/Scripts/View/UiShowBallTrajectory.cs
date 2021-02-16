@@ -8,7 +8,7 @@ public sealed class UiShowBallTrajectory : MonoBehaviour
     //private readonly float _minValue = 1.0f;
     private float _angle;
 
-    [SerializeField] private Slider _slider;
+    [SerializeField] private Slider _slider = null;
 
     private void Start()
     {
@@ -19,7 +19,7 @@ public sealed class UiShowBallTrajectory : MonoBehaviour
 
     public void ShowDirectionBall(Vector2 dir)
     {
-        if (BallBase.Instance.isLaunch == false)
+        if (BallBase.Instance.IsLaunch == false)
         {
             _angle = -Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
 
@@ -30,7 +30,7 @@ public sealed class UiShowBallTrajectory : MonoBehaviour
 
     public void HideDirectionBall()
     {
-        if (BallBase.Instance.isLaunch == true)
+        if (BallBase.Instance.IsLaunch == true)
         {
             SliderDisplay(false);
             SliderValueReset();

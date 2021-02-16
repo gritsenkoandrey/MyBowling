@@ -18,10 +18,11 @@ public abstract class AimBase : BaseModel
 
     protected void DestroyAim()
     {
-        _uiShowText.ApplyDamage(gameObject.transform.position, _points * BallBase.Instance.currentHitCounter++);
+        _uiShowText.ApplyDamage(gameObject.transform.position, _points * BallBase.Instance.HitCounter++);
         gameObject.GetComponent<PoolObject>().ReturnToPool();
 
         timeRemainingReturnToPoolParticle.AddTimeRemaining();
+        ResetTransformObject();
     }
 
     public abstract void DestroyAimParticle();
@@ -35,5 +36,6 @@ public abstract class AimBase : BaseModel
             gameObject.transform.position, Quaternion.identity);
 
         timeRemainingReturnToPoolParticle.AddTimeRemaining();
+        ResetTransformObject();
     }
 }

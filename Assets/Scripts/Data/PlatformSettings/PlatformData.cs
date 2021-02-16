@@ -4,7 +4,7 @@
 [CreateAssetMenu(fileName = "PlatformData", menuName = "Data/PlatformSettings/PlatformData")]
 public class PlatformData : ScriptableObject
 {
-    [SerializeField] private SerializePlatformData[] _platform;
+    [SerializeField] private SerializePlatformData[] _platform = null;
 
     public PlatformInfo GetPlatformInfo(PlatformType type)
     {

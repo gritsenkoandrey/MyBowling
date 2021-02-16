@@ -3,7 +3,7 @@ using UnityEngine;
 using DG.Tweening;
 
 
-public sealed class Platform : BaseModel
+public sealed class Platform : BasePlatform
 {
     [SerializeField] private Transform[] _smallSpawnPoint = null;
     [SerializeField] private Transform[] _midleSpawnPoint = null;
@@ -20,6 +20,7 @@ public sealed class Platform : BaseModel
         _score = Data.Instance.GameLevelData.GetGameLevelInfo(GameLevelType.Test);
     }
 
+    //from debug
     public void ReturnToPoolPlatform()
     {
         var aim = GetComponentsInChildren<AimBase>();
@@ -109,9 +110,9 @@ public sealed class Platform : BaseModel
         {
             for (int i = 0; i < spawnPoint.Length; i++)
             {
-                obj = PoolManager.GetObject(prefabs[Random.Range(0, prefabs.Length)],
+                prefab = PoolManager.GetObject(prefabs[Random.Range(0, prefabs.Length)],
                     spawnPoint[i].transform.position, Quaternion.identity);
-                obj.transform.SetParent(gameObject.transform);
+                prefab.transform.SetParent(gameObject.transform);
             }
         }
     }
@@ -124,9 +125,9 @@ public sealed class Platform : BaseModel
             {
                 if (Random.Range(0, rnd) == 1)
                 {
-                    obj = PoolManager.GetObject(prefabs[Random.Range(0, prefabs.Length)],
+                    prefab = PoolManager.GetObject(prefabs[Random.Range(0, prefabs.Length)],
                         spawnPoint[i].transform.position, Quaternion.identity);
-                    obj.transform.SetParent(gameObject.transform);
+                    prefab.transform.SetParent(gameObject.transform);
                 }
             }
         }
@@ -138,9 +139,9 @@ public sealed class Platform : BaseModel
         {
             for (int i = 0; i < spawnPoint.Length; i++)
             {
-                obj = PoolManager.GetObject(ReturnRandomPrefabs(prefabsOne, prefabsTwo, rnd),
+                prefab = PoolManager.GetObject(ReturnRandomPrefabs(prefabsOne, prefabsTwo, rnd),
                     spawnPoint[i].transform.position, Quaternion.identity);
-                obj.transform.SetParent(gameObject.transform);
+                prefab.transform.SetParent(gameObject.transform);
             }
         }
     }

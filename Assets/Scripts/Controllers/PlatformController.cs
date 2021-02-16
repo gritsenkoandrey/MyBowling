@@ -18,17 +18,7 @@ public sealed class PlatformController : BaseController, IExecute
     private readonly float _timeToShowNextLevelUi = 1.0f;
     private readonly float _timeToShowGameOverUi = 3.5f;
 
-    //todo пересмотреть
-    private bool _isLevelPassedOne;
-    private bool _isLevelPassedTwo;
-    private bool _isLevelPassedThree;
-    private bool _isLevelPassedFour;
-    private bool _isLevelPassedFive;
-    private bool _isLevelPassedSix;
-    private bool _isLevelPassedSeven;
-    private bool _isLevelPassedEight;
-    private bool _isLevelPassedNine;
-    private bool _isLevelPassedTen;
+    private int _levelPassed;
 
     public PlatformController()
     {
@@ -38,122 +28,46 @@ public sealed class PlatformController : BaseController, IExecute
         _timeNextLevelUi = new TimeRemaining(ShowNextLevelUi, _timeToShowNextLevelUi);
         _timeGameOverUi = new TimeRemaining(ShowGameOverUi, _timeToShowGameOverUi);
 
+        _levelPassed = (int)LevelGame.levelOne;
+
         _isReadySpawn = false;
         _isStartSpawn = false;
     }
 
     public void Execute()
     {
-        SpawnPlatform();
+        SpawnPlatforms();
         DestroyPlatform();
     }
 
-    // todo пересмотреть метод генерации платформ в зависимости от уровня
-    private void SpawnPlatform()
+    private void SpawnPlatforms()
     {
-        if (LevelController.CountScore < _score.levelTwoScore)
+        if (LevelController.CountScore >= _score.levelOneScore && LevelController.CountScore < _score.levelTwoScore)
         {
             GeneratePlatform(Data.Instance.PrefabsData.platformsLevelOne, _platform.duration, _platform.delay);
         }
 
-        if (LevelController.CountScore >= _score.levelTwoScore)
-        {
-            if (_isLevelPassedOne == false)
-            {
-                _isLevelPassedOne = true;
-                DestroyAllPlatform();
-            }
-            GeneratePlatform(Data.Instance.PrefabsData.platformsLevelTwo, _platform.duration, _platform.delay);
-        }
+        PlatformGenerationDependingLevel(_score.levelTwoScore, _score.levelThreeScore, LevelGame.levelTwo, Data.Instance.PrefabsData.platformsLevelTwo);
+        PlatformGenerationDependingLevel(_score.levelThreeScore, _score.levelFourScore, LevelGame.levelThree, Data.Instance.PrefabsData.platformsLevelThree);
+        PlatformGenerationDependingLevel(_score.levelFourScore, _score.levelFiveScore, LevelGame.levelFour, Data.Instance.PrefabsData.platformsLevelFour);
+        PlatformGenerationDependingLevel(_score.levelFiveScore, _score.levelSixScore, LevelGame.levelFive, Data.Instance.PrefabsData.platformsLevelFive);
+        PlatformGenerationDependingLevel(_score.levelSixScore, _score.levelSevenScore, LevelGame.levelSix, Data.Instance.PrefabsData.platformsLevelOne);
+        PlatformGenerationDependingLevel(_score.levelSevenScore, _score.levelEightScore, LevelGame.levelSeven, Data.Instance.PrefabsData.platformsLevelTwo);
+        PlatformGenerationDependingLevel(_score.levelEightScore, _score.levelNineScore, LevelGame.levelEight, Data.Instance.PrefabsData.platformsLevelThree);
+        PlatformGenerationDependingLevel(_score.levelNineScore, _score.levelTenScore, LevelGame.levelNine, Data.Instance.PrefabsData.platformsLevelFour);
+        PlatformGenerationDependingLevel(_score.levelTenScore, _score.levelTenScore * 2, LevelGame.levelTen, Data.Instance.PrefabsData.platformsLevelFive);
+    }
 
-        if (LevelController.CountScore >= _score.levelThreeScore)
+    private void PlatformGenerationDependingLevel(int currentLevelScore, int nextLevelScore, LevelGame levelGame, string[] platforms)
+    {
+        if (LevelController.CountScore >= currentLevelScore && LevelController.CountScore < nextLevelScore)
         {
-            if (_isLevelPassedTwo == false)
+            if (_levelPassed != (int)levelGame)
             {
-                _isLevelPassedTwo = true;
+                _levelPassed = (int)levelGame;
                 DestroyAllPlatform();
             }
-            GeneratePlatform(Data.Instance.PrefabsData.platformsLevelThree, _platform.duration, _platform.delay);
-        }
-
-        if (LevelController.CountScore >= _score.levelFourScore)
-        {
-            if (_isLevelPassedThree == false)
-            {
-                _isLevelPassedThree = true;
-                DestroyAllPlatform();
-            }
-            GeneratePlatform(Data.Instance.PrefabsData.platformsLevelFour, _platform.duration, _platform.delay);
-        }
-
-        if (LevelController.CountScore >= _score.levelFiveScore)
-        {
-            if (_isLevelPassedFour == false)
-            {
-                _isLevelPassedFour = true;
-                DestroyAllPlatform();
-            }
-            GeneratePlatform(Data.Instance.PrefabsData.platformsLevelFive, _platform.duration, _platform.delay);
-        }
-
-        if (LevelController.CountScore >= _score.levelSixScore)
-        {
-            if (_isLevelPassedFive == false)
-            {
-                _isLevelPassedFive = true;
-                DestroyAllPlatform();
-            }
-            GeneratePlatform(Data.Instance.PrefabsData.platformsLevelOne, _platform.duration, _platform.delay);
-        }
-
-        if (LevelController.CountScore >= _score.levelSevenScore)
-        {
-            if (_isLevelPassedSix == false)
-            {
-                _isLevelPassedSix = true;
-                DestroyAllPlatform();
-            }
-            GeneratePlatform(Data.Instance.PrefabsData.platformsLevelTwo, _platform.duration, _platform.delay);
-        }
-
-        if (LevelController.CountScore >= _score.levelEightScore)
-        {
-            if (_isLevelPassedSeven == false)
-            {
-                _isLevelPassedSeven = true;
-                DestroyAllPlatform();
-            }
-            GeneratePlatform(Data.Instance.PrefabsData.platformsLevelTwo, _platform.duration, _platform.delay);
-        }
-
-        if (LevelController.CountScore >= _score.levelNineScore)
-        {
-            if (_isLevelPassedEight == false)
-            {
-                _isLevelPassedEight = true;
-                DestroyAllPlatform();
-            }
-            GeneratePlatform(Data.Instance.PrefabsData.platformsLevelThree, _platform.duration, _platform.delay);
-        }
-
-        if (LevelController.CountScore >= _score.levelTenScore)
-        {
-            if (_isLevelPassedNine == false)
-            {
-                _isLevelPassedNine = true;
-                DestroyAllPlatform();
-            }
-            GeneratePlatform(Data.Instance.PrefabsData.platformsLevelFour, _platform.duration, _platform.delay);
-        }
-
-        if (LevelController.CountScore >= _score.levelTenScore * 2)
-        {
-            if (_isLevelPassedTen == false)
-            {
-                _isLevelPassedTen = true;
-                DestroyAllPlatform();
-            }
-            GeneratePlatform(Data.Instance.PrefabsData.platformsLevelFive, _platform.duration, _platform.delay);
+            GeneratePlatform(platforms, _platform.duration, _platform.delay);
         }
     }
 
@@ -203,14 +117,14 @@ public sealed class PlatformController : BaseController, IExecute
 
             for (int i = 0; i < platforms.Length; i++)
             {
-                if (platforms[i].transform.position.z < _platform.destroyPositionPlatform)
+                if (platforms[i].transform.position.z < _platform.destroyPositionPlatform && !BallBase.Instance.IsLaunch)
                 {
                     if (platforms[i].transform.GetComponentsInChildren<BotBase>().Length > 0)
                     {
                         if (_platform.gameOver == true)
                         {
                             _timeGameOverUi.AddTimeRemaining();
-                            uiInterface.UiGameScreen.isShowUI = true;
+                            uiInterface.UiGameScreen.IsShowUI = true;
 
                             var bot = platforms[i].GetComponentsInChildren<BotBase>();
                             for (int j = 0; j < bot.Length; j++)
@@ -229,6 +143,7 @@ public sealed class PlatformController : BaseController, IExecute
                         }
                         else
                         {
+                            //from debug
                             platforms[i].ReturnToPoolPlatform();
                             _platform.currentPlatformCount--;
                             _isReadySpawn = true;
@@ -255,13 +170,14 @@ public sealed class PlatformController : BaseController, IExecute
         }
 
         _ball = Object.FindObjectOfType<BallBase>();
+
         if (_ball)
         {
             _ball.DestroyBall();
 
             if (_platform.nextLevel == true)
             {
-                uiInterface.UiGameScreen.isShowUI = true;
+                uiInterface.UiGameScreen.IsShowUI = true;
                 _timeNextLevelUi.AddTimeRemaining();
             }
         }
@@ -277,6 +193,8 @@ public sealed class PlatformController : BaseController, IExecute
 
     private void ShowGameOverUi()
     {
+        SaveData.SaveMaximumScore();
+        SaveData.SaveCurrentScore();
         uiInterface.UiGameScreen.GameOver();
         _timeGameOverUi.RemoveTimeRemaining();
     }

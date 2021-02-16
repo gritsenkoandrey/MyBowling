@@ -22,6 +22,8 @@ public abstract class BombBase : BaseModel
     {
         gameObject.GetComponent<PoolObject>().ReturnToPool();
         timeRemainingReturnToPoolParticle.AddTimeRemaining();
+
+        ResetTransformObject();
     }
 
     public void DestroyBombWhenPlatformDestroyed()
@@ -31,5 +33,6 @@ public abstract class BombBase : BaseModel
             gameObject.transform.position, Quaternion.identity);
 
         timeRemainingReturnToPoolParticle.AddTimeRemaining();
+        ResetTransformObject();
     }
 }
