@@ -36,6 +36,7 @@ public sealed class Gun : BaseModel
 
     public void DestroyGun()
     {
+        Services.Instance.AudioService.PlaySound(AudioName.EXPLOSION_BALL);
         gameObject.GetComponent<PoolObject>().ReturnToPool();
         prefab = PoolManager.GetObject(Data.Instance.PrefabsData.bombExplosion,
             Data.Instance.Ball.spawnBallPosition, Quaternion.identity);

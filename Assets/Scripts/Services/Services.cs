@@ -30,6 +30,8 @@ namespace Scripts
         public PhysicsService PhysicsService { get; private set; }
         public ISaveData SaveData { get; private set; }
         public JsonService JsonService { get; private set; }
+        public AudioService AudioService { get; private set; }
+        public EventService EventService { get; private set; }
         
         #endregion
         
@@ -43,6 +45,8 @@ namespace Scripts
             PhysicsService = new PhysicsService(CameraServices);
             SaveData = new PrefsService();
             JsonService = new JsonService();
+            AudioService = new AudioService();
+            EventService = new EventService();
         }
         
         #endregion

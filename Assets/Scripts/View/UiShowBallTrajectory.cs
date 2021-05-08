@@ -17,12 +17,12 @@ public sealed class UiShowBallTrajectory : MonoBehaviour
         //_slider.maxValue = _maxValue;
     }
 
-    public void ShowDirectionBall(Vector2 dir)
+    public void ShowDirectionBall(Vector3 dir)
     {
         if (BallBase.Instance.IsLaunch == false)
         {
-            _angle = -Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
-
+            // правильная формула _angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            _angle = -Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
             SliderDisplay(true);
             SliderCalculate(_angle, dir.y);
         }
@@ -35,6 +35,12 @@ public sealed class UiShowBallTrajectory : MonoBehaviour
             SliderDisplay(false);
             SliderValueReset();
         }
+    }
+
+    public void HideSlider()
+    {
+        SliderDisplay(false);
+        SliderValueReset();
     }
 
     private void SliderCalculate(float angle, float dir)

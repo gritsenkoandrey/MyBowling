@@ -14,6 +14,8 @@ public sealed class UiGameScreen : MonoBehaviour
     [SerializeField] private GameObject _groundOne = null;
     [SerializeField] private GameObject _groundTwo = null;
     [SerializeField] private GameObject _groundThree = null;
+    [SerializeField] private GameObject _groundFour = null;
+    [SerializeField] private GameObject _groundFive = null;
 
     [SerializeField] private UiButton _startButton = null;
     [SerializeField] private UiButton _exitButton = null;
@@ -23,18 +25,16 @@ public sealed class UiGameScreen : MonoBehaviour
     [SerializeField] private Text _finalScore = null;
     [SerializeField] private Text _maxScore = null;
 
-    private bool _isShowUI;
-
-    public bool IsShowUI { get { return _isShowUI; } set { _isShowUI = value; } }
+    public bool IsShowUI { get; private set; }
 
     private void Awake()
     {
         IsShowUI = true;
-        //SaveData.CleanData();
         Services.Instance.TimeService.SetTimeScale(0.0f);
         Cursor.visible = true;
 
         _startGamePanel.SetActive(true);
+
         _gamePanel.SetActive(false);
         _gameOverPanel.SetActive(false);
         _resumeGamePanel.SetActive(false);
@@ -64,23 +64,17 @@ public sealed class UiGameScreen : MonoBehaviour
 
         Services.Instance.TimeService.SetTimeScale(1.0f);
         Cursor.visible = false;
-
         _gamePanel.SetActive(true);
         _startGamePanel.SetActive(false);
     }
 
     private void ExitGame()
     {
-    #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-    #else
         Application.Quit();
-    #endif
     }
 
     private void RestartGame()
     {
-        LevelController.CountScore = 0;
         SceneManager.LoadScene(0);
     }
 
@@ -119,22 +113,28 @@ public sealed class UiGameScreen : MonoBehaviour
     {
         if (_resumeGamePanel.activeSelf || _startGamePanel.activeSelf)
         {
+            _groundOne.SetActive(false);
+            _groundTwo.SetActive(false);
+            _groundThree.SetActive(false);
+            _groundFour.SetActive(false);
+            _groundFive.SetActive(false);
+
             switch (level)
             {
                 case VisualLevelGame.GreenMountians:
                     _groundOne.SetActive(true);
-                    _groundTwo.SetActive(false);
-                    _groundThree.SetActive(false);
                     break;
                 case VisualLevelGame.SnowMountians:
-                    _groundOne.SetActive(false);
                     _groundTwo.SetActive(true);
-                    _groundThree.SetActive(false);
                     break;
                 case VisualLevelGame.Swamp:
-                    _groundOne.SetActive(false);
-                    _groundTwo.SetActive(false);
                     _groundThree.SetActive(true);
+                    break;
+                case VisualLevelGame.Castle:
+                    _groundFour.SetActive(true);
+                    break;
+                case VisualLevelGame.LavaCastle:
+                    _groundFive.SetActive(true);
                     break;
             }
         }
@@ -143,5 +143,10 @@ public sealed class UiGameScreen : MonoBehaviour
     public void GamePanel(bool value)
     {
         _gamePanel.SetActive(value);
+    }
+
+    public bool ShowUI(bool value)
+    {
+        return IsShowUI = value;
     }
 }

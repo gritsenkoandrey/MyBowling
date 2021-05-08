@@ -1,25 +1,31 @@
 ﻿using Scripts;
 
 
-public sealed class LevelController : BaseController, IExecute
+public sealed class LevelController : BaseController, IInitialization, IExecute, ICleanUp
 {
     public static int CountScore;
-    private GameLevelInfo _score;
+    private readonly GameLevelInfo _score;
 
     public LevelController()
     {
         _score = Data.Instance.GameLevelData.GetGameLevelInfo(GameLevelType.Test);
+    }
+
+    public void Initialization()
+    {
         CountScore = 0;
+        Services.Instance.EventService.OnChangeScore += ChangeScore;
     }
 
     public void Execute()
     {
-        if (uiInterface.UiShowScore)
-        {
-            uiInterface.UiShowScore.Text = CountScore;
-        }
-
         ShowLevel();
+    }
+
+    private void ChangeScore(int score)
+    {
+        CountScore += score;
+        uiInterface.UiShowScore.Text = CountScore;
     }
 
     private void ShowLevel()
@@ -86,26 +92,31 @@ public sealed class LevelController : BaseController, IExecute
                 uiInterface.UiGameScreen.ChangeGround(VisualLevelGame.Swamp);
                 break;
             case LevelGame.levelFour:
-                uiInterface.UiGameScreen.ChangeGround(VisualLevelGame.GreenMountians);
+                uiInterface.UiGameScreen.ChangeGround(VisualLevelGame.Castle);
                 break;
             case LevelGame.levelFive:
-                uiInterface.UiGameScreen.ChangeGround(VisualLevelGame.SnowMountians);
+                uiInterface.UiGameScreen.ChangeGround(VisualLevelGame.LavaCastle);
                 break;
             case LevelGame.levelSix:
-                uiInterface.UiGameScreen.ChangeGround(VisualLevelGame.Swamp);
+                uiInterface.UiGameScreen.ChangeGround(VisualLevelGame.GreenMountians);
                 break;
             case LevelGame.levelSeven:
-                uiInterface.UiGameScreen.ChangeGround(VisualLevelGame.GreenMountians);
-                break;
-            case LevelGame.levelEight:
                 uiInterface.UiGameScreen.ChangeGround(VisualLevelGame.SnowMountians);
                 break;
-            case LevelGame.levelNine:
+            case LevelGame.levelEight:
                 uiInterface.UiGameScreen.ChangeGround(VisualLevelGame.Swamp);
                 break;
+            case LevelGame.levelNine:
+                uiInterface.UiGameScreen.ChangeGround(VisualLevelGame.Castle);
+                break;
             case LevelGame.levelTen:
-                uiInterface.UiGameScreen.ChangeGround(VisualLevelGame.GreenMountians);
+                uiInterface.UiGameScreen.ChangeGround(VisualLevelGame.LavaCastle);
                 break;
         }
+    }
+
+    public void Cleaner()
+    {
+        Services.Instance.EventService.OnChangeScore -= ChangeScore;
     }
 }

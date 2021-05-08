@@ -19,4 +19,4 @@ MonoBehaviour:
       Strength: 0.5
       Vibrato: 10
       Randomness: 40
-      StartCameraTransform: {x: 0, y: 50, z: -50}
+      StartCameraTransform: {x: 0, y: 22, z: -51}

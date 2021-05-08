@@ -7,18 +7,9 @@ public abstract class AimBase : BaseModel
 {
     [SerializeField] private int _points = 0;
 
-    private UiShowApplyDamage _uiShowText;
-
-    protected override void Awake()
-    {
-        base.Awake();
-
-        _uiShowText = FindObjectOfType<UiShowApplyDamage>();
-    }
-
     protected void DestroyAim()
     {
-        _uiShowText.ApplyDamage(gameObject.transform.position, _points * BallBase.Instance.HitCounter++);
+        //Services.Instance.EventService.ApplyDamage(gameObject.transform.position, _points * BallBase.Instance.HitCounter++);
         gameObject.GetComponent<PoolObject>().ReturnToPool();
 
         timeRemainingReturnToPoolParticle.AddTimeRemaining();

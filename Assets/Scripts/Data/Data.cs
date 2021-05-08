@@ -16,12 +16,14 @@ namespace Scripts
         [SerializeField] private string _ballDataPath = null;
         [SerializeField] private string _prefabsDataPath = null;
         [SerializeField] private string _platformDataPath = null;
+        [SerializeField] private string _soundDataPath = null;
 
         private static ShakesData _shake;
         private static GameLevelData _gameLevelData;
         private static BallData _ballData;
         private static PrefabsData _prefabsData;
         private static PlatformData _platformData;
+        private static SoundData _soundData;
 
         private static readonly Lazy<Data> _instance = new Lazy<Data>(() => Load<Data>("Data/" + typeof(Data).Name));
         
@@ -91,6 +93,20 @@ namespace Scripts
                 }
                 return _platformData;
             }
+        }
+
+        public SoundData SoundData
+        {
+            get
+            {
+                if (_soundData == null)
+                {
+                    _soundData = Load<SoundData>("Data/" + Instance._soundDataPath);
+                }
+
+                return _soundData;
+            }
+
         }
 
         #endregion

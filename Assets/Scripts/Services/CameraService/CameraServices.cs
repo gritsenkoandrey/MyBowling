@@ -6,7 +6,7 @@ namespace Scripts
 {
     public sealed class CameraServices : Service
     {
-        private Sequence _sequence;
+        private readonly Sequence _sequence;
         private ShakeInfo _shakeInfo;
 
         #region ClassLifeCycles
@@ -14,6 +14,7 @@ namespace Scripts
         public CameraServices()
         {
             SetCamera(Camera.main);
+            _sequence = DOTween.Sequence();
         }
 
         #endregion

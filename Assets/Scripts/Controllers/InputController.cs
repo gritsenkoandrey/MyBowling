@@ -8,7 +8,7 @@ public sealed class InputController : BaseController, IExecute
     private readonly KeyCode _escape = KeyCode.Escape;
 
     private BallBase _ball;
-    private Vector2 _direction;
+    private Vector3 _direction;
 
     #region IExecute
 
@@ -26,7 +26,7 @@ public sealed class InputController : BaseController, IExecute
 
             if (_ball != null)
             {
-                _direction = Input.mousePosition - Services.Instance.CameraServices.CameraMain.WorldToScreenPoint(_ball.transform.position);
+                CalculateDirection();
                 uiInterface.UiShowBall.ShowDirectionBall(_direction);
             }
         }
@@ -73,7 +73,7 @@ public sealed class InputController : BaseController, IExecute
             {
                 if (_ball != null)
                 {
-                    _direction = Input.mousePosition - Services.Instance.CameraServices.CameraMain.WorldToScreenPoint(_ball.transform.position);
+                    CalculateDirection();
                     uiInterface.UiShowBall.ShowDirectionBall(_direction);
                 }
             }
@@ -82,12 +82,25 @@ public sealed class InputController : BaseController, IExecute
             {
                 if (_ball != null)
                 {
-                    _direction = Input.mousePosition - Services.Instance.CameraServices.CameraMain.WorldToScreenPoint(_ball.transform.position);
+                    CalculateDirection();
                     uiInterface.UiShowBall.ShowDirectionBall(_direction);
                 }
             }
         }
 #endif
     }
+
+    private Vector3 CalculateDirection()
+    {
+        Ray ray = Services.Instance.CameraServices.CameraMain.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            _direction = (hit.point - _ball.transform.position).normalized;
+            _direction.y = 0f;
+        }
+
+        return _direction;
+    }
+
     #endregion
 }

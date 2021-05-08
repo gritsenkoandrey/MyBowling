@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using DG.Tweening;
+using Scripts;
 using TMPro;
 
 
@@ -13,9 +14,19 @@ public sealed class UiShowApplyDamage : MonoBehaviour
 
     [SerializeField] private float _duaration = 0.0f;
 
-    public void ApplyDamage(Vector3 position, int point)
+    private void OnEnable()
     {
-        LevelController.CountScore += point;
+        Services.Instance.EventService.OnApplyDamage += ApplyDamage;
+    }
+
+    private void OnDisable()
+    {
+        Services.Instance.EventService.OnApplyDamage -= ApplyDamage;
+    }
+
+    private void ApplyDamage(Vector3 position, int point)
+    {
+        Services.Instance.EventService.ChangeScore(point);
         _uiShowScore.EnlargeTextScore();
 
         var pos = new Vector3(position.x + Random.Range(-2.0f, 2.0f), position.y + Random.Range(1, 5.0f), position.z);

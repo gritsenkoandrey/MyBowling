@@ -8,8 +8,6 @@ public abstract class BotBase : BaseModel
 {
     [SerializeField] private int _points = 0;
 
-    private UiShowApplyDamage _uiShowText;
-
     private TimeRemaining _timeRemainingDestroyGun;
     private TimeRemaining _timeRemainingThrowStone;
     private readonly float _timeToDestroyGun = 2.5f;
@@ -20,7 +18,6 @@ public abstract class BotBase : BaseModel
     protected override void Awake()
     {
         base.Awake();
-        _uiShowText = FindObjectOfType<UiShowApplyDamage>();
         _animator = GetComponent<Animator>();
 
         _timeRemainingDestroyGun = new TimeRemaining(DestroyGun, _timeToDestroyGun);
@@ -44,7 +41,8 @@ public abstract class BotBase : BaseModel
     protected void DestroyBot()
     {
         Services.Instance.CameraServices.CreateShake(ShakeType.Standart);
-        _uiShowText.ApplyDamage(gameObject.transform.position, _points * BallBase.Instance.HitCounter++);
+        Services.Instance.EventService.ApplyDamage(gameObject.transform.position, _points * BallBase.Instance.HitCounter++);
+        Services.Instance.AudioService.PlaySound(AudioName.BOT_DEATH);
 
         gameObject.GetComponent<PoolObject>().ReturnToPool();
         timeRemainingReturnToPoolCollision.AddTimeRemaining();

@@ -33,8 +33,9 @@
             _executeControllers[3] = new PlatformController();
             _executeControllers[4] = new LevelController();
 
-            _cleanUps = new ICleanUp[1];
+            _cleanUps = new ICleanUp[2];
             _cleanUps[0] = new TimeRemainingCleanUp();
+            _cleanUps[1] = new LevelController();
         }
         
         #endregion

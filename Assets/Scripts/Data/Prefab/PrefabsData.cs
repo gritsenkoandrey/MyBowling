@@ -5,7 +5,7 @@
 public class PrefabsData : ScriptableObject
 {
     //platform
-    public readonly string[] smallPrefab = { "Small_01", "Small_02", "Small_03", "Small_04", "Small_05", "Small_06", "Small_07", "Small_08", "Small_09", "Small_10", "Small_11", "Small_12", "Small_13", "Small_14", "Small_15", "Small_16", "Bomb_01" };
+    public readonly string[] smallPrefab = { "Small_01", /*"Small_02", "Small_03", "Small_04", "Small_05",*/ "Small_06", "Small_07", "Small_08", "Small_09", "Small_10", "Small_11", "Small_12", "Small_13", "Small_14", "Small_15", "Small_16", "Bomb_01" };
     public readonly string[] midlePrefab = { "Midle_01", "Midle_02", "Midle_03", "Midle_04", "Midle_05", "Midle_06", "Midle_07", "Midle_08", "Midle_09", "Midle_10" };
     public readonly string[] longPrefab = { "Long_01", "Long_02", "Long_03", "Long_04", "Long_05" };
     public readonly string[] bigPrefab = { "Big_01", "Big_02", "Big_03", "Big_04", "Big_05", "Big_06" };

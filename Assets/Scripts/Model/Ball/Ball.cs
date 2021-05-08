@@ -4,17 +4,16 @@ using UnityEngine;
 
 public sealed class Ball : BallBase
 {
-    public override void Launch(Vector2 direction)
+    public override void Launch(Vector3 direction)
     {
         if (IsLaunch == false && IsBallAlive == true)
         {
             gun.FireOn();
             gun.FireParticleON();
+            Services.Instance.AudioService.PlaySound(AudioName.CANNON_SHOT);
             myBody.useGravity = true;
-            myBody.AddForce(Quaternion.LookRotation(new Vector3(direction.x, 0, direction.y)) * speedBall,
-                ForceMode.VelocityChange);
+            myBody.AddForce(Quaternion.LookRotation(direction) * speedBall, ForceMode.VelocityChange);
             IsLaunch = true;
-
             timeRemainingDestroyBall.AddTimeRemaining();
         }
     }

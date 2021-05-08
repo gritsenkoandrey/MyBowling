@@ -123,8 +123,9 @@ public sealed class PlatformController : BaseController, IExecute
                     {
                         if (_platform.gameOver == true)
                         {
+                            uiInterface.UiShowBall.HideSlider();
                             _timeGameOverUi.AddTimeRemaining();
-                            uiInterface.UiGameScreen.IsShowUI = true;
+                            uiInterface.UiGameScreen.ShowUI(true);
 
                             var bot = platforms[i].GetComponentsInChildren<BotBase>();
                             for (int j = 0; j < bot.Length; j++)
@@ -177,7 +178,7 @@ public sealed class PlatformController : BaseController, IExecute
 
             if (_platform.nextLevel == true)
             {
-                uiInterface.UiGameScreen.IsShowUI = true;
+                uiInterface.UiGameScreen.ShowUI(true);
                 _timeNextLevelUi.AddTimeRemaining();
             }
         }

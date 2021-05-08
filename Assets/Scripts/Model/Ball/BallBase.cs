@@ -48,13 +48,13 @@ public abstract class BallBase : BaseModel
         myBody.angularVelocity = Vector3.zero;
     }
 
-    public abstract void Launch(Vector2 dir);
+    public abstract void Launch(Vector3 dir);
 
     public void DestroyBall()
     {
         IsBallAlive = false;
         IsLaunch = false;
-
+        Services.Instance.AudioService.PlaySound(AudioName.EXPLOSION_BALL);
         collisionObject = PoolManager.GetObject(Data.Instance.PrefabsData.destroyBallCollision,
             gameObject.transform.position, Quaternion.identity);
         timeRemainingReturnToPoolCollision.AddTimeRemaining();

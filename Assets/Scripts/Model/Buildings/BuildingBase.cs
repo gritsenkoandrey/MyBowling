@@ -10,18 +10,10 @@ public abstract class BuildingBase : BaseModel
     protected readonly int minHealth = 0;
     private int _currentHealth;
 
-    private UiShowApplyDamage _uiShowText;
-
     public int Health
     {
         get { return _currentHealth; }
         protected set { _currentHealth = value; }
-    }
-
-    protected override void Awake()
-    {
-        base.Awake();
-        _uiShowText = FindObjectOfType<UiShowApplyDamage>();
     }
 
     private void OnEnable()
@@ -34,7 +26,7 @@ public abstract class BuildingBase : BaseModel
 
     protected void DestroyBuilding()
     {
-        _uiShowText.ApplyDamage(gameObject.transform.position, _points * BallBase.Instance.HitCounter++);
+        //Services.Instance.EventService.ApplyDamage(gameObject.transform.position, _points * BallBase.Instance.HitCounter++);
         gameObject.GetComponent<PoolObject>().ReturnToPool();
         timeRemainingReturnToPoolParticle.AddTimeRemaining();
         ResetTransformObject();

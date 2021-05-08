@@ -17,8 +17,8 @@ namespace Scripts
         private void Awake()
         {
             _controllers = new Controllers();
-            Initialization();
             Cleaner();
+            Initialization();
             Services.Instance.CameraServices.SetCamera(Camera.main);
             //ScreenInterface.GetInstance().Execute(ScreenType.MainMenu);
         }
